@@ -1,0 +1,34 @@
+.header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: transparent;
+    z-index: 50;
+    padding: 0 80px;
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    &.scrolled {
+        background-color: #f8d7da; // 기존의 bg-red-200에 해당
+    }
+
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        .logo {
+            width: 68px;
+            height: 20px;
+        }
+        .login {
+            font-size: 18px;
+            line-height: 21px;
+        }
+    }
+}

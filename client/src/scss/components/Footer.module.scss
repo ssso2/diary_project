@@ -1,0 +1,63 @@
+@import "../colors";
+
+.footer {
+    width: 100%;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    height: auto;
+    background: $white; // bg-red-300
+    color: $gray4;
+    // z-index: 50;
+    .nav {
+        font-weight: 500;
+        .links {
+            display: flex;
+            width: 447px;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 0 16px 56px;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .linkList {
+            display: flex;
+            align-items: center;
+            a {
+                text-decoration: none;
+                color: $gray4;
+            }
+            &::before {
+                content: "";
+                width: 1px;
+                height: 12px;
+                background: $gray2;
+                margin-right: 8px;
+            }
+            &:first-child::before {
+                display: none;
+            }
+        }
+    }
+
+    .info {
+        padding: 28px 0;
+        padding-left: 56px;
+        border-top: 1px solid $gray2;
+        border-bottom: 1px solid $gray2;
+        font-size: 14px;
+        .logo {
+            width: 68px;
+            height: 24px;
+        }
+        .contact {
+            padding: 20px 0;
+        }
+    }
+
+    .copyright {
+        font-size: 14px;
+        text-align: end;
+        padding: 20px 32px 20px 0;
+    }
+}

@@ -1,0 +1,26 @@
+@import "./colors.scss";
+@import "./reset.css";
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #aaf;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.btn-dark {
+    background-color: $dim;
+    color: $white;
+    text-align: center;
+}
+
+.btn-orange {
+    background-color: $orange;
+    color: $white;
+    text-align: center;
+}
