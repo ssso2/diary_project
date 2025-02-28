@@ -11,6 +11,7 @@
     // z-index: 50;
     .nav {
         font-weight: 500;
+        border-top: 1px solid $gray2;
         .links {
             display: flex;
             width: 447px;
@@ -43,8 +44,8 @@
     .info {
         padding: 28px 0;
         padding-left: 56px;
-        border-top: 1px solid $gray2;
-        border-bottom: 1px solid $gray2;
+        border-top: 1px solid $gray1;
+        border-bottom: 1px solid $gray1;
         font-size: 14px;
         .logo {
             width: 68px;

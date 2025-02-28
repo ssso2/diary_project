@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: #faf;
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 48px;
+    }
+    .joinForm {
+        width: 100%;
+    }
+    .btnSubmit {
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 8px;
+        height: 48px;
+        text-align: center;
+        width: 100%;
+        margin-top: 32px;
+        background-color: #ff7235;
+        color: white;
+        cursor: pointer;
+        &.disabled {
+            background-color: #c2c2c2;
+            cursor: auto;
+        }
+    }
+}

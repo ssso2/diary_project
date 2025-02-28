@@ -1,0 +1,28 @@
+@import "../colors";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        padding: 32px 0;
+        background-color: $gray1;
+        .formContainer {
+            width: 590px;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 28px;
+            margin: 108px 0;
+        }
+    }
+}

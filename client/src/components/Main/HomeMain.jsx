@@ -1,4 +1,5 @@
-import styles from "../scss/components/HomeMain.module.scss";
+import styles from "../../scss/components/HomeMain.module.scss";
+
 export default function HomeMain() {
     return (
         <section className="wrapper">

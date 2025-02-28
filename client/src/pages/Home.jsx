@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import "../scss/common.scss";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import Banner from "../components/Home/Banner";
+import HomeMain from "../components/Home/HomeMain";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Banner from "../components/Banner";
-import HomeMain from "../components/HomeMain";
+import "../scss/common.scss";
 
 export default function Home() {
     return (

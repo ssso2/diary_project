@@ -12,7 +12,13 @@
     align-items: center;
     padding: 0 40px;
 }
-
+// .wrap {
+//     width: 100%;
+//     max-width: 1200px;
+//     display: flex;
+//     justify-content: center;
+//     background-color: #ffa;
+// }
 .btn-dark {
     background-color: $dim;
     color: $white;
@@ -23,4 +29,105 @@
     background-color: $orange;
     color: $white;
     text-align: center;
+}
+
+// 로그인,회원가입 에러메세지
+.error-msg {
+    color: $red;
+    margin-top: 8px;
+}
+
+// 로그인 인풋
+.inputContainer {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    .label {
+        color: $gray4;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .input {
+        border: 1px solid $gray3;
+        border-radius: 8px;
+        padding: 12px 20px;
+        width: 100%;
+        color: $black;
+        transition: border 0.2s ease-in-out;
+    }
+}
+
+/*마이홈*/
+
+// 로그인후 헤더
+.loginheader {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid $gray2;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 13px;
+    position: fixed;
+    z-index: 49;
+    background-color: #faf;
+    .mygo {
+        font-size: 18px;
+        font-style: none;
+    }
+}
+
+// 공통 레이아웃
+.layoutwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    // height: 100%;
+    background-color: #c2c2c2;
+    // max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 40px;
+    .layoutwrap {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: center;
+        background-color: $gray1;
+        margin: 132px 0 0 256px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+//제목
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+//탭
+.tabs {
+    display: flex;
+    list-style: none;
+    border-bottom: 1px solid $gray3;
+    .tablist {
+        width: 60px;
+        height: 36px;
+        display: inline-block;
+        .tabLink {
+            height: 37px;
+            text-decoration: none;
+            color: $gray4;
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+
+        .tabLink.active {
+            border-bottom: 2px solid $orange;
+            color: $orange;
+            font-weight: bold;
+        }
+    }
 }

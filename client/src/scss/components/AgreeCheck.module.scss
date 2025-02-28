@@ -1,0 +1,35 @@
+@import "../colors";
+
+.container {
+    margin-top: 32px;
+    .allAgreeWrapper {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        background-color: #f0f0f0;
+        padding: 0 12px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+    }
+
+    .singleAgreeWrapper {
+        display: flex;
+        flex-direction: column;
+        margin-top: 16px;
+        .checkboxWrapper {
+            display: flex;
+            align-items: center;
+            height: 48px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
+    .checkbox {
+        margin-right: 8px;
+    }
+
+    .label {
+        color: $black;
+        cursor: pointer;
+    }
+}
