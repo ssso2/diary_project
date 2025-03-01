@@ -1,13 +1,13 @@
 import styles from "../../scss/components/DiaryListForm.module.scss";
 
-export default function DiaryListForm() {
+export default function Archive() {
     return (
         <div className={styles.diarywrapper}>
             <div className={styles.poster}>
                 <img src="/sub/poster.png" alt="" />
             </div>
             <div className={styles.info}>
-                <p className={styles.title}>미녀와 야수</p>
+                <p className={styles.title}>패딩턴</p>
                 <div className={styles.emotionwrap}>
                     <div className={styles.emotion}>
                         <p className={styles.txt}>감상 전</p>
@@ -19,10 +19,8 @@ export default function DiaryListForm() {
                     </div>
                 </div>
                 <p className={styles.review}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Repellat eaque, architecto dolorum hic facilis accusantium
-                    labore beatae impedit maxime debitis itaque sint temporibus.
-                    Natus in modi, sit magnam quis accusantium!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing Natus in
+                    modi, sit magnam quis accusantium!
                 </p>
                 <div className={styles.optiponwrap}>
                     <div className={styles.option}>

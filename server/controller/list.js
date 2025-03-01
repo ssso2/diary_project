@@ -7,11 +7,12 @@ const BASE_URL = "https://api.themoviedb.org/3";
 router.get("/movie", async (req, res) => {
     console.log("목록접근");
     try {
-        const axiosres = await axios.get(`${BASE_URL}/movie/popular`, {
+        const axiosres = await axios.get(`${BASE_URL}/movie/now_playing`, {
             params: {
                 api_key: API_KEY,
                 language: "ko-KR",
-                page: 1,
+                region: "KR",
+                // page: 1,
             },
         });
         res.status(200).json(axiosres.data);

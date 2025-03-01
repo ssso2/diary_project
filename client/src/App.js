@@ -7,6 +7,10 @@ import List from "./pages/list/List.jsx";
 import Diary from "./pages/diary/Diary.jsx";
 import Myhome from "./pages/myhome/Myhome.jsx";
 import Layout from "./components/common/Layout.jsx";
+import DiaryListForm from "./components/diary/DiaryListForm.jsx";
+import Archive from "./pages/diary/Archive.jsx";
+import ENList from "./pages/list/ENList.jsx";
+import ListForm from "./components/List/ListForm.jsx";
 
 function App() {
     return (
@@ -18,8 +22,14 @@ function App() {
                     <Route path="/join" element={<Join />} />
                     <Route path="/home" element={<Layout />}>
                         <Route index element={<Myhome />} />
-                        <Route path="list" element={<List />} />
-                        <Route path="diary" element={<Diary />} />
+                        <Route path="list" element={<List />}>
+                            <Route index element={<ListForm />} />
+                            <Route path="en" element={<ENList />} />
+                        </Route>
+                        <Route path="diary" element={<Diary />}>
+                            <Route index element={<DiaryListForm />} />
+                            <Route path="archive" element={<Archive />} />
+                        </Route>
                     </Route>
                 </Routes>
             </Router>
