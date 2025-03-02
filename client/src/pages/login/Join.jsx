@@ -4,8 +4,8 @@ import axios from "axios";
 
 import HeaderB from "../../components/common/HeaderB";
 import Footer from "../../components/common/Footer";
-import JoinForm from "../../components/Login/JoinForm";
-import JoinSuccess from "../../components/Login/JoinSuccess";
+import JoinForm from "../../components/login/JoinForm";
+import JoinSuccess from "../../components/login/JoinSuccess";
 
 import styles from "../../scss/pages/Join.module.scss";
 

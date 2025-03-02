@@ -4,7 +4,7 @@ import axios from "axios";
 
 import HeaderB from "../../components/common/HeaderB";
 import Footer from "../../components/common/Footer";
-import LoginForm from "../../components/Login/LoginForm";
+import LoginForm from "../../components/login/LoginForm";
 
 import styles from "../../scss/pages/Login.module.scss";
 

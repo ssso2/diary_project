@@ -1,11 +1,11 @@
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
-import Banner from "../components/Main/Banner";
-import HomeMain from "../components/Main/HomeMain";
+import Banner from "../components/main/Banner";
+import HomeMain from "../components/main/HomeMain";
 
 import "../scss/common.scss";
 
-export default function Home() {
+export default function Main() {
     return (
         <>
             <Header />

@@ -1,25 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import styles from "../../scss/components/ListForm.module.scss";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { MovieContext } from "./MovieContext";
 
-export default function ListForm() {
+export default function ListForm({ type }) {
     const URL = process.env.REACT_APP_BACK_URL;
-    const [contents, setcontents] = useState([]);
-    useEffect(() => {
-        const reqdata = async () => {
-            try {
-                const res = await axios.get(`${URL}/list/movie`);
-                console.log("데이터확인", res.data);
-                setcontents(res.data.results);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        reqdata();
-    }, []);
+    const contents = useContext(MovieContext);
+    const filtermovies = useMemo(() => {
+        if (type === "korean") {
+            return contents.filter(
+                content => content.original_language == "ko"
+            );
+        } else {
+            return contents.filter(
+                content => content.original_language !== "ko"
+            );
+        }
+    }, [contents, type]);
+
     return (
         <>
-            {contents.map(movie => (
+            {filtermovies.map(movie => (
                 <div key={movie.id} className={styles.listwrapper}>
                     <div className={styles.poster}>
                         <img

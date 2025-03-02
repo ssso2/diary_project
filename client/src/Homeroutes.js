@@ -1,0 +1,35 @@
+import { Routes, Route } from "react-router-dom";
+import MovieProvider from "./components/list/MovieContext";
+import Layout from "./components/common/Layout";
+import Myhome from "./pages/myhome/Myhome";
+import List from "./pages/list/List";
+import ListForm from "./components/list/ListForm";
+import ENList from "./pages/list/ENList";
+import Diary from "./pages/diary/Diary";
+import DiaryListForm from "./components/diary/DiaryListForm";
+import Archive from "./pages/diary/Archive";
+
+function HomeRoutes() {
+    return (
+        <MovieProvider>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Myhome />} />
+                    <Route path="list" element={<List />}>
+                        <Route index element={<ListForm type="korean" />} />
+                        <Route
+                            path="en"
+                            element={<ListForm type="foreign" />}
+                        />
+                    </Route>
+                    <Route path="diary" element={<Diary />}>
+                        <Route index element={<DiaryListForm />} />
+                        <Route path="archive" element={<Archive />} />
+                    </Route>
+                </Route>
+            </Routes>
+        </MovieProvider>
+    );
+}
+
+export default HomeRoutes;

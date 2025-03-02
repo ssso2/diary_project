@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { validateEmail } from "../../utils/Validation";
 import { LoginInput } from "../common/LoginInput";
+
 import styles from "../../scss/components/Email.module.scss";
 
 export default function Email({ email, setemail, codeVerify, setcodeVerify }) {

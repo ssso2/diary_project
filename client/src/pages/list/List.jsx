@@ -7,8 +7,8 @@ import { Outlet } from "react-router-dom";
 
 export default function MovieList() {
     const tabs = [
-        { title: "영화", path: "/home/list" },
-        { title: "드라마", path: "/home/list/en" },
+        { title: "한국", path: "/home/list" },
+        { title: "외국", path: "/home/list/en" },
     ];
 
     return (
