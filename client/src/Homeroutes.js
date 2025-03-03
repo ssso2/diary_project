@@ -16,11 +16,8 @@ function HomeRoutes() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Myhome />} />
                     <Route path="list" element={<List />}>
-                        <Route index element={<ListForm type="korean" />} />
-                        <Route
-                            path="en"
-                            element={<ListForm type="foreign" />}
-                        />
+                        <Route index element={<ListForm />} />
+                        <Route path="en" element={<ListForm />} />
                     </Route>
                     <Route path="diary" element={<Diary />}>
                         <Route index element={<DiaryListForm />} />
