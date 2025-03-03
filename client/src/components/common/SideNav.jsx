@@ -11,9 +11,9 @@ export default function SideNav() {
             path: "/home",
         },
         {
-            label: "영화/드라마정보",
+            label: "최신영화정보",
             img: "/icon/movie.svg",
-            alt: "영화,드라마정보 아이콘",
+            alt: "영화정보 아이콘",
             path: "/home/list",
         },
         {

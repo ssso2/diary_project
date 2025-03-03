@@ -13,6 +13,7 @@ export default function MovieProvider({ children }) {
                 if (contents.length === 0) {
                     const res = await axios.get(`${URL}/list/movie`);
                     console.log("데이터확인", res.data);
+                    // console.log("전체확인", res.data.total_results);
                     setcontents(res.data.results);
                 }
             } catch (error) {
