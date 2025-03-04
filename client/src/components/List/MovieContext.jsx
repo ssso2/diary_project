@@ -14,6 +14,9 @@ export default function MovieProvider({ children }) {
 
     useEffect(() => {
         settype(location.pathname === "/home/list" ? "korean" : "foreign");
+
+        setcurrentPage(1);
+
         console.log("타입", type, location.pathname);
         const moviedata = async () => {
             try {

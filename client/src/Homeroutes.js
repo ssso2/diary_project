@@ -8,6 +8,7 @@ import ENList from "./pages/list/ENList";
 import Diary from "./pages/diary/Diary";
 import DiaryListForm from "./components/diary/DiaryListForm";
 import Archive from "./pages/diary/Archive";
+import Register from "./pages/diary/Register";
 
 function HomeRoutes() {
     return (
@@ -23,6 +24,7 @@ function HomeRoutes() {
                         <Route index element={<DiaryListForm />} />
                         <Route path="archive" element={<Archive />} />
                     </Route>
+                    <Route path="register" element={<Register />} />
                 </Route>
             </Routes>
         </MovieProvider>
