@@ -1,0 +1,16 @@
+.container {
+    background-color: #fff;
+    .wrap {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        .img {
+            width: 100%;
+            cursor: pointer;
+            &:hover {
+                transition: color 0.5s;
+                color: #ff7235;
+            }
+        }
+    }
+}

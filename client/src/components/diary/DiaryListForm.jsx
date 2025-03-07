@@ -30,7 +30,7 @@ export default function DiaryListForm() {
                         <p className={styles.txt}>2025.01.30</p>
                     </div>
                     <div className={styles.option}>
-                        <img src="/icon/star.svg" alt="" />
+                        <img src="/icon/starFill.svg" alt="" />
                         <p className={styles.txt}>5.0</p>
                     </div>
                 </div>

@@ -8,7 +8,6 @@ export default function ListForm() {
     const context = useContext(MovieContext);
     const {
         contents,
-
         PerPage,
         currentPage,
         setcurrentPage,
@@ -47,7 +46,9 @@ export default function ListForm() {
                         </div>
                         <div className={styles.reviewrap}>
                             <img src="/icon/orangestar.svg" alt="별점" />
-                            <p className={styles.txt}>{movie.vote_average}</p>
+                            <p className={styles.txt}>
+                                {Math.round(movie.vote_average * 10) / 10}
+                            </p>
                         </div>
                     </div>
                 ))}

@@ -33,14 +33,22 @@ export default function MovieProvider({ children }) {
     }, [type, contents.length, location.pathname]);
 
     const filtermovies = useMemo(() => {
+        //타입필터
         const filtered = contents.filter(content =>
             type === "korean"
                 ? content.original_language === "ko"
                 : content.original_language !== "ko"
         );
+        //정렬
+        const sorted = [
+            ...filtered.sort((a, b) => {
+                return new Date(a.release_date) - new Date(b.release_date);
+            }),
+        ];
 
+        //페이지네이션
         const firstIndex = (currentPage - 1) * PerPage;
-        const pageMovies = filtered.slice(firstIndex, firstIndex + PerPage); //0-9 10개씩 출력
+        const pageMovies = sorted.slice(firstIndex, firstIndex + PerPage); //0-9 10개씩 출력
         const totalMovies = filtered.length;
         const totalPage = Math.ceil(filtered.length / PerPage);
 
