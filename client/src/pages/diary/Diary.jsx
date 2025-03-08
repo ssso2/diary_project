@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import Search from "../../components/common/Search";
 import Tab from "../../components/common/Tab";
 import DiaryListForm from "../../components/diary/DiaryListForm";
-import Button from "../../components/common/Button";
+import { LinkBtn } from "../../components/common/Button";
 
 export default function Diary() {
     const tabs = [
@@ -13,10 +13,12 @@ export default function Diary() {
         <>
             <div className="titlewrap">
                 <p className="title">다이어리</p>
-                <Link to="/home/register" className="btnOrange">
-                    + 등록
-                </Link>
-                {/* <Button /> */}
+
+                <LinkBtn
+                    to="/home/write"
+                    title=" + 등록"
+                    className="btnOrange"
+                />
             </div>
             <Search />
             <Tab tabs={tabs} />

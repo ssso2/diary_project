@@ -2,10 +2,20 @@
 import { Link } from "react-router-dom";
 import "../../scss/common.scss";
 
-export default function Button() {
+//링크
+export const LinkBtn = ({ to, className, title }) => {
     return (
-        <Link to="register" className="btnOrange">
-            + 등록
+        <Link to={to} className={`btn ${className}`}>
+            {title}
         </Link>
     );
-}
+};
+
+//버튼
+export const Btn = ({ type, className, title }) => {
+    return (
+        <button type={type} className={`btn ${className}`}>
+            {title}
+        </button>
+    );
+};

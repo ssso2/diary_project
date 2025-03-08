@@ -18,7 +18,11 @@ export default function Pagenation({
                 onClick={() => pageClick(currentPage - 1)}
                 disabled={currentPage === 1}
             >
-                <img src="/icon/left.svg" alt="이전" title="이전으로" />
+                <img
+                    src="/icon/left.svg"
+                    alt="이전으로 버튼"
+                    title="이전으로"
+                />
             </button>
             {Array(totalPage)
                 .fill()
@@ -39,7 +43,11 @@ export default function Pagenation({
                 onClick={() => pageClick(currentPage + 1)}
                 disabled={currentPage === totalPage}
             >
-                <img src="/icon/right.svg" alt="이전" title="다음으로" />
+                <img
+                    src="/icon/right.svg"
+                    alt="다음으로 버튼"
+                    title="다음으로"
+                />
             </button>
         </div>
     );

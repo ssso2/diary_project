@@ -26,7 +26,7 @@
 //     justify-content: center;
 //     background-color: #ffa;
 // }
-.btn-dark {
+.btnDark {
     background-color: $dim;
     color: $white;
     text-align: center;
@@ -39,6 +39,26 @@
     width: 108px;
     height: 48px;
     border-radius: 4px;
+    align-content: center;
+}
+.btnWhite {
+    background-color: $white;
+    text-align: center;
+    width: 108px;
+    height: 48px;
+    border-color: 1px solid $gray3;
+    border-radius: 4px;
+
+    align-content: center;
+}
+.btnGray {
+    background-color: $gray3;
+    color: $white;
+    text-align: center;
+    width: 108px;
+    height: 48px;
+    border-radius: 4px;
+
     align-content: center;
 }
 

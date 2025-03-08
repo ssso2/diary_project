@@ -10,6 +10,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Main />} />
+
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
                 <Route path="/home/*" element={<HomeRoutes />} />

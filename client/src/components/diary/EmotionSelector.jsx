@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "../../scss/components/DiaryDetail.module.scss";
 
-export default function EmotionSelector({ category }) {
-    const [selectedEmotion, setselectedEmotion] = useState(null);
+export default function EmotionSelector({ category, formData, changeValue }) {
+    // const [selectedEmotion, setselectedEmotion] = useState(null);
+
     const emotions = {
         before: [
             { id: "happy", label: "즐거움", icon: "/icon/happy.svg" },
@@ -32,8 +33,9 @@ export default function EmotionSelector({ category }) {
                         type="radio"
                         id={emotion.id}
                         name={category}
-                        checked={selectedEmotion === emotion.id}
-                        onChange={() => setselectedEmotion(emotion.id)}
+                        value={emotion.id}
+                        checked={formData[category] === emotion.id}
+                        onChange={changeValue}
                     />
                     <label htmlFor={emotion.id}>
                         <img src={emotion.icon} />

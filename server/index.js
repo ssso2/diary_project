@@ -49,9 +49,13 @@ app.use("/login", loginRouter);
 const joinRouter = require("./controller/join.js");
 app.use("/join", joinRouter);
 
-//영화드라마목록 라우터
+//영화목록 라우터
 const listRouter = require("./controller/list.js");
 app.use("/list", listRouter);
+
+//다이어리 라우터
+const diaryRouter = require("./controller/diary.js");
+app.use("/diary", diaryRouter);
 
 app.get("/", (req, res) => {
     console.log("백엔드 서버 진입"); //정상작동 확인

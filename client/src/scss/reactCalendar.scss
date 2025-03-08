@@ -1,0 +1,13 @@
+.react-calendar {
+    // background-color: #faf;
+}
+// 주말스타일
+.react-calendar__month-view__days__day--weekend {
+    color: inherit;
+}
+.saturday {
+    color: blue !important;
+}
+.sunday {
+    color: red !important;
+}

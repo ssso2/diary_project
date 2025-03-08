@@ -1,13 +1,15 @@
 import { useState } from "react";
 import styles from "../../scss/components/StarReview.module.scss";
 
-export default function StarReview() {
-    const [rate, setrate] = useState(0);
+export default function StarReview({ rate, setRate }) {
+    // const [rate, setrate] = useState(0);
     const [hover, sethover] = useState(0);
     const stars = [1, 2, 3, 4, 5];
     const starClick = star => {
-        setrate(star);
+        //api 추가
+        setRate(star);
     };
+
     return (
         <div className={styles.container}>
             {stars.map((star, idx) => (
