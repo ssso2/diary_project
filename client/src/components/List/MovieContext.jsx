@@ -14,10 +14,8 @@ export default function MovieProvider({ children }) {
 
     useEffect(() => {
         settype(location.pathname === "/home/list" ? "korean" : "foreign");
-
         setcurrentPage(1);
-
-        console.log("타입", type, location.pathname);
+        // console.log("타입", type, location.pathname);
         const moviedata = async () => {
             try {
                 if (contents.length === 0) {
@@ -42,7 +40,7 @@ export default function MovieProvider({ children }) {
         //정렬
         const sorted = [
             ...filtered.sort((a, b) => {
-                return new Date(a.release_date) - new Date(b.release_date);
+                return new Date(b.release_date) - new Date(a.release_date);
             }),
         ];
 

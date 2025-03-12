@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import styles from "../../scss/components/ListForm.module.scss";
 import { MovieContext } from "./MovieContext";
-import { genres } from "./genres";
+import { genreName } from "../../utils/Validation";
 import Pagenation from "../common/Pagenation";
 
 export default function ListForm() {
@@ -16,25 +16,20 @@ export default function ListForm() {
         totalPage,
     } = context;
 
-    const genreName = genreId => {
-        const genre = genres.find(g => g.id === genreId);
-        return genre ? genre.name : "기타";
-    };
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
     return (
-        <div className={styles.constainer}>
+        <div className={styles.container}>
             <p>{totalMovies}개</p>
-            <div className={styles.listconstainer}>
+            <div className={styles.listcontainer}>
                 {pageMovies.map(movie => (
                     <div key={movie.id} className={styles.listwrapper}>
                         <div className={styles.poster}>
                             <img
                                 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                                alt="영화포스터"
+                                alt={`${movie.title} 포스터`}
                             />
                         </div>
                         <div className={styles.info}>

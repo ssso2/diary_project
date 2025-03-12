@@ -1,0 +1,20 @@
+.radioGroup {
+    display: flex;
+    .radioWrapper {
+        height: 48px;
+        margin-right: 24px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        input {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        label {
+            line-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

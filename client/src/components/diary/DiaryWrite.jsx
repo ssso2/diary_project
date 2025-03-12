@@ -4,6 +4,12 @@ import Datepicker from "./Datepicker";
 import EmotionSelector from "./EmotionSelector";
 import StarReview from "./StarReview";
 import TinyForm from "./TinyForm";
+import { minimalGenres } from "../list/genres";
+
+import Radio from "../common/Radio";
+import Select from "../common/Select";
+import Input from "../common/Input";
+import Thumbnail from "./Thumbnail";
 
 export default function DiaryWrite({
     day,
@@ -13,41 +19,90 @@ export default function DiaryWrite({
     formData,
     changeValue,
 }) {
-    // const [day, setDay] = useState(new Date());
-    const URL = process.env.REACT_APP_BACK_URL;
+    //관람일
     const [calendar, setCalendar] = useState(false);
+    console.log("날짜", day);
+    //썸네일
+    const [selectedOption, setSelectedOption] = useState("poster");
+    const selectLists = [
+        { id: "poster", label: "영화포스터 불러오기" },
+        { id: "image", label: "이미지 등록" },
+    ];
+    //썸네일파일
+    // const [file, setFile] = useState(null);
+    const [preview, setPreview] = useState(null);
 
     return (
         <div className={styles.container}>
             <table className={styles.table}>
                 <tr>
-                    <td>영화정보</td>
+                    <td>장르</td>
                     <td>
-                        <input
-                            type="text"
-                            placeholder="영화정보를 불러와주세요."
-                            readonly
-                            name="title"
-                            value={formData.title}
+                        <Select
+                            name="genre"
+                            value={formData.genre}
                             onChange={changeValue}
-                        ></input>
-                        <button className={styles.searchBtn}>
-                            영화정보 불러오기
-                        </button>
+                            options={minimalGenres}
+                        />
                     </td>
                 </tr>
                 <tr>
-                    <td className={styles.td}>내용</td>
-                    <TinyForm />
+                    <td>제목</td>
+                    <td>
+                        <Input
+                            placeholder="제목을 입력해주세요."
+                            name="title"
+                            value={formData.title}
+                            onChange={changeValue}
+                        />
+                    </td>
                 </tr>
+                <tr>
+                    <td className={styles.td}>감상평</td>
+                    <td>
+                        <TinyForm />
+                    </td>
+                </tr>
+                <tr>
+                    <td className={styles.td}>썸네일</td>
+                    <td>
+                        <Radio
+                            name="thumbnail"
+                            options={selectLists}
+                            selected={selectedOption}
+                            setSelectedOption={setSelectedOption}
+                        />
+                        <Thumbnail
+                            selectedOption={selectedOption}
+                            changeValue={changeValue}
+                            setPreview={setPreview}
+                        />
+                    </td>
+                </tr>
+                {formData.thumbnail && (
+                    <tr>
+                        <td className={styles.td}>영화정보</td>
+                        <td>
+                            <div className={styles.posterWrap}>
+                                <img src={preview} className={styles.poster} />
+                            </div>
+                        </td>
+                    </tr>
+                )}
+
                 <tr>
                     <td>관람일</td>
                     <td>
-                        {day && day.toISOString().split("T")[0]}
-
-                        <button onClick={() => setCalendar(true)}>
-                            <img src="/icon/today.svg" />
-                        </button>
+                        <div className={styles.daywrap}>
+                            <button
+                                type="button"
+                                onClick={() => setCalendar(true)}
+                            >
+                                <img src="/icon/today.svg" />
+                            </button>
+                            {day}
+                            {/* {day && formatDate(day)} */}
+                        </div>
                         {calendar ? (
                             <Datepicker
                                 setCalendar={setCalendar}

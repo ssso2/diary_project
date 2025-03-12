@@ -45,12 +45,14 @@ router.post("/upload", upload.single("file"), (req, res) => {
 // 다이어리등록
 router.post("/write", async (req, res) => {
     console.log("코드확인진입", req.body);
-    const { id, title, content, day, rate, before, after } = req.body.payload;
+    const { id, title, content, day, rate, before, after, thumbnail } =
+        req.body.payload;
+
     try {
         console.log("트라이");
         await db.query(
-            "INSERT INTO diary_entries (member_id, title, content, date, rate, before_emotion, after_emotion) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            [id, title, "내용", day, rate, before, after]
+            "INSERT INTO diary_entries (member_id, title, content, date, rate, before_emotion, after_emotion, thumbnail) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            [id, title, "내용", day, rate, before, after, thumbnail]
         );
         return res.status(200).json("다이어리가 등록되었습니다.");
     } catch (error) {
@@ -58,6 +60,46 @@ router.post("/write", async (req, res) => {
         res.status(500).json({
             error: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
         });
+    }
+});
+
+//다이어리 리스트 조회
+router.get("/list/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log("다이어리목록디비접근", id);
+    try {
+        console.log("목록트라이접근");
+        const [diaries] = await db.query(
+            "select * from diary_entries where member_id = ?",
+            [id]
+        ); // 쿼리 첫번째 배열만 반환하기위해 [diaries]
+        res.status(200).json(diaries);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+//다이어리리스트 북마크 상태 업데이트
+router.post("/list/updatelist", async (req, res) => {
+    try {
+        const { newDiaryData } = req.body;
+        console.log("업데이트트라이접근", newDiaryData);
+        if (!newDiaryData || newDiaryData.length == 0) {
+            return res
+                .status(400)
+                .json({ message: "업데이트 할 데이터가 없습니다." });
+        }
+        const queries = newDiaryData.map(({ id, bookmark }) =>
+            db.query("UPDATE diary_entries SET bookmark = ? WHERE id = ?", [
+                bookmark,
+                id,
+            ])
+        );
+        await Promise.all(queries);
+        res.status(200).json({ success: true });
+    } catch (error) {
+        console.error("북마크업데이트에러", error);
+        res.status(500).json(error);
     }
 });
 

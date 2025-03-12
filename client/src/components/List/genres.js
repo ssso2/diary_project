@@ -19,3 +19,14 @@ export const genres = [
     { id: 10752, name: "전쟁" },
     { id: 37, name: "서부" },
 ];
+
+export const minimalGenres = [
+    { id: 27, name: "공포" },
+    { id: 18, name: "드라마" },
+    { id: 10749, name: "로맨스" },
+    { id: 53, name: "스릴러" },
+    { id: 16, name: "애니메이션" },
+    { id: 28, name: "액션" },
+    { id: 35, name: "코미디" },
+    { id: 878, name: "SF" },
+];

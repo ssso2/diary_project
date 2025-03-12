@@ -1,0 +1,34 @@
+@import "src/scss/colors.scss";
+
+.btn {
+    width: 108px;
+    height: 48px;
+    border-radius: 4px;
+    align-content: center;
+    text-align: center;
+}
+.btnDark {
+    background-color: $dim;
+    color: $white;
+    text-align: center;
+}
+.btnOrange {
+    background-color: $orange;
+    color: $white;
+}
+.btnWhite {
+    background-color: $white;
+    border: 1px solid $gray3;
+}
+.btnGray {
+    font-size: 16px;
+    background-color: $gray3;
+    color: $white;
+}
+.btnWrap {
+    width: 100%;
+    background-color: #faf;
+    display: flex;
+    gap: 16px;
+    justify-content: end;
+}

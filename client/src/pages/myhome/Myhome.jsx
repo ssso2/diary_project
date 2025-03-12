@@ -1,7 +1,11 @@
+import Calendar from "../../components/myhome/Calendar";
+import Recent from "../../components/myhome/Recent";
+
 export default function Myhome() {
     return (
-        <>
-            <p>마이홈</p>
-        </>
+        <main className="homeContainer">
+            <Calendar />
+            <Recent />
+        </main>
     );
 }

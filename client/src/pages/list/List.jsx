@@ -13,7 +13,7 @@ export default function MovieList() {
 
     return (
         <>
-            <h1>List</h1>
+            <h1 className="title">최신영화 정보</h1>
             <Tab tabs={tabs} />
             <main className="diaryContainer listContainer">
                 <Outlet />

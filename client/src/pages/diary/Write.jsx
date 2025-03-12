@@ -4,16 +4,19 @@ import Tab from "../../components/common/Tab";
 import DiaryWrite from "../../components/diary/DiaryWrite";
 import axios from "axios";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { genres } from "../../components/list/genres";
 
 export default function Write() {
     const navigate = useNavigate();
     const URL = process.env.REACT_APP_BACK_URL;
-    const [day, setDay] = useState(new Date()); // 날짜
+    const [day, setDay] = useState(new Date().toISOString().split("T")[0]); // 날짜
     const [rate, setRate] = useState(0); // 평점
     const [formData, setFormData] = useState({
+        genre: "",
         title: "",
-        before: null,
-        after: null,
+        thumbnail: null,
+        before: "happy",
+        after: "happy",
     });
     const changeValue = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,9 +25,11 @@ export default function Write() {
         e.preventDefault();
         const payload = {
             id: 9, // 로그인연동하기
+            genre: formData.genre,
             title: formData.title,
             content: "",
-            day: day.toISOString().split("T")[0],
+            thumbnail: formData.thumbnail,
+            day,
             rate,
             before: formData.before,
             after: formData.after,
@@ -40,7 +45,7 @@ export default function Write() {
     };
 
     return (
-        <>
+        <div className="modalRelative">
             <div className="titlewrap">
                 <p className="title">다이어리 등록</p>
             </div>
@@ -54,24 +59,16 @@ export default function Write() {
                         formData={formData}
                         changeValue={changeValue}
                     />
-                    <div>
+                    <div className="btnWrap">
                         <LinkBtn
-                            // type="button"
                             to="/home/diary"
                             title="취소"
                             className="btnWhite"
                         />
-                        <Btn
-                            type="submit"
-                            // to="/home/detail"
-                            // onclick={}
-                            title="등록"
-                            className="btnGray"
-                        />
+                        <Btn type="submit" title="등록" className="btnGray" />
                     </div>
                 </form>
             </main>
-            <footer>페이지네이션</footer>
-        </>
+        </div>
     );
 }

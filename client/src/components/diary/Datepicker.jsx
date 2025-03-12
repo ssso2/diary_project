@@ -1,15 +1,11 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
+import { formatNewDate } from "../../utils/Validation";
+
 import "react-calendar/dist/Calendar.css";
 import "../../scss/reactCalendar.scss";
 
 export default function Datepicker({ day, setDay, setCalendar }) {
-    // const [date, setDate] = useState(new Date());
-    // console.log(new Date());
-    // if (!day) {
-    //     console.log("date undefined");
-    //     return null;
-    // }
     const colorClassName = ({ date }) => {
         if (date.getDay() === 6) {
             return "saturday";
@@ -19,20 +15,21 @@ export default function Datepicker({ day, setDay, setCalendar }) {
         }
         return;
     };
-    const clickDay = e => {
-        setDay(e);
+    const clickDay = date => {
+        console.log("클릭", date);
+        setDay(formatNewDate(date));
         setCalendar(false);
+        console.log("날짜업데이트결과", day);
     };
     return (
         <div>
             <Calendar
                 onChange={clickDay}
                 value={day}
-                // calendarType="gregory"
+                // dateFormat="yyyy-MM-dd"
                 showNeighboringMonth={false}
                 tileClassName={colorClassName}
             />
-            {/* {date?.toISOString().split("T")[0]} */}
         </div>
     );
 }

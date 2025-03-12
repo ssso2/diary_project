@@ -7,7 +7,7 @@ import ListForm from "./components/list/ListForm";
 import ENList from "./pages/list/ENList";
 import Diary from "./pages/diary/Diary";
 import DiaryListForm from "./components/diary/DiaryListForm";
-import Archive from "./pages/diary/Archive";
+import Bookmark from "./pages/diary/Bookmark";
 import Write from "./pages/diary/Write";
 
 function HomeRoutes() {
@@ -22,7 +22,7 @@ function HomeRoutes() {
                     </Route>
                     <Route path="diary" element={<Diary />}>
                         <Route index element={<DiaryListForm />} />
-                        <Route path="archive" element={<Archive />} />
+                        <Route path="bookmark" element={<Bookmark />} />
                     </Route>
                     <Route path="Write" element={<Write />} />
                 </Route>
