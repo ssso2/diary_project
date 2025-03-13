@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import "./scss/reset.css";
+
 import Main from "./pages/Main.jsx";
 import Login from "./pages/login/Login.jsx";
 import Join from "./pages/login/Join.jsx";

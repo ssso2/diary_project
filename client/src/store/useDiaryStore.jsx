@@ -6,14 +6,17 @@ const URL = process.env.REACT_APP_BACK_URL; // 외부선언
 const useDiaryStore = create((set, get) => ({
     user: null, // 회원정보
     diaryData: [], // 다이어리 전체 데이터
-    // recentDiaries: [], // 최근 등록한 다이어리 5개
     setUser: userData => set({ user: userData }),
 
     // 다이어리 전체 불러오기
     fetchDiaryData: async userId => {
         try {
             const res = await axios.get(`${URL}/diary/list/${userId}`);
-            console.log(res.data);
+            const imgres = res.data.map(data => ({
+                ...data,
+                thumbnail: `${URL}/imgs/diary/dathumbnail/${data.thumbnail}`,
+            })); // 정적폴더에서 이미지 출력
+            console.log(imgres);
             set({ diaryData: res.data });
         } catch (error) {
             console.error("다이어리데이터 로딩오류", error);

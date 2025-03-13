@@ -6,16 +6,19 @@ import { formatDate } from "../../utils/Validation";
 
 export default function DiaryListForm({ limit }) {
     // const [bookMark, setBookmark] = useState(false);
+    const URL = process.env.REACT_APP_BACK_URL;
     const location = useLocation();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const { bookMark, setBookmark } = useOutletContext() || {}; //undefined방지 기본값!
     const { fetchDiaryData, diaryData, toggleBookmark, updateDiaries } =
         useDiaryStore(); // 다이어리데이터
     console.log("다이어리데이터확인", diaryData);
+    // const paramId = diaryData.find(item => Number(item.id)); //다이어리id 반환
+    // console.log(paramId, "디테일아이디찾기");
 
     useEffect(() => {
         console.log("다이어리서버시도");
-        fetchDiaryData(9);
+        fetchDiaryData(9); // 실행
         return () => {
             updateDiaries();
         };
@@ -43,7 +46,11 @@ export default function DiaryListForm({ limit }) {
             {showDiaries.length > 0 ? (
                 showDiaries.map(diary => (
                     // {{diary.bookmark} === 0 &&(
-                    <article className="diaryWrapper" key={diary.id}>
+                    <article
+                        className="diaryWrapper"
+                        key={diary.id}
+                        onClick={() => navigate(`/home/detail/${diary.id}`)}
+                    >
                         <header className="infoWrap">
                             <div className="diaryInfo">
                                 <button
@@ -64,7 +71,7 @@ export default function DiaryListForm({ limit }) {
                                 </button>
                                 <h2 className="title">{diary.title}</h2>
                                 <span className="subtitle">·</span>
-                                <p className="subtitle">애니메이션</p>
+                                <p className="subtitle">{diary.genre}</p>
                             </div>
                             <div className="emotionwrap">
                                 <div className="emotion">
@@ -105,10 +112,18 @@ export default function DiaryListForm({ limit }) {
                             </div>
                         </header>
                         <figure className="poster">
-                            <img
-                                src="/sub/poster.png"
-                                alt="미녀와 야수 포스터"
-                            />
+                            {diary.thumbnail &&
+                            diary.thumbnail.startsWith("http") ? (
+                                <img
+                                    src={diary.thumbnail}
+                                    alt={`${diary.title}포스터`}
+                                />
+                            ) : (
+                                <img
+                                    src={`${URL}/imgs/diary/${diary.thumbnail}`}
+                                    alt="기본썸네일"
+                                />
+                            )}
                         </figure>
                     </article>
                     // )}

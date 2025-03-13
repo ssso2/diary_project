@@ -33,9 +33,7 @@ router.post("/upload", upload.single("file"), (req, res) => {
         const host = req.get("host"); // 호스트 정보 (예: localhost:5001)
         // const fileUrl = `${protocol}://${host}/imgs/diary/${req.file.filename}`;
         const fileUrl = `http://localhost:5001/imgs/diary/${req.file.filename}`;
-        // console.log( "파일 저장 경로:",
-        //     path.join(__dirname, "../imgs/diary", req.file.filename)
-        // );
+
         return res.status(200).json({ location: fileUrl });
     } catch (error) {
         return res.status(500).json(error);
@@ -43,17 +41,43 @@ router.post("/upload", upload.single("file"), (req, res) => {
 });
 
 // 다이어리등록
-router.post("/write", async (req, res) => {
+router.post("/write", upload.single("file"), async (req, res) => {
     console.log("코드확인진입", req.body);
-    const { id, title, content, day, rate, before, after, thumbnail } =
-        req.body.payload;
+    console.log("파일따로오나", req.file);
 
+    const {
+        id,
+        title,
+        genre,
+        content,
+        day,
+        rate,
+        before,
+        after,
+        posterThumbnail,
+    } = req.body;
+
+    const thumbnail = posterThumbnail
+        ? posterThumbnail
+        : req.file
+        ? req.file.filename
+        : "1741332504472.png"; // 기본 이미지 파일명
+    // let thumbnail;
+    // if (posterThumbnail) {
+    //     thumbnail = posterThumbnail;
+    // } else if (req.file) {
+    //     thumbnail = req.file.filename;
+    // } else thumbnail = null;
+
+    // const defaulThumbnail = "1741332504472.png"; //기본이미지 설정
     try {
         console.log("트라이");
         await db.query(
-            "INSERT INTO diary_entries (member_id, title, content, date, rate, before_emotion, after_emotion, thumbnail) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            [id, title, "내용", day, rate, before, after, thumbnail]
+            "INSERT INTO diary_entries (member_id, genre, title, content, date, rate, before_emotion, after_emotion, thumbnail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            [id, genre, title, "내용", day, rate, before, after, thumbnail]
         );
+        // const fileUrl = `http://localhost:5001/imgs/diary/thumbnail/${req.file.filename}`;
+
         return res.status(200).json("다이어리가 등록되었습니다.");
     } catch (error) {
         console.error("서버오류", error);

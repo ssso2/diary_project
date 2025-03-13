@@ -23,6 +23,7 @@
         display: flex;
         justify-content: space-between;
         gap: 16px;
+        cursor: pointer;
         .infoWrap {
             // width: auto;
             font-weight: 500;
@@ -97,7 +98,7 @@
         }
         .poster {
             width: 148px;
-            height: 184px;
+            height: 190px;
             border-radius: 6px;
             flex-shrink: 0;
             overflow: hidden;

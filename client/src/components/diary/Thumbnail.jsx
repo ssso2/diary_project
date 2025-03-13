@@ -2,13 +2,28 @@ import { useState } from "react";
 import "../../scss/common.scss";
 import Modal from "./Modal";
 
-export default function Thumbnail({ selectedOption, changeValue, setPreview }) {
+export default function Thumbnail({
+    selectedOption,
+    setPreview,
+    setFile,
+    setPosterThumbnail,
+}) {
+    const [modal, setModal] = useState(false);
+
     const changeImg = e => {
         const seleted = e.target.files[0]; //객체
+        console.log("seleted객체", seleted);
         setPreview(URL.createObjectURL(seleted));
-        changeValue({ target: { name: "thumbnail", value: seleted.name } }); // 객체로 전달
+        setFile(seleted);
     };
-    const [modal, setModal] = useState(false);
+    const selectMovie = movie => {
+        const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+        setFile(null);
+        setPosterThumbnail(imgUrl);
+        setPreview(imgUrl);
+        setModal(false);
+    };
+
     console.log("모달 상태 변경 전:", modal);
     return (
         <div>
@@ -19,6 +34,7 @@ export default function Thumbnail({ selectedOption, changeValue, setPreview }) {
                             type="text"
                             placeholder="포스터를 검색하세요."
                             className="imgInput"
+                            // value={path}
                             readOnly
                         />
                         <button
@@ -27,7 +43,7 @@ export default function Thumbnail({ selectedOption, changeValue, setPreview }) {
                             onClick={e => {
                                 e.stopPropagation();
                                 setModal(true);
-                                console.log("모달 상태 변경 후", modal);
+                                // console.log("모달 상태 변경 후", modal);
                             }}
                         >
                             검색하기
@@ -42,7 +58,7 @@ export default function Thumbnail({ selectedOption, changeValue, setPreview }) {
                     />
                 )}
             </div>
-            {modal && <Modal setModal={setModal} />}
+            {modal && <Modal selectMovie={selectMovie} />}
         </div>
     );
 }

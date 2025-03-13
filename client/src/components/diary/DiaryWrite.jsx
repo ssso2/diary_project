@@ -5,7 +5,6 @@ import EmotionSelector from "./EmotionSelector";
 import StarReview from "./StarReview";
 import TinyForm from "./TinyForm";
 import { minimalGenres } from "../list/genres";
-
 import Radio from "../common/Radio";
 import Select from "../common/Select";
 import Input from "../common/Input";
@@ -16,6 +15,8 @@ export default function DiaryWrite({
     setDay,
     rate,
     setRate,
+    setFile,
+    setPosterThumbnail,
     formData,
     changeValue,
 }) {
@@ -28,8 +29,7 @@ export default function DiaryWrite({
         { id: "poster", label: "영화포스터 불러오기" },
         { id: "image", label: "이미지 등록" },
     ];
-    //썸네일파일
-    // const [file, setFile] = useState(null);
+    //미리보기
     const [preview, setPreview] = useState(null);
 
     return (
@@ -74,12 +74,14 @@ export default function DiaryWrite({
                         />
                         <Thumbnail
                             selectedOption={selectedOption}
-                            changeValue={changeValue}
+                            // changeValue={changeValue}
                             setPreview={setPreview}
+                            setFile={setFile}
+                            setPosterThumbnail={setPosterThumbnail}
                         />
                     </td>
                 </tr>
-                {formData.thumbnail && (
+                {preview && (
                     <tr>
                         <td className={styles.td}>영화정보</td>
                         <td>

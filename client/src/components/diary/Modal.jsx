@@ -4,16 +4,20 @@ import { genreName } from "../../utils/Validation";
 import ModalMain from "./ModalMain";
 import ModalSearch from "./ModalSearch";
 
-export default function Modal({ setModal }) {
+export default function Modal({ setModal, selectMovie }) {
     return (
         <dialog className="modalContainer" open>
             <header className="modalHeader">
                 <h2>영화 불러오기</h2>
-                <button onClick={() => setModal(false)} className="closeBtn">
+                <button
+                    type="button"
+                    onClick={() => setModal(false)}
+                    className="closeBtn"
+                >
                     <img src="/icon/close.svg" alt="닫기 아이콘" />
                 </button>
             </header>
-            <ModalMain />
+            <ModalMain selectMovie={selectMovie} />
             {/* <ModalSearch /> */}
         </dialog>
     );

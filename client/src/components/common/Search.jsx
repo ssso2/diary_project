@@ -1,5 +1,6 @@
 export default function Search() {
-    const searchGo = () => {
+    const searchGo = e => {
+        console.log("입력값", e.target);
         alert("클릭");
     };
     return (

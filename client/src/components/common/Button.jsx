@@ -6,6 +6,7 @@ import "../../scss/common.scss";
 export const LinkBtn = ({ to, className, title }) => {
     return (
         <Link to={to} className={`btn ${className}`}>
+            {/* <img src="/icon/next.svg" /> */}
             {title}
         </Link>
     );

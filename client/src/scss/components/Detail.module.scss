@@ -1,0 +1,134 @@
+@import "src/scss/colors.scss";
+
+//헤더
+.header {
+    width: 100%;
+    background-color: $gray2;
+    padding-bottom: 33px;
+    border-bottom: 1px solid $gray2;
+    .genre {
+        color: $gray3;
+    }
+    .title {
+        font-size: 32px;
+        font-weight: 600;
+        margin: 12px 0 24px;
+    }
+    .infoWrapper {
+        height: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .infoWrap {
+            height: 100%;
+            display: flex;
+            // align-items: center;
+            // align-content: center;
+            .info {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                align-content: center;
+
+                &:last-of-type::before {
+                    content: "";
+                    width: 1px;
+                    height: 18px;
+                    background: $black;
+                    margin: 0 16px;
+                }
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+                .txt {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+    .thumbnail {
+        margin-top: 32px;
+        width: 168px;
+        height: 248px;
+        border-radius: 6px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+//감정
+.emotionWrapper {
+    border-top: 2px solid $black;
+    border-bottom: 1px solid $gray4;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 24px;
+    .emtionTitle {
+        display: block;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 150%;
+    }
+    .emotionWrap {
+        display: flex;
+        .emotion {
+            display: flex;
+            align-items: center;
+            p {
+                font-size: 20px;
+                font-weight: 700;
+            }
+            img {
+                width: 48px;
+                height: 48px;
+                margin-left: 16px;
+            }
+            &:last-of-type::before {
+                content: "";
+                width: 1px;
+                height: 24px;
+                background: $black;
+                margin: 0 16px;
+            }
+        }
+    }
+}
+
+//내비게이션
+.navWrapper {
+    .navWrap {
+        display: flex;
+        align-items: center;
+        padding: 16px 0;
+
+        &:first-of-type {
+            border-bottom: 1px solid $gray2;
+        }
+        .nav {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            span {
+                color: $gray4;
+            }
+        }
+    }
+    .noneNav {
+        padding: 16px 4px;
+        font-weight: 500;
+        &:first-of-type {
+            border-bottom: 1px solid $gray2;
+        }
+    }
+}
