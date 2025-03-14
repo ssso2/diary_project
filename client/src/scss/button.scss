@@ -13,17 +13,27 @@
     text-align: center;
 }
 .btnOrange {
+    font-size: 16px;
     background-color: $orange;
     color: $white;
+    // &:hover {
+    //     background-color: rgba($orange, 0.88);
+    // }
 }
 .btnWhite {
     background-color: $white;
     border: 1px solid $gray3;
+    &:hover {
+        background-color: $gray1;
+    }
 }
 .btnGray {
     font-size: 16px;
     background-color: $gray3;
     color: $white;
+    &:hover {
+        background-color: $gray4;
+    }
 }
 .btnWrap {
     width: 100%;

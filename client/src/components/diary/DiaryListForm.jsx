@@ -3,54 +3,47 @@ import "../../scss/DiaryListForm.scss";
 import useDiaryStore from "../../store/useDiaryStore";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { formatDate } from "../../utils/Validation";
+import Pagenation from "../common/Pagenation";
 
 export default function DiaryListForm({ limit }) {
-    // const [bookMark, setBookmark] = useState(false);
     const URL = process.env.REACT_APP_BACK_URL;
-    const location = useLocation();
     const navigate = useNavigate();
-    // const { bookMark, setBookmark } = useOutletContext() || {}; //undefined방지 기본값!
-    const { fetchDiaryData, diaryData, toggleBookmark, updateDiaries } =
+
+    const { isBookmark } = useOutletContext() || {}; //최신다이어리 context undefined 방지
+
+    const { filteredData, toggleBookmark, updateDiaries, filterDiaryData } =
         useDiaryStore(); // 다이어리데이터
-    console.log("다이어리데이터확인", diaryData);
-    // const paramId = diaryData.find(item => Number(item.id)); //다이어리id 반환
-    // console.log(paramId, "디테일아이디찾기");
 
-    useEffect(() => {
-        console.log("다이어리서버시도");
-        fetchDiaryData(9); // 실행
-        return () => {
-            updateDiaries();
-        };
-    }, []);
-
-    const BookmarkTab = location.pathname.includes("/home/diary/bookmark");
-    const showDiaries = (Array.isArray(diaryData) ? diaryData : [])
-        .filter(diary =>
-            BookmarkTab
-                ? diary.bookmark === 1
-                : diary.bookmark === 0 || diary.bookmark === 1
-        ) //북마크 필터링
-        .slice(0, limit); //개수 제한
+    //페이지네이션
+    const [currentPage, setcurrentPage] = useState(1);
+    const PerPage = 10;
+    const firstIndex = (currentPage - 1) * PerPage;
+    const sorted = [
+        ...filteredData.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+        }),
+    ];
+    const pageDiaries = sorted.slice(firstIndex, firstIndex + PerPage); //0-9 10개씩 출력
+    const totalPage = Math.ceil(filteredData.length / PerPage);
 
     const changeBookmark = id => {
-        toggleBookmark(id); // 콘솔창 상태업데이트까지 진행
-        if (BookmarkTab) {
+        toggleBookmark(id); //북마크 상태변경
+        updateDiaries(); //북마크 업데이트 api요청
+        filterDiaryData(); //데이터필터링
+        if (isBookmark) {
             alert("북마크에서 삭제되었습니다.");
         }
-        // setBookmark(!bookMark);
-        // }
     };
+
+    const showDiaries = Array.isArray(filteredData)
+        ? filteredData.slice(0, limit ?? filteredData.length) // null, undefined경우 배열전체
+        : [];
     return (
         <section className="container">
-            {showDiaries.length > 0 ? (
+            {showDiaries.length > 0 ? ( //pageDiaries합치기
                 showDiaries.map(diary => (
                     // {{diary.bookmark} === 0 &&(
-                    <article
-                        className="diaryWrapper"
-                        key={diary.id}
-                        onClick={() => navigate(`/home/detail/${diary.id}`)}
-                    >
+                    <article className="diaryWrapper" key={diary.id}>
                         <header className="infoWrap">
                             <div className="diaryInfo">
                                 <button
@@ -98,9 +91,13 @@ export default function DiaryListForm({ limit }) {
                                         src="/icon/calendar.svg"
                                         alt="달력 아이콘"
                                     />
-                                    <p className="txt">
+                                    <time
+                                        dateTime={formatDate(diary.date)}
+                                        className="txt"
+                                    >
+                                        {" "}
                                         {formatDate(diary.date)}
-                                    </p>
+                                    </time>
                                 </div>
                                 <div className="option">
                                     <img
@@ -111,7 +108,10 @@ export default function DiaryListForm({ limit }) {
                                 </div>
                             </div>
                         </header>
-                        <figure className="poster">
+                        <figure
+                            className="poster"
+                            onClick={() => navigate(`/home/detail/${diary.id}`)}
+                        >
                             {diary.thumbnail &&
                             diary.thumbnail.startsWith("http") ? (
                                 <img
@@ -126,7 +126,6 @@ export default function DiaryListForm({ limit }) {
                             )}
                         </figure>
                     </article>
-                    // )}
                 ))
             ) : (
                 <p>등록된 다이어리가 없습니다.</p>
@@ -139,7 +138,11 @@ export default function DiaryListForm({ limit }) {
                     className="paginationContainer"
                     aria-label="페이지 네비게이션"
                 >
-                    123
+                    <Pagenation
+                        currentPage={currentPage}
+                        totalPage={totalPage}
+                        pageChange={setcurrentPage}
+                    />
                 </nav>
             )}
         </section>

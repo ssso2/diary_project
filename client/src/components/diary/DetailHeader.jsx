@@ -1,8 +1,12 @@
+import { useRef, useState } from "react";
 import styles from "../../scss/components/Detail.module.scss";
 import { formatDate } from "../../utils/Validation";
+import DetailModal from "./DetailModal";
 
 export default function DetailHeader({ diary }) {
     const URL = process.env.REACT_APP_BACK_URL;
+    const [modal, setModal] = useState(false);
+    const modalRef = useRef(null);
     return (
         <header className={styles.header}>
             <p className={styles.genre}>{diary.genre}</p>
@@ -24,10 +28,24 @@ export default function DetailHeader({ diary }) {
                     </div>
                 </div>
                 <div className={styles.more}>
-                    <button type="button">
+                    <button
+                        type="button"
+                        ref={modalRef}
+                        onClick={() => {
+                            setModal(true);
+                            console.log("버튼클릭");
+                        }}
+                    >
                         <img src="/icon/more.svg" alt="수정삭제" />
                     </button>
                 </div>
+                {modal && (
+                    <DetailModal
+                        modal={modal}
+                        setModal={setModal}
+                        targetref={modalRef}
+                    />
+                )}
             </div>
             <figure className={styles.thumbnail}>
                 {diary.thumbnail && diary.thumbnail.startsWith("http") ? (

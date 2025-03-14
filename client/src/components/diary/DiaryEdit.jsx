@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../scss/components/DiaryDetail.module.scss";
 import Datepicker from "./Datepicker";
 import EmotionSelector from "./EmotionSelector";
@@ -11,19 +11,20 @@ import Input from "../common/Input";
 import Thumbnail from "./Thumbnail";
 import { formatDate } from "../../utils/Validation";
 
-export default function DiaryWrite({
+export default function DiaryEdit({
     day,
     setDay,
     rate,
     setRate,
     setFile,
     setPosterThumbnail,
+    thumbnail,
     formData,
     changeValue,
 }) {
+    const URL = process.env.REACT_APP_BACK_URL;
     //관람일
     const [calendar, setCalendar] = useState(false);
-    console.log("날짜", day);
     //썸네일
     const [selectedOption, setSelectedOption] = useState("poster");
     const selectLists = [
@@ -32,6 +33,12 @@ export default function DiaryWrite({
     ];
     //미리보기
     const [preview, setPreview] = useState(null);
+    useEffect(() => {
+        if (thumbnail.startsWith("http")) {
+            setPreview(thumbnail);
+        } else setPreview(`${URL}/imgs/diary/${thumbnail}`);
+        console.log("이미지확인", thumbnail);
+    }, [thumbnail]);
 
     return (
         <div className={styles.container}>

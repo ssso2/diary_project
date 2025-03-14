@@ -37,7 +37,7 @@ export default function Pagenation({
                         {index + 1}
                     </button>
                 ))}
-            {/* <span className="index">{currentPage}</span> */}
+
             <button
                 className={styles.btn}
                 onClick={() => pageClick(currentPage + 1)}

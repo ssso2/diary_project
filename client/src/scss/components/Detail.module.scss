@@ -19,11 +19,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         .infoWrap {
             height: 100%;
             display: flex;
-            // align-items: center;
-            // align-content: center;
+
             .info {
                 height: 100%;
                 display: flex;

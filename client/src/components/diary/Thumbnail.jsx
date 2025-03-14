@@ -58,7 +58,7 @@ export default function Thumbnail({
                     />
                 )}
             </div>
-            {modal && <Modal selectMovie={selectMovie} />}
+            {modal && <Modal setModal={setModal} selectMovie={selectMovie} />}
         </div>
     );
 }

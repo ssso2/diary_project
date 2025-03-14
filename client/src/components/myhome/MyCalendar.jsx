@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "moment/locale/ko";
@@ -19,9 +19,9 @@ const localizer = momentLocalizer(moment);
 export default function MyCalendar() {
     const navigate = useNavigate();
 
-    //다이어리 데이터 불러오기
-    const diaryData = useDiaryStore(state => state.diaryData);
-    console.log(diaryData, "확인용");
+    // 다이어리 데이터 불러오기
+    const { diaryData } = useDiaryStore();
+
     const CalendarEvents = diaryData.map(event => ({
         ...event,
         title: event.title,
@@ -29,9 +29,10 @@ export default function MyCalendar() {
         end: new Date(event.date),
         allDay: true,
     }));
+    const diaryId = diaryData.findIndex(diary => diary.id);
 
     //상세페이지 이벤트 params 넣기
-    const ClickEvent = () => navigate(`/home/diary/`);
+    const ClickEvent = event => navigate(`/home/detail/${event.id}`);
 
     return (
         <div className="myCalendarWrapper">
@@ -48,7 +49,6 @@ export default function MyCalendar() {
                     showMore: CustomShowMore, // 다이어리 전체로 이동
                 }}
                 onSelectEvent={ClickEvent}
-                popup
             />
         </div>
     );

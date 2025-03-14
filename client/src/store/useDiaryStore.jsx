@@ -6,7 +6,10 @@ const URL = process.env.REACT_APP_BACK_URL; // 외부선언
 const useDiaryStore = create((set, get) => ({
     user: null, // 회원정보
     diaryData: [], // 다이어리 전체 데이터
+    filteredData: [], // 북마크 검색어 필터 데이터
     setUser: userData => set({ user: userData }),
+    keyword: "", // 검색어
+    bookmarkTab: false, //북마크탭인지
 
     // 다이어리 전체 불러오기
     fetchDiaryData: async userId => {
@@ -23,6 +26,24 @@ const useDiaryStore = create((set, get) => ({
         }
     },
 
+    //키워드 북마크 필터
+    filterDiaryData: () => {
+        const { diaryData, bookmarkTab, keyword } = get() || {};
+        if (!Array.isArray(diaryData)) return; // 데이터없을경우 방지
+        const filtered = diaryData.filter(
+            diary =>
+                (!bookmarkTab || diary.bookmark === 1) && // 북마크 필터
+                (keyword === "" || diary.title.includes(keyword)) // 검색어 필터
+        );
+        set({ filteredData: filtered });
+    },
+    setKeyword: newkeyword => {
+        set({ keyword: newkeyword });
+    },
+    setBookmarkTab: newTab => {
+        set({ bookmarkTab: newTab });
+    },
+
     //북마크 상태 변경 이벤트
     toggleBookmark: id => {
         set(prev => ({
@@ -36,6 +57,7 @@ const useDiaryStore = create((set, get) => ({
                     : diary
             ),
         }));
+        get().filterDiaryData(); // 북마크 상태 변경 후 필터 재적용
     },
 
     //북마크 상태 서버 업데이트
@@ -53,7 +75,7 @@ const useDiaryStore = create((set, get) => ({
                 newDiaryData,
             });
             console.log("업데이트확인", res.data);
-            set({ diaryData: res.data });
+            set({ diaryData: res.data.diaryData });
         } catch (error) {
             console.error("다이어리데이터 로딩오류", error);
         }

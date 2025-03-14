@@ -44,7 +44,6 @@ router.post("/upload", upload.single("file"), (req, res) => {
 router.post("/write", upload.single("file"), async (req, res) => {
     console.log("코드확인진입", req.body);
     console.log("파일따로오나", req.file);
-
     const {
         id,
         title,
@@ -71,7 +70,7 @@ router.post("/write", upload.single("file"), async (req, res) => {
 
     // const defaulThumbnail = "1741332504472.png"; //기본이미지 설정
     try {
-        console.log("트라이");
+        console.log("다이어리등록 접근");
         await db.query(
             "INSERT INTO diary_entries (member_id, genre, title, content, date, rate, before_emotion, after_emotion, thumbnail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [id, genre, title, "내용", day, rate, before, after, thumbnail]
@@ -80,7 +79,7 @@ router.post("/write", upload.single("file"), async (req, res) => {
 
         return res.status(200).json("다이어리가 등록되었습니다.");
     } catch (error) {
-        console.error("서버오류", error);
+        console.error("등록서버오류", error);
         res.status(500).json({
             error: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
         });
@@ -90,9 +89,8 @@ router.post("/write", upload.single("file"), async (req, res) => {
 //다이어리 리스트 조회
 router.get("/list/:id", async (req, res) => {
     const { id } = req.params;
-    console.log("다이어리목록디비접근", id);
     try {
-        console.log("목록트라이접근");
+        console.log("다이어리목록디비접근", id);
         const [diaries] = await db.query(
             "select * from diary_entries where member_id = ?",
             [id]
@@ -107,7 +105,7 @@ router.get("/list/:id", async (req, res) => {
 router.post("/list/updatelist", async (req, res) => {
     try {
         const { newDiaryData } = req.body;
-        console.log("업데이트트라이접근", newDiaryData);
+        console.log("다이어리업데이트 접근", newDiaryData);
         if (!newDiaryData || newDiaryData.length == 0) {
             return res
                 .status(400)
@@ -119,12 +117,24 @@ router.post("/list/updatelist", async (req, res) => {
                 id,
             ])
         );
-        await Promise.all(queries);
-        res.status(200).json({ success: true });
+        await Promise.all(queries); // 병렬실행
+
+        // 업데이트 후 최신 데이터 다시 조회
+        const [updatedData] = await db.query("select * from diary_entries");
+
+        res.status(200).json({ success: true, diaryData: updatedData });
     } catch (error) {
         console.error("북마크업데이트에러", error);
         res.status(500).json(error);
     }
 });
 
+//다이어리 수정
+router.post("/edit", async (req, res) => {
+    try {
+    } catch (error) {
+        console.error("다이어리수정에러", error);
+        res.status(500).json(error);
+    }
+});
 module.exports = router;

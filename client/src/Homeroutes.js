@@ -10,6 +10,7 @@ import DiaryListForm from "./components/diary/DiaryListForm";
 import Bookmark from "./pages/diary/Bookmark";
 import Write from "./pages/diary/Write";
 import Detail from "./pages/diary/Detail";
+import Edit from "./pages/diary/Edit";
 
 function HomeRoutes() {
     return (
@@ -27,6 +28,7 @@ function HomeRoutes() {
                     </Route>
                     <Route path="write" element={<Write />} />
                     <Route path="detail/:id" element={<Detail />} />
+                    <Route path="detail/:id/edit" element={<Edit />} />
                 </Route>
             </Routes>
         </MovieProvider>

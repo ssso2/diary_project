@@ -1,22 +1,23 @@
-export default function Search() {
-    const searchGo = e => {
-        console.log("입력값", e.target);
-        alert("클릭");
+import { useState } from "react";
+
+export default function Search({ input, setInput, setKeyword }) {
+    const searchGo = () => {
+        console.log("입력값", input);
+        setKeyword(input);
+        alert("검색이 완료되었습니다.");
     };
     return (
-        <form className="searchWrap" onSubmit={searchGo}>
+        <div className="searchWrap">
             <input
                 className="bar"
                 type="text"
-                name="keyword" // 폼데이터키역할
-                // value={Ntext} // 폼데이터값
+                value={input}
+                onChange={e => setInput(e.target.value)}
                 placeholder="제목을 입력해주세요."
-                // onChange={e => setNtext(e.target.value)}
             />
-            <button type="submit" className="searchbtn">
+            <button type="button" onClick={searchGo} className="searchbtn">
                 <img src="/icon/search.svg" alt="" />
             </button>
-            {/* <Noticebtn handleSearch={handleSearch} /> */}
-        </form>
+        </div>
     );
 }
