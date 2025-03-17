@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { ApiError } from "../utils/Validation";
 
 const URL = process.env.REACT_APP_BACK_URL; // 외부선언
 
@@ -23,6 +24,7 @@ const useDiaryStore = create((set, get) => ({
             set({ diaryData: res.data });
         } catch (error) {
             console.error("다이어리데이터 로딩오류", error);
+            ApiError(error);
         }
     },
 
@@ -61,11 +63,15 @@ const useDiaryStore = create((set, get) => ({
     },
 
     //북마크 상태 서버 업데이트
-    updateDiaries: async () => {
+    updateDiaries: async userId => {
         const { diaryData } = get() || {};
         const newDiaryData = diaryData
             .filter(diary => diary.changed)
-            .map(diary => ({ id: diary.id, bookmark: diary.bookmark }));
+            .map(diary => ({
+                member_id: userId,
+                id: diary.id,
+                bookmark: diary.bookmark,
+            }));
         try {
             if (newDiaryData.length === 0) {
                 // 업데이트데이터 없을때 서버요청 생략

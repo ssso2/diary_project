@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validateName, validatePassword } from "../../utils/Validation";
 import { ErrorMessage } from "../common/Common";
 import { LoginInput } from "../common/LoginInput";
@@ -6,19 +6,26 @@ import Email from "./Email";
 import AgreeCheck from "./AgreeCheck";
 
 import styles from "../../scss/components/JoinForm.module.scss";
+import { useAuth } from "./AuthContext";
 
-export default function JoinForm({ joinGo }) {
-    const [name, setname] = useState("");
-    const [email, setemail] = useState("");
-    const [codeVerify, setcodeVerify] = useState(false);
-    const [pw, setpw] = useState("");
-    const [pwchk, setpwchk] = useState("");
+export default function JoinForm() {
     const [agree, setagree] = useState(false);
     const [errors, seterrors] = useState({
         name: "",
         pw: "",
         pwchk: "",
     });
+    const {
+        name,
+        setname,
+        email,
+        pw,
+        setpw,
+        pwchk,
+        setpwchk,
+        codeVerify,
+        joinGo,
+    } = useAuth();
 
     // 입력 변경 시 에러 메시지 초기화
     const Change = (setter, value, key) => {
@@ -27,7 +34,7 @@ export default function JoinForm({ joinGo }) {
     };
 
     // 회원가입 버튼 클릭 시 유효성 검사 실행
-    const loginchk = async e => {
+    const joinchk = async e => {
         e.preventDefault();
 
         let errorMessages = {};
@@ -60,7 +67,7 @@ export default function JoinForm({ joinGo }) {
     return (
         <div className={styles.container}>
             <p className={styles.title}>회원가입</p>
-            <form onSubmit={loginchk} className={styles.joinForm}>
+            <form onSubmit={joinchk} className={styles.joinForm}>
                 <LoginInput
                     name="이름"
                     id="name"
@@ -71,12 +78,7 @@ export default function JoinForm({ joinGo }) {
                 />
                 <ErrorMessage message={errors.name} />
 
-                <Email
-                    email={email}
-                    setemail={setemail}
-                    codeVerify={codeVerify}
-                    setcodeVerify={setcodeVerify}
-                />
+                <Email />
 
                 <LoginInput
                     name="비밀번호"
@@ -93,7 +95,7 @@ export default function JoinForm({ joinGo }) {
                     id="pwchk"
                     type="password"
                     value={pwchk}
-                    placeholder="비밀번호를 한 번 더 입력해주세요."
+                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
                     onChange={e => Change(setpwchk, e.target.value, "pwchk")}
                 />
                 <ErrorMessage message={errors.pwchk} />

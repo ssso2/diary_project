@@ -1,5 +1,19 @@
 @import "../colors.scss";
 @import "src/scss/common.scss";
+@mixin afterImg($icon) {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+    background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
+    background-size: contain;
+    // transition: background 0.3s ease-in-out;
+}
+@mixin hoverImg($icon) {
+    background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
+    background-size: contain;
+}
 
 @mixin searchBoxStyle {
     width: 100%;
@@ -19,30 +33,37 @@
         background-color: transparent;
     }
 }
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    z-index: 998;
+    .modalContainer {
+        width: 780px;
+        min-height: 600px;
+        position: fixed;
+        top: 15%;
+        left: 35%;
+        background-color: $white;
+        z-index: 999;
+        border: 1px solid $gray4;
 
-.modalContainer {
-    width: 780px;
-    min-height: 600px;
-    // height: 100%;
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    background-color: $white;
-    z-index: 999;
-    border: 1px solid $gray4;
+        .modalHeader {
+            width: 100%;
+            height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px 0 28px;
 
-    .modalHeader {
-        width: 100%;
-        height: 76px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 24px 0 28px;
-
-        font-weight: 600;
-        border-bottom: 1px solid $gray2;
-        h2 {
-            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 1px solid $gray2;
+            h2 {
+                font-size: 20px;
+            }
         }
     }
 
@@ -70,7 +91,7 @@
                 font-size: 24px;
                 font-weight: 600;
                 line-height: 150%;
-                width: 397px;
+                width: 100%;
                 text-align: center;
                 color: #495057;
             }
@@ -163,7 +184,7 @@
     }
 }
 
-//수정삭제
+//드롭다운
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -175,13 +196,14 @@
     justify-content: flex-end;
     align-items: center;
     z-index: 999;
+
     .moreContainer {
         position: absolute;
         top: 340px;
         right: 140px;
         width: 158px;
         border-radius: 4px;
-        border: 1px solid $red;
+        border: 1px solid $gray2;
         background-color: $white;
         .modalWrap {
             .list {
@@ -189,21 +211,45 @@
                 font-weight: 500;
                 height: 48px;
                 padding: 12px 16px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+
                 &:first-of-type {
-                    border-bottom: 1px solid $red;
+                    border-bottom: 1px 1px solid $gray2;
+                }
+                .edit,
+                .delete,
+                .mypage,
+                .logout {
+                    font-size: 16px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                .edit::after,
+                .mypage::after {
+                    @include afterImg("edit");
+                }
+                .delete::after {
+                    @include afterImg("delete");
+                }
+                .logout::after {
+                    @include afterImg("logoutB");
                 }
 
                 .edit:hover,
-                .delete:hover {
-                    width: 24px;
-                    height: 24px;
-                    background-color: $gray1;
-                    border-radius: 4px;
+                .delete:hover,
+                .logout:hover {
+                    font-weight: 600;
                 }
             }
+            .under {
+                font-weight: 600;
+                border-bottom: 1px solid $gray2;
+            }
         }
+    }
+    .mypage {
+        top: 68px;
+        right: 24px;
     }
 }

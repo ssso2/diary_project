@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import DiaryEdit from "../../components/diary/DiaryEdit";
 import useDiaryStore from "../../store/useDiaryStore";
 import { formatDate } from "../../utils/Validation";
+import { useAuth } from "../../components/login/AuthContext";
 
 export default function Edit() {
     const navigate = useNavigate();
@@ -22,12 +23,13 @@ export default function Edit() {
     const [file, setFile] = useState(null);
     const [posterThumbnail, setPosterThumbnail] = useState("");
     const [thumbnail, setTumbnail] = useState("");
+    const { user } = useAuth();
 
     //다이어리 데이터 불러오기
     const { diaryData, fetchDiaryData } = useDiaryStore();
     useEffect(() => {
         if (diaryData.length === 0) {
-            fetchDiaryData(9);
+            fetchDiaryData(user.id);
         }
     }, []);
 
@@ -63,9 +65,11 @@ export default function Edit() {
         }
         const data = new FormData(); // 서버로 파일보내기 위해서 FormData 생성
         const payload = {
-            id: 9, // 로그인연동하기
+            diaryId: id,
+            id: user.id,
             genre: formData.genre,
             title: formData.title,
+            thumbnail,
             content: "",
             day,
             rate,
@@ -75,6 +79,7 @@ export default function Edit() {
         for (const key in payload) {
             data.append(key, payload[key]);
         }
+
         if (file) {
             data.append("file", file); // 이미지파일업로드는 꼭 파일필드로
         }
@@ -88,7 +93,9 @@ export default function Edit() {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            console.log(data, "수정된data확인");
             alert(res.data);
+            fetchDiaryData(user.id);
             navigate(`/home/detail/${id}`);
         } catch (error) {
             console.error(error);
@@ -117,7 +124,7 @@ export default function Edit() {
                     />
                     <div className="btnWrap">
                         <LinkBtn
-                            to="/home/diary"
+                            to={`/home/detail/${id}`}
                             title="취소"
                             className="btnWhite"
                         />

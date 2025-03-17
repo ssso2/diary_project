@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -8,20 +8,26 @@ import JoinForm from "../../components/login/JoinForm";
 import JoinSuccess from "../../components/login/JoinSuccess";
 
 import styles from "../../scss/pages/Join.module.scss";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../components/login/AuthContext";
 
 export default function Join() {
-    // const navigate = useNavigate();
-    const URL = process.env.REACT_APP_BACK_URL;
-    const [joinSuccess, setjoinSuccess] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { user, joinSuccess, setjoinSuccess } = useAuth();
 
-    const joinGo = async (email, pw, name) => {
-        try {
-            await axios.post(`${URL}/join/member`, { email, pw, name });
-            setjoinSuccess(true);
-        } catch (error) {
-            console.error("회원가입 오류:", error);
+    useEffect(() => {
+        if (user) {
+            navigate("/home");
         }
-    };
+    }, [user]);
+
+    // 다시 join으로 올 때마다 상태 초기화
+    useEffect(() => {
+        if (location.pathname === "/join") {
+            setjoinSuccess(false);
+        }
+    }, [location.pathname]);
 
     return (
         <div className={styles.wrapper}>
@@ -30,11 +36,7 @@ export default function Join() {
             </header>
             <main className={styles.wrap}>
                 <div className={styles.formContainer}>
-                    {joinSuccess ? (
-                        <JoinSuccess />
-                    ) : (
-                        <JoinForm joinGo={joinGo} />
-                    )}
+                    {joinSuccess ? <JoinSuccess /> : <JoinForm />}
                 </div>
             </main>
             <Footer />

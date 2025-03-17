@@ -48,6 +48,12 @@ app.use("/login", loginRouter);
 //회원가입 라우터
 const joinRouter = require("./controller/join.js");
 app.use("/join", joinRouter);
+//비밀번호찾기 라우터
+const findRouter = require("./controller/find.js");
+app.use("/find", findRouter);
+//비밀번호찾기 라우터
+const myRouter = require("./controller/mypage.js");
+app.use("/mypage", myRouter);
 
 //영화목록 라우터
 const listRouter = require("./controller/list.js");

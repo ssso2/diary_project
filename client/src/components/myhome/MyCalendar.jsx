@@ -22,6 +22,7 @@ export default function MyCalendar() {
     // 다이어리 데이터 불러오기
     const { diaryData } = useDiaryStore();
 
+    //기존
     const CalendarEvents = diaryData.map(event => ({
         ...event,
         title: event.title,
@@ -29,6 +30,7 @@ export default function MyCalendar() {
         end: new Date(event.date),
         allDay: true,
     }));
+
     const diaryId = diaryData.findIndex(diary => diary.id);
 
     //상세페이지 이벤트 params 넣기
@@ -43,13 +45,16 @@ export default function MyCalendar() {
                 // endAccessor="end" // 종료 날짜 필드 지정
                 defaultView="month" // 초기 뷰 (월별)
                 views={["month"]} // 월만 보기
-                style={{ height: "100%" }}
+                style={{ minHeight: "600px", height: "100%" }}
                 components={{
                     toolbar: CustomToolbar, //툴바
                     showMore: CustomShowMore, // 다이어리 전체로 이동
                 }}
                 onSelectEvent={ClickEvent}
             />
+            {/* {CalendarEvents.length === 0 && (
+                <p className="emptyMsg">작성된 다이어리가 없습니다.</p>
+            )} */}
         </div>
     );
 }

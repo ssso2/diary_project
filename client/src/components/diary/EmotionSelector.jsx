@@ -14,12 +14,12 @@ export default function EmotionSelector({ category, formData, changeValue }) {
             { id: "unpleasant", label: "불쾌", icon: "/icon/unpleasant.svg" },
         ],
         after: [
-            { id: "happy2", label: "즐거움", icon: "/icon/happy.svg" },
-            { id: "touched2", label: "감동", icon: "/icon/touched.svg" },
-            { id: "neutral2", label: "평온", icon: "/icon/neutral.svg" },
-            { id: "angry2", label: "분노", icon: "/icon/angry.svg" },
-            { id: "sad2", label: "슬픔", icon: "/icon/sad.svg" },
-            { id: "scared2", label: "공포", icon: "/icon/scared.svg" },
+            { id: "happy2", label: "즐거움", icon: "/icon/happy2.svg" },
+            { id: "touched2", label: "감동", icon: "/icon/touched2.svg" },
+            { id: "neutral2", label: "평온", icon: "/icon/neutral2.svg" },
+            { id: "angry2", label: "분노", icon: "/icon/angry2.svg" },
+            { id: "sad2", label: "슬픔", icon: "/icon/sad2.svg" },
+            { id: "scared2", label: "공포", icon: "/icon/scared2.svg" },
         ],
     };
     const emotionList =

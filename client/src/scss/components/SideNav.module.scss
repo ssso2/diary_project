@@ -1,3 +1,19 @@
+@import "src/scss/colors.scss";
+@mixin beforeImg($icon) {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
+    background-size: contain;
+    transition: background 0.1s ease;
+}
+@mixin hoverImg($icon) {
+    background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
+    background-size: contain;
+}
+
 .wrapper {
     width: 256px;
     // height: 100vh;
@@ -9,7 +25,7 @@
     z-index: 50;
     .wrap {
         width: 100%;
-        height: 404px;
+        height: auto;
         padding: 28px 24px;
         background-color: #aff;
         .imgwrap {
@@ -29,17 +45,58 @@
         .content {
             .lists {
                 .list {
-                    margin: 22px 0;
-                    .item {
+                    margin-top: 32px;
+                    cursor: pointer;
+
+                    .home,
+                    .movie,
+                    .diary,
+                    .stats {
                         display: flex;
                         align-items: center;
-                        gap: 12px;
-                        .icon {
-                            width: 24px;
-                            height: 24px;
+
+                        .item {
+                            color: $gray3;
                         }
-                        .title {
-                            color: black;
+                        &:hover .item,
+                        &.active .item {
+                            font-weight: 600;
+                            color: $black;
+                        }
+
+                        // 아이콘 기본 이미지
+                        &.home::before {
+                            @include beforeImg("home");
+                        }
+                        &.movie::before {
+                            @include beforeImg("movie");
+                        }
+                        &.diary::before {
+                            @include beforeImg("diary");
+                        }
+                        &.stats::before {
+                            @include beforeImg("chart");
+                        }
+
+                        // 호버, 활성화 아이콘 변경
+                        &.home:hover::before,
+                        &.home.active::before {
+                            @include hoverImg("homeB");
+                        }
+
+                        &.movie:hover::before,
+                        &.movie.active::before {
+                            @include hoverImg("movieB");
+                        }
+
+                        &.diary:hover::before,
+                        &.diary.active::before {
+                            @include hoverImg("diaryB");
+                        }
+
+                        &.stats:hover::before,
+                        &.stats.active::before {
+                            @include hoverImg("chartB");
                         }
                     }
                 }

@@ -5,11 +5,14 @@ import { ErrorMessage } from "../common/Common";
 import { LoginInput } from "../common/LoginInput";
 
 import styles from "../../scss/components/LoginForm.module.scss";
+import { useAuth } from "./AuthContext";
 
-export default function LoginForm({ loginGo }) {
+// export default function LoginForm({ loginGo }) {
+export default function LoginForm() {
     const [email, setemail] = useState("");
     const [pw, setpw] = useState("");
     const [errors, seterrors] = useState({ email: "", pw: "" });
+    const { loginGo } = useAuth();
 
     // 입력 변경 시 에러 메시지 초기화
     const Change = (setter, value, key) => {

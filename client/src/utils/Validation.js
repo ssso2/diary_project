@@ -31,7 +31,25 @@ export const formatNewDate = day => {
 
 //문자열 날짜 변환
 export const formatDate = day => {
-    const newdate = new Date(day); // date가 "2025-03-30T15:00:00.000Z"
+    const newdate = new Date(day); // day가 "2025-03-30T15:00:00.000Z"
     const kodate = new Date(newdate.getTime() + 9 * 60 * 60 * 1000);
     return kodate.toISOString().split("T")[0];
+};
+
+//API요청 catch 블록
+export const ApiError = error => {
+    // 서버에서 응답을 준 경우 (404, 500..)
+    if (error.response) {
+        const message =
+            error.response?.data?.error || "요청을 처리할 수 없습니다.";
+        alert(message);
+    }
+    // 요청이 전송되었지만 응답이 없을 때
+    else if (error.request) {
+        alert("서버 응답이 없습니다. 잠시 후 다시 시도해주세요.");
+    }
+    // 요청 자체가 실패했을 때
+    else {
+        alert("네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.");
+    }
 };

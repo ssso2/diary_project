@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import useDiaryStore from "../../store/useDiaryStore";
 
 export default function Diary() {
+    const user = JSON.parse(localStorage.getItem("user") || "{}"); // JSON 변환
+
     const tabs = [
         { title: "전체", path: "/home/diary" },
         { title: "북마크", path: "/home/diary/bookmark" },
     ];
-    const [bookMark, setBookmark] = useState(false);
+    // const [bookMark, setBookmark] = useState(false);
     const [input, setInput] = useState("");
 
     const location = useLocation();
@@ -25,13 +27,13 @@ export default function Diary() {
         setKeyword,
         bookmarkTab,
         setBookmarkTab,
-        filteredData,
+        // filteredData,
     } = useDiaryStore();
 
     useEffect(() => {
         if (diaryData.length === 0) {
-            console.log("다이어리 페이지 데이터 패치 실행");
-            fetchDiaryData(9);
+            console.log("다이어리 페이지 데이터 패치 실행", user.id);
+            fetchDiaryData(user.id);
         }
         window.scrollTo(0, 0);
     }, []);

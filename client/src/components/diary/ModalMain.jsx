@@ -56,9 +56,10 @@ export default function ModalMain({ selectMovie }) {
         >
             <section className="infoTxt">
                 <p>Tip</p>
+                <h1>제목을 검색할 때 띄어쓰기를 포함하면</h1>
                 <h1>
-                    영화제목을 검색하실 때 띄어쓰기를 하시면 더욱 정확한
-                    검색결과가 검색됩니다.
+                    더욱 정확한 결과를 얻을 수 있습니다. 최소 2글자 이상
+                    입력해주세요.
                 </h1>
             </section>
             <section className="infoSearch">

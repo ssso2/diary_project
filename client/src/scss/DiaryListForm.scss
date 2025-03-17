@@ -124,12 +124,13 @@
 
 //홈 최근 다이어리 리스트
 .recentWrapper {
-    max-width: 698px;
+    // max-width: 698px;
+    width: 100%;
     height: 840px;
     height: auto;
     padding: 32px 24px;
     border-radius: 8px;
-    // background-color: #fff;
+    background-color: $white;
     .headerWrap {
         display: flex;
         justify-content: space-between;

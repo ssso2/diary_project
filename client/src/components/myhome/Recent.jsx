@@ -10,13 +10,13 @@ export default function Recent() {
     useEffect(() => {
         setBookmarkTab(false); //마지막 북마크페이지 데이터표시 방지
         filterDiaryData();
-        console.log("최근업데이트하나");
+        console.log("최근목록업데이트");
     }, [diaryData]);
 
-    //빈배열방지
-    if (!filteredData || filteredData.length === 0) {
-        return <p></p>;
-    }
+    // //빈배열방지
+    // if (!filteredData || filteredData.length === 0) {
+    //     return <p></p>;
+    // }
 
     return (
         <div className="recentWrapper">

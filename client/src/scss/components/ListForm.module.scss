@@ -4,6 +4,10 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    .total {
+        text-align: end;
+        text-decoration: underline;
+    }
     .listcontainer {
         display: flex;
         flex-wrap: wrap;

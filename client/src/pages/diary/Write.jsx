@@ -4,11 +4,16 @@ import Tab from "../../components/common/Tab";
 import DiaryWrite from "../../components/diary/DiaryWrite";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useDiaryStore from "../../store/useDiaryStore";
+import { useAuth } from "../../components/login/AuthContext";
+import { formatNewDate } from "../../utils/Validation";
 
 export default function Write() {
     const navigate = useNavigate();
     const URL = process.env.REACT_APP_BACK_URL;
-    const [day, setDay] = useState(new Date()); // 날짜
+    const { fetchDiaryData } = useDiaryStore();
+    const { user } = useAuth();
+    const [day, setDay] = useState(formatNewDate(new Date())); // 날짜
     const [rate, setRate] = useState(0); // 평점
     const [formData, setFormData] = useState({
         genre: "",
@@ -32,7 +37,7 @@ export default function Write() {
         }
         const data = new FormData(); // 서버로 파일보내기 위해서 FormData 생성
         const payload = {
-            id: 9, // 로그인연동하기
+            id: user.id,
             genre: formData.genre,
             title: formData.title,
             content: "",
@@ -58,7 +63,7 @@ export default function Write() {
                 },
             });
             alert(res.data);
-
+            fetchDiaryData(user.id);
             navigate("/home/diary");
         } catch (error) {
             console.error(error);

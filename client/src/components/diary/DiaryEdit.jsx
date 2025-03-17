@@ -36,7 +36,11 @@ export default function DiaryEdit({
     useEffect(() => {
         if (thumbnail.startsWith("http")) {
             setPreview(thumbnail);
-        } else setPreview(`${URL}/imgs/diary/${thumbnail}`);
+            setPosterThumbnail(thumbnail);
+        } else {
+            setPreview(`${URL}/imgs/diary/${thumbnail}`);
+            setFile({ thumbnail });
+        }
         console.log("이미지확인", thumbnail);
     }, [thumbnail]);
 

@@ -19,48 +19,6 @@
     padding: 0 40px;
 }
 
-// .wrap {
-//     width: 100%;
-//     max-width: 1200px;
-//     display: flex;
-//     justify-content: center;
-//     background-color: #ffa;
-// }
-
-//버튼
-// .btn {
-//     width: 108px;
-//     height: 48px;
-//     border-radius: 4px;
-//     align-content: center;
-//     text-align: center;
-// }
-// .btnDark {
-//     background-color: $dim;
-//     color: $white;
-//     text-align: center;
-// }
-// .btnOrange {
-//     background-color: $orange;
-//     color: $white;
-// }
-// .btnWhite {
-//     background-color: $white;
-//     border: 1px solid $gray3;
-// }
-// .btnGray {
-//     font-size: 16px;
-//     background-color: $gray3;
-//     color: $white;
-// }
-// .btnWrap {
-//     width: 100%;
-//     background-color: #faf;
-//     display: flex;
-//     gap: 16px;
-//     justify-content: end;
-// }
-
 // 로그인,회원가입 에러메세지
 .error-msg {
     color: $red;
@@ -97,13 +55,14 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    padding-right: 13px;
+    padding-right: 24px;
     position: fixed;
     z-index: 49;
     background-color: #faf;
     .mygo {
         font-size: 18px;
         font-style: none;
+        cursor: pointer;
     }
 }
 
@@ -181,7 +140,7 @@
 //리스트 컨테이너
 .listContainer {
     margin: 32px 0 48px;
-    background-color: #aff;
+    background-color: $white;
     border-radius: 16px;
     padding: 32px 24px;
 }
@@ -224,7 +183,15 @@
         color: $gray3;
     }
 }
-
+//마이페이지
+.emailTitle {
+    font-size: 14px;
+    color: $gray4;
+    margin-bottom: 8px;
+}
+.fill {
+    background-color: $gray1;
+}
 //첨부파일인풋
 .posterInputWrap {
     width: 100%;

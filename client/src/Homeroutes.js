@@ -11,6 +11,8 @@ import Bookmark from "./pages/diary/Bookmark";
 import Write from "./pages/diary/Write";
 import Detail from "./pages/diary/Detail";
 import Edit from "./pages/diary/Edit";
+import Stats from "./pages/stats/Stats";
+import Mypage from "./pages/myhome/Mypage";
 
 function HomeRoutes() {
     return (
@@ -29,6 +31,8 @@ function HomeRoutes() {
                     <Route path="write" element={<Write />} />
                     <Route path="detail/:id" element={<Detail />} />
                     <Route path="detail/:id/edit" element={<Edit />} />
+                    <Route path="stats" element={<Stats />} />
+                    <Route path="mypage" element={<Mypage />} />
                 </Route>
             </Routes>
         </MovieProvider>

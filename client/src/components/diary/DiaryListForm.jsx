@@ -4,10 +4,12 @@ import useDiaryStore from "../../store/useDiaryStore";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { formatDate } from "../../utils/Validation";
 import Pagenation from "../common/Pagenation";
+import { useAuth } from "../login/AuthContext";
 
 export default function DiaryListForm({ limit }) {
     const URL = process.env.REACT_APP_BACK_URL;
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     const { isBookmark } = useOutletContext() || {}; //최신다이어리 context undefined 방지
 
@@ -23,25 +25,27 @@ export default function DiaryListForm({ limit }) {
             return new Date(b.date) - new Date(a.date);
         }),
     ];
-    const pageDiaries = sorted.slice(firstIndex, firstIndex + PerPage); //0-9 10개씩 출력
+
+    const showDiaries = Array.isArray(sorted)
+        ? sorted.slice(0, limit ?? sorted.length) // null, undefined경우 배열전체
+        : [];
+
+    const pageDiaries = showDiaries.slice(firstIndex, firstIndex + PerPage); //0-9 10개씩 출력
     const totalPage = Math.ceil(filteredData.length / PerPage);
 
     const changeBookmark = id => {
         toggleBookmark(id); //북마크 상태변경
-        updateDiaries(); //북마크 업데이트 api요청
+        updateDiaries(user.id); //북마크 업데이트 api요청
         filterDiaryData(); //데이터필터링
         if (isBookmark) {
             alert("북마크에서 삭제되었습니다.");
         }
     };
 
-    const showDiaries = Array.isArray(filteredData)
-        ? filteredData.slice(0, limit ?? filteredData.length) // null, undefined경우 배열전체
-        : [];
     return (
         <section className="container">
-            {showDiaries.length > 0 ? ( //pageDiaries합치기
-                showDiaries.map(diary => (
+            {pageDiaries.length > 0 ? ( //pageDiaries합치기
+                pageDiaries.map(diary => (
                     // {{diary.bookmark} === 0 &&(
                     <article className="diaryWrapper" key={diary.id}>
                         <header className="infoWrap">
