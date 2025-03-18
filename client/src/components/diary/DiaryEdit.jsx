@@ -16,6 +16,11 @@ export default function DiaryEdit({
     setDay,
     rate,
     setRate,
+    content,
+    setContent,
+    imgs,
+    setImgs,
+    editorRef,
     setFile,
     setPosterThumbnail,
     thumbnail,
@@ -72,7 +77,13 @@ export default function DiaryEdit({
                 <tr>
                     <td className={styles.td}>감상평</td>
                     <td>
-                        <TinyForm />
+                        <TinyForm
+                            content={content}
+                            setContent={setContent}
+                            imgs={imgs}
+                            setImgs={setImgs}
+                            editorRef={editorRef}
+                        />
                     </td>
                 </tr>
                 <tr>

@@ -9,7 +9,7 @@ export default function CountUp({ target }) {
         const duration = 1000; // 지속시간
         const increment = target / (duration / 16);
         //한 번 움직일 때 얼만큼 올라갈지 target 28이면 1초에 16ms 간격 총 62번 실행
-        console.log("increment", increment);
+        // console.log("increment", increment);
         const counter = setInterval(() => {
             start += increment; // 매 프레임마다 증가
             if (start >= target) {

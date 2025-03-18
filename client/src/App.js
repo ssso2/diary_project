@@ -9,6 +9,7 @@ import HomeRoutes from "./Homeroutes.js";
 import Find from "./pages/login/Find.jsx";
 import { AuthProvider } from "./components/login/AuthContext.jsx";
 import ProtecteRoute from "./ProtectRoute.js";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                             </ProtecteRoute>
                         }
                     />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

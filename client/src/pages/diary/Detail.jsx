@@ -31,16 +31,8 @@ export default function Detail() {
     return (
         <article className="deatailContainer">
             <DetailHeader diary={diary} />
-            <section>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Veniam dolor ratione deleniti nobis numquam dolorem iste
-                    optio illo sapiente! Alias facilis nemo officia tempore
-                    exercitationem sit eos tempora, enim labore.
-                </p>
-                <figure>
-                    <img src="/sub/poster.png" alt="관련 이미지" />
-                </figure>
+            <section className={styles.detailContent}>
+                <div dangerouslySetInnerHTML={{ __html: diary.content }} />
             </section>
             <DetailEmotion diary={diary} />
             <DetailNav diaryData={diaryData} diary={diary} />

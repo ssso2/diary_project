@@ -9,21 +9,18 @@ import {
     ResponsiveContainer,
 } from "recharts";
 import useDiaryStore from "../../store/useDiaryStore";
-import moment from "moment";
 import { formatDate, formatNewDate } from "../../utils/Validation";
 import CountUp from "./Countup";
 
 export default function Summary() {
     const { diaryData } = useDiaryStore();
-    console.log("다이어리데이터오나", diaryData);
+    // console.log("다이어리데이터오나", diaryData);
 
     const today = new Date();
 
     const thisMonthStr = formatNewDate(today).slice(0, 7); // "2025-03"
     const lastMonthDate = new Date(today.getFullYear(), today.getMonth() - 1);
     const lastMonthStr = formatNewDate(lastMonthDate).slice(0, 7); // "2025-02"
-
-    console.log("투데이", today, thisMonthStr, lastMonthDate, lastMonthStr);
 
     //반환배열 개수 = 데이터개수
     const thisMonthCount = diaryData.filter(diary =>
@@ -39,7 +36,7 @@ export default function Summary() {
     const thisMonthPercent = (thisMonthCount / total) * 100;
     const lastMonthPercent = (lastMonthCount / total) * 100;
 
-    console.log(thisMonthCount, lastMonthCount);
+    // console.log(thisMonthCount, lastMonthCount);
     const barData = [
         {
             name: "다이어리 기록 현황",

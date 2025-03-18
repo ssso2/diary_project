@@ -11,7 +11,7 @@ export default function Select({ name, options, value, onChange }) {
             className="filter"
             required
         >
-            <option value="" disabled>
+            <option value="" disabled className="drop">
                 장르를 선택하세요.
             </option>
             {options.map(option => (

@@ -42,6 +42,7 @@ router.post("/upload", upload.single("file"), (req, res) => {
 
 // 다이어리등록
 router.post("/write", upload.single("file"), async (req, res) => {
+    // router.post("/write", async (req, res) => {
     console.log("코드확인진입", req.body);
     console.log("파일따로오나", req.file);
     const {
@@ -49,6 +50,7 @@ router.post("/write", upload.single("file"), async (req, res) => {
         title,
         genre,
         content,
+        imgs,
         day,
         rate,
         before,
@@ -63,10 +65,10 @@ router.post("/write", upload.single("file"), async (req, res) => {
         : "1741332504472.png"; // 기본 이미지 파일명
 
     try {
-        console.log("다이어리등록 접근");
+        console.log("다이어리등록 접근", content, imgs);
         await db.query(
             "INSERT INTO diary_entries (member_id, genre, title, content, date, rate, before_emotion, after_emotion, thumbnail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            [id, genre, title, "내용", day, rate, before, after, thumbnail]
+            [id, genre, title, content, day, rate, before, after, thumbnail]
         );
         return res.status(200).json("다이어리가 등록되었습니다.");
     } catch (error) {
@@ -159,7 +161,7 @@ router.post("/edit", upload.single("file"), async (req, res) => {
             [
                 genre,
                 title,
-                "내용",
+                content,
                 day,
                 rate,
                 before,

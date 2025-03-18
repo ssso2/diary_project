@@ -64,12 +64,15 @@
             }
             .review {
                 // width: 740px;
-                height: 50px;
-                line-height: 24px;
+                height: 100%;
+                line-height: 48px;
                 @include multi-line-ellipsis-fallback(2);
+                p {
+                    line-height: 48px;
+                }
             }
             .optionwrap {
-                margin-top: 16px;
+                margin-top: 25px;
                 display: flex;
                 width: 198px;
                 height: 48px;

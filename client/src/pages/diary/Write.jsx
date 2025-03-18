@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LinkBtn, Btn } from "../../components/common/Button";
 import Tab from "../../components/common/Tab";
 import DiaryWrite from "../../components/diary/DiaryWrite";
@@ -6,15 +6,23 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useDiaryStore from "../../store/useDiaryStore";
 import { useAuth } from "../../components/login/AuthContext";
-import { formatNewDate } from "../../utils/Validation";
+import {
+    ApiError,
+    dataURLtoBlob,
+    formatNewDate,
+    uploadImgs,
+} from "../../utils/Validation";
 
 export default function Write() {
+    const editorRef = useRef(null);
     const navigate = useNavigate();
     const URL = process.env.REACT_APP_BACK_URL;
     const { fetchDiaryData } = useDiaryStore();
     const { user } = useAuth();
     const [day, setDay] = useState(formatNewDate(new Date())); // 날짜
     const [rate, setRate] = useState(0); // 평점
+    const [content, setContent] = useState(""); // 내용
+    const [imgs, setImgs] = useState([]); // 스마트에디터 이미지
     const [formData, setFormData] = useState({
         genre: "",
         title: "",
@@ -29,18 +37,28 @@ export default function Write() {
     const changeValue = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const WriteGo = async e => {
+        console.log("유저확인할게요", user.id);
         e.preventDefault();
         if (!formData.genre || !formData.title || !rate) {
             alert("모든 항목을 입력해 주세요.");
             return;
         }
+
+        const updated = await uploadImgs(editorRef, setContent);
+        if (!updated) {
+            return; // 이미지 개수 오류 걸리면 막음
+        }
+
         const data = new FormData(); // 서버로 파일보내기 위해서 FormData 생성
         const payload = {
             id: user.id,
             genre: formData.genre,
             title: formData.title,
-            content: "",
+            // content: "",
+            content: updated,
+            imgs,
             day,
             rate,
             before: formData.before,
@@ -69,6 +87,7 @@ export default function Write() {
             console.error(error);
         }
     };
+    useEffect(() => {}, []);
 
     return (
         <div className="modalRelative">
@@ -86,6 +105,11 @@ export default function Write() {
                         setPosterThumbnail={setPosterThumbnail}
                         formData={formData}
                         changeValue={changeValue}
+                        content={content}
+                        setContent={setContent}
+                        imgs={imgs}
+                        setImgs={setImgs}
+                        editorRef={editorRef}
                     />
                     <div className="btnWrap">
                         <LinkBtn

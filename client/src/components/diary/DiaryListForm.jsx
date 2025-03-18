@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../../scss/DiaryListForm.scss";
 import useDiaryStore from "../../store/useDiaryStore";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
-import { formatDate } from "../../utils/Validation";
+import { extractSummary, formatDate } from "../../utils/Validation";
 import Pagenation from "../common/Pagenation";
 import { useAuth } from "../login/AuthContext";
 
@@ -87,7 +87,7 @@ export default function DiaryListForm({ limit }) {
                                 </div>
                             </div>
                             <section className="review">
-                                <p>{diary.content}</p>
+                                <p>{extractSummary(diary.content)}</p>
                             </section>
                             <div className="optionwrap">
                                 <div className="option">

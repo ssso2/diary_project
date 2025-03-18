@@ -20,6 +20,11 @@ export default function DiaryWrite({
     setPosterThumbnail,
     formData,
     changeValue,
+    content,
+    setContent,
+    imgs,
+    setImgs,
+    editorRef,
 }) {
     //관람일
     const [calendar, setCalendar] = useState(false);
@@ -61,7 +66,13 @@ export default function DiaryWrite({
                 <tr>
                     <td className={styles.td}>감상평</td>
                     <td>
-                        <TinyForm />
+                        <TinyForm
+                            content={content}
+                            setContent={setContent}
+                            imgs={imgs}
+                            setImgs={setImgs}
+                            editorRef={editorRef}
+                        />
                     </td>
                 </tr>
                 <tr>

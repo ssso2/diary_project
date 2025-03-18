@@ -20,11 +20,11 @@ export default function Chart() {
         const month = date.getMonth(); // 0부터 11 반환
         const year = date.getFullYear();
         if (year === targetYear) {
-            monthAr[month] = month + 1;
+            monthAr[month] += 1;
         }
         return null; //반환값 없음
     });
-
+    console.log(diaryData, monthAr);
     //최종데이터
     const lineData = monthAr.map((diary, idx) => ({
         month: `${idx + 1}`,
@@ -39,14 +39,14 @@ export default function Chart() {
                 </p>
             </div>
 
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={lineData}>
                     <XAxis
                         dataKey="month"
                         interval={0}
                         padding={{ left: 20, right: 20 }}
                     />
-                    <YAxis tickCount={4} />
+                    <YAxis tickCount={4} width={30} />
                     <Tooltip />
                     <Line
                         type="monotone"

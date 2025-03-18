@@ -21,7 +21,17 @@ router.post("/", async (req, res) => {
         from: `"[씬-기록]" <${process.env.EMAIL_USER}>`, // 보내는 사람
         to: email, // 받는 사람
         subject: "[씬-기록] 이메일 인증코드를 확인해주세요.", // 이메일 제목
-        text: `안녕하세요. 이메일 확인을 위한 인증코드를 보내드립니다. 씬-기록 인증코드는 ${code}입니다. 씬-기록 페이지로 돌아가 코드를 입력해주세요.`, // 이메일 본문
+        // text: `안녕하세요. 이메일 확인을 위한 인증코드를 보내드립니다. 씬-기록 인증코드는 ${code}입니다. 씬-기록 페이지로 돌아가 코드를 입력해주세요.`, // 이메일 본문
+        html: `<div style="padding: 21px 20px 41px; line-height: 1.4; color: #333; background-color: #f5f5f5;">
+    <h2 style="color: #ff7235;">안녕하세요.</h2>
+    <p>이메일 확인을 위한 인증코드를 보내드립니다.</p>
+    <p>
+      <strong style="font-size: 18px;">
+        인증코드: <span style="color: #ff7235;">${code}</span>
+      </strong>
+    </p>
+    <p>씬-기록 페이지로 돌아가 코드를 입력해주세요.</p>
+  </div>`,
     };
     try {
         console.log("이메일인증DB접근", req.body);
