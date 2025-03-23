@@ -56,8 +56,8 @@ export default function Edit() {
             setFormData({
                 genre: currentDiary.genre || "",
                 title: currentDiary.title || "",
-                before: currentDiary.before || "happy",
-                after: currentDiary.after || "happy2",
+                before: currentDiary.before_emotion || "happy",
+                after: currentDiary.after_emotion || "happy2",
             });
         }
     }, [currentDiary]);

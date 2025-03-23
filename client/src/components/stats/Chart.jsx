@@ -24,12 +24,15 @@ export default function Chart() {
         }
         return null; //반환값 없음
     });
-    console.log(diaryData, monthAr);
+
+    console.log("나와", diaryData, monthAr);
     //최종데이터
     const lineData = monthAr.map((diary, idx) => ({
         month: `${idx + 1}`,
         diary,
     }));
+    //누적
+    const total = monthAr.reduce((acc, cur) => acc + cur, 0);
 
     return (
         <>

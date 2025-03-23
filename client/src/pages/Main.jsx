@@ -12,10 +12,15 @@ export default function Main() {
     const navigate = useNavigate();
     const { user } = useAuth();
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         if (user) {
             navigate("/home");
         }
     }, [user]);
+
     return (
         <>
             <Header />

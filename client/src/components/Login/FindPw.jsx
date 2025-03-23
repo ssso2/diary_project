@@ -43,6 +43,7 @@ export default function FindPw() {
                 />
                 <button
                     type="button"
+                    title="이메일인증"
                     disabled={!emailValid}
                     onClick={() => requestcode(email)}
                     className={`${styles.btnSubmit} ${

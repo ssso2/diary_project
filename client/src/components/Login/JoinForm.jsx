@@ -108,6 +108,7 @@ export default function JoinForm() {
                     className={`${styles.btnSubmit} ${
                         !(name && email && pw && pwchk) ? styles.disabled : ""
                     }`}
+                    title="가입"
                 >
                     가입하기
                 </button>

@@ -43,8 +43,8 @@ export default function Thumbnail({
                             onClick={e => {
                                 e.stopPropagation();
                                 setModal(true);
-                                // console.log("모달 상태 변경 후", modal);
                             }}
+                            title="검색"
                         >
                             검색하기
                         </button>

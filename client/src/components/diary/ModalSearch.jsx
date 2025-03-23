@@ -32,6 +32,7 @@ export default function ModalSearch({ results, selectMovie }) {
                             type="button"
                             className="searchBtn"
                             onClick={() => selectMovie(movie)}
+                            title="포스터선택"
                         >
                             불러오기
                         </button>

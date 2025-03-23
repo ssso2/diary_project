@@ -1,12 +1,25 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../../scss/components/Detail.module.scss";
 import { formatDate } from "../../utils/Validation";
 import DetailModal from "./DetailModal";
 
 export default function DetailHeader({ diary }) {
     const URL = process.env.REACT_APP_BACK_URL;
-    const [modal, setModal] = useState(false);
-    const modalRef = useRef(null);
+    const [open, setOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        if (!open) return;
+        const handleClickOutside = e => {
+            if (!dropdownRef.current.contains(e.target)) {
+                setOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
+    }, [open]);
+
     return (
         <header className={styles.header}>
             <p className={styles.genre}>{diary.genre}</p>
@@ -27,25 +40,25 @@ export default function DetailHeader({ diary }) {
                         <span className={styles.txt}> 5</span>
                     </div>
                 </div>
-                <div className={styles.more}>
-                    <button
-                        type="button"
-                        ref={modalRef}
-                        onClick={() => {
-                            setModal(true);
-                            console.log("버튼클릭");
-                        }}
-                    >
-                        <img src="/icon/more.svg" alt="수정삭제" />
-                    </button>
+                <div ref={dropdownRef}>
+                    <div className={styles.more}>
+                        <button type="button" onClick={() => setOpen(!open)}>
+                            <img
+                                src="/icon/more.svg"
+                                alt="수정삭제"
+                                title="옵션메뉴"
+                            />
+                        </button>
+                        {open && <DetailModal open={open} setOpen={setOpen} />}
+                    </div>
                 </div>
-                {modal && (
+                {/* {open && (
                     <DetailModal
-                        modal={modal}
-                        setModal={setModal}
-                        targetref={modalRef}
+                        open={open}
+                        setOpen={setOpen}
+                        // targetref={modalRef}
                     />
-                )}
+                )} */}
             </div>
             <figure className={styles.thumbnail}>
                 {diary.thumbnail && diary.thumbnail.startsWith("http") ? (

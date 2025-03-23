@@ -22,7 +22,7 @@ export default function ListForm() {
 
     return (
         <div className={styles.container}>
-            <p className={styles.total}>총 {totalMovies}개</p>
+            <p className={styles.total}>{totalMovies}개</p>
             <div className={styles.listcontainer}>
                 {pageMovies.map(movie => (
                     <div key={movie.id} className={styles.listwrapper}>

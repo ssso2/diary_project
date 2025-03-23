@@ -13,7 +13,7 @@ export default function Banner() {
                     내가 감상한 영화에 대한 감정과 기록을 한번에
                 </p>
                 <div className={styles.subtitle}>
-                    <p>일상의 사소한 기록</p>
+                    <p>영화 다이어리</p>
                     <div>
                         <span className={styles.scenetxt}>씬</span>
                         <span>-기록</span>

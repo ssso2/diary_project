@@ -48,24 +48,26 @@ router.get("/movie", async (req, res) => {
 
 //영화검색
 router.get("/Allmovie", async (req, res) => {
-    console.log("전체영화목록접근", req.query);
+    console.log("전체영화검색 요청", req.query);
+
+    if (!req.query.search) {
+        return res.status(400).json({ message: "검색어가 없습니다." });
+    }
+
     try {
-        if (req.query.search) {
-            const movieData = await axios.get(`${BASE_URL}/movie/now_playing`, {
-                params: {
-                    api_key: API_KEY,
-                    language: "ko-KR",
-                    region: "KR",
-                    page: 4,
-                },
-            });
-            console.log("api", movieData.data);
-            const searchResults = movieData.data.results.filter(data =>
-                data.title.includes(req.query.search)
-            );
-            console.log("검색완료데이터", searchResults);
-            res.status(200).json(searchResults);
-        } else res.status(200).json("쿼리없어");
+        const response = await axios.get(`${BASE_URL}/search/movie`, {
+            params: {
+                api_key: API_KEY,
+                language: "ko-KR",
+                query: req.query.search,
+                page: 1,
+                include_adult: false,
+            },
+        });
+
+        const results = response.data.results;
+        console.log("검색완료데이터", results);
+        res.status(200).json(results);
     } catch (error) {
         console.error("영화검색 오류:", error);
         res.status(500).json({ message: "검색 요청에 실패했습니다." });

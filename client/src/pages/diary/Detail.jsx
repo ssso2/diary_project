@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import useDiaryStore from "../../store/useDiaryStore";
 import { useEffect } from "react";
 import { useAuth } from "../../components/login/AuthContext";
+import NotDiary from "../../components/NotDiary";
 
 export default function Detail() {
     const { id } = useParams();
@@ -25,7 +26,7 @@ export default function Detail() {
     const diary = diaryData.find(item => item.id === Number(id)); // param문자열을 숫자타입으로
 
     if (!diary) {
-        return;
+        return <NotDiary />;
     }
 
     return (

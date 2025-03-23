@@ -23,13 +23,13 @@ const CustomToolbar = toolbar => {
             <span className="rbc-btn-group">
                 <button type="button" onClick={goToBack}>
                     <div className="iconWrap">
-                        <img src="/icon/left.svg" />
+                        <img src="/icon/left.svg" title="이전달로 이동" />
                     </div>
                 </button>
                 <span className="rbc-toolbar-label">{label()}</span>
                 <button type="button" onClick={goToNext}>
                     <div className="iconWrap">
-                        <img src="/icon/right.svg" />
+                        <img src="/icon/right.svg" title="다음달로 이동" />
                     </div>
                 </button>
             </span>

@@ -128,9 +128,57 @@
     }
     .noneNav {
         padding: 16px 4px;
-        font-weight: 500;
+        // font-weight: 500;
         &:first-of-type {
             border-bottom: 1px solid $gray2;
+        }
+    }
+}
+
+@media (max-width: 1279px) {
+}
+
+@media (max-width: 767px) {
+    //감정
+    .emotionWrapper {
+        border-top: 2px solid $black;
+        border-bottom: 1px solid $gray4;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 40px 24px;
+        flex-direction: column; // 수정
+        align-items: baseline; // 수정
+        .emtionTitle {
+            display: block;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 150%;
+        }
+        .emotionWrap {
+            margin-top: 24px; // 수정
+            display: flex;
+            .emotion {
+                display: flex;
+                align-items: center;
+                p {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+                img {
+                    width: 48px;
+                    height: 48px;
+                    margin-left: 16px;
+                }
+                &:last-of-type::before {
+                    content: "";
+                    width: 1px;
+                    height: 24px;
+                    background: $black;
+                    margin: 0 16px;
+                }
+            }
         }
     }
 }

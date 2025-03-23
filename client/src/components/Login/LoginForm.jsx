@@ -67,6 +67,7 @@ export default function LoginForm() {
                 className={`${styles.btnSubmit} ${
                     !(email && pw) ? styles.disabled : ""
                 }`}
+                title="로그인"
             >
                 로그인
             </button>

@@ -42,6 +42,7 @@ export default function Email() {
             <button
                 type="button"
                 disabled={!emailValid}
+                title="이메일인증"
                 onClick={() => joinRequestcode(email)}
                 className={`${styles.btnSubmit} ${
                     emailValid ? styles.active : styles.disabled

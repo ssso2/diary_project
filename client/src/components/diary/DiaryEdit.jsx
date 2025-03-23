@@ -123,7 +123,7 @@ export default function DiaryEdit({
                                 type="button"
                                 onClick={() => setCalendar(true)}
                             >
-                                <img src="/icon/today.svg" />
+                                <img src="/icon/today.svg" title="달력" />
                             </button>
                             {formatDate(day)}
                         </div>

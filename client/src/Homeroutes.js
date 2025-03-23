@@ -13,6 +13,7 @@ import Detail from "./pages/diary/Detail";
 import Edit from "./pages/diary/Edit";
 import Stats from "./pages/stats/Stats";
 import Mypage from "./pages/myhome/Mypage";
+import NotFound from "./pages/NotFound";
 
 function HomeRoutes() {
     return (
@@ -33,7 +34,9 @@ function HomeRoutes() {
                     <Route path="detail/:id/edit" element={<Edit />} />
                     <Route path="stats" element={<Stats />} />
                     <Route path="mypage" element={<Mypage />} />
+                    {/* <Route path="*" element={<NotFound />} /> */}
                 </Route>
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </MovieProvider>
     );

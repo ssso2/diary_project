@@ -1,12 +1,21 @@
 @import "src/scss/colors.scss";
 
 .myCalendarWrapper {
-    width: 718px;
-    height: 840px;
+    // flex: 1;
+    // width: 90%;
     height: auto;
     padding: 32px 24px;
     border-radius: 8px;
     background-color: $white;
+
+    flex: 1.5 1 0;
+    min-width: 480px !important;
+    // min-width: 300px; // 최소 너비
+    // .rbc-calendar {
+    //     // min-width: 400px !important;
+    //     // min-height: 400px !important;
+    //     // height: auto !important;
+    // }
 }
 
 //툴바
@@ -46,6 +55,7 @@
 .rbc-month-view {
     border-radius: 12px;
     overflow: hidden;
+    // width: 100%;
 }
 
 //비활성날짜 배경색
@@ -55,13 +65,17 @@
 
 //월
 .rbc-month-header {
+    // width: 100%;
     font-size: 18px;
     font-weight: 600;
     color: $white;
     background-color: $orange;
 
     .rbc-header {
-        padding: 18px 40px;
+        // padding: 18px 40px;
+        // flex: 1 1 0;
+        padding: 18px 0;
+        text-align: center;
     }
 }
 
@@ -118,4 +132,170 @@
     border-radius: 4px;
     color: $gray4;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rbc-month-view table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+@media (max-width: 1279px) {
+    .myCalendarWrapper {
+        // flex: 1;
+        // width: 90%;
+        // height: auto;
+        // padding: 32px 24px;
+        // border-radius: 8px;
+        // background-color: $white;
+        // width: 100%;
+        // flex: 3;
+        // min-width: 480px !important;
+        // min-width: 300px; // 최소 너비
+        // .rbc-calendar {
+        //     // min-width: 400px !important;
+        //     // min-height: 400px !important;
+        //     // height: auto !important;
+        // }
+    }
+}
+
+@media (max-width: 960px) {
+    .myCalendarWrapper,
+    .recentWrapper {
+        flex: 1 0 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 767px) {
+    .myCalendarWrapper {
+        // min-width: 250px !important; //수정
+        height: 600px; //수정
+        .rbc-calendar {
+            min-height: 500px !important; //수정
+        }
+    }
+    .rbc-month-view table {
+        height: 500px;
+        table-layout: fixed;
+    }
+    //툴바
+    .rbc-toolbar {
+        .rbc-btn-group {
+            display: flex;
+            align-items: center;
+            button {
+                border: none;
+                .iconWrap {
+                    width: 24px;
+                    height: 24px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &:focus {
+                    background-color: transparent;
+                    box-shadow: none;
+                }
+                &:hover,
+                &:focus:hover {
+                    background-color: #f0f0f0;
+                }
+            }
+            .rbc-toolbar-label {
+                margin: 0 20px;
+                font-size: 20px;
+                font-weight: 600;
+                // vertical-align: middle;
+            }
+        }
+    }
+
+    //월 달력
+    .rbc-month-view {
+        border-radius: 12px;
+        overflow: hidden;
+        // width: 100%;
+    }
+
+    //비활성날짜 배경색
+    .rbc-off-range-bg {
+        background-color: $gray1;
+    }
+
+    //월
+    .rbc-month-header {
+        font-size: 16px; //수정
+        font-weight: 600;
+        color: $white;
+        background-color: $orange;
+
+        .rbc-header {
+            padding: 12px 0; //수정
+            text-align: center;
+        }
+    }
+
+    //요일
+    .dateHeader {
+        .dateWrap {
+            text-align: center;
+            .date {
+                font-size: 18px;
+                font-weight: 600;
+                color: #fff;
+                background-color: #ff7235;
+            }
+        }
+    }
+
+    //일
+    .rbc-date-cell {
+        margin: 8px 0;
+    }
+    .rbc-button-link {
+        cursor: default;
+        font-weight: 600;
+    }
+
+    .rbc-event {
+        padding: 2px 4px; //수정
+        background-color: rgba($blue, 0.16);
+        background-color: rgba($orange, 0.16);
+        border-radius: 4px;
+        color: $blue;
+        color: $orange;
+        text-align: center;
+        font-size: 14px; //수정
+        &:hover {
+            background-color: $orange;
+            color: $white;
+        }
+    }
+    .rbc-event.rbc-selected {
+        background-color: rgba($orange, 0.16);
+        &:hover {
+            background-color: $orange;
+            color: $white;
+        }
+    }
+
+    .rbc-show-more {
+        cursor: pointer;
+    }
+    .event-more {
+        width: 100%;
+        padding: 2px 4px; //수정
+        background-color: $gray1;
+        border-radius: 4px;
+        color: $gray4;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }

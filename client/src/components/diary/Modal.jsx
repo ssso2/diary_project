@@ -3,8 +3,15 @@ import styles from "../../scss/components/ListForm.module.scss";
 import { genreName } from "../../utils/Validation";
 import ModalMain from "./ModalMain";
 import ModalSearch from "./ModalSearch";
+import { useEffect } from "react";
 
 export default function Modal({ setModal, selectMovie }) {
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, []);
     return (
         <div className="modalOverlay">
             <dialog
@@ -19,7 +26,11 @@ export default function Modal({ setModal, selectMovie }) {
                         onClick={() => setModal(false)}
                         className="closeBtn"
                     >
-                        <img src="/icon/close.svg" alt="닫기 아이콘" />
+                        <img
+                            src="/icon/close.svg"
+                            alt="닫기 아이콘"
+                            title="닫기"
+                        />
                     </button>
                 </header>
                 <ModalMain selectMovie={selectMovie} />

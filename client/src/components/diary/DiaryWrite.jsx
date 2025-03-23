@@ -112,7 +112,11 @@ export default function DiaryWrite({
                                 type="button"
                                 onClick={() => setCalendar(true)}
                             >
-                                <img src="/icon/today.svg" />
+                                <img
+                                    src="/icon/today.svg"
+                                    alt="관람일"
+                                    title="달력"
+                                />
                             </button>
                             {formatDate(day)}
                         </div>

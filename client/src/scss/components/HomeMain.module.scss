@@ -1,15 +1,24 @@
 @import "../colors.scss";
 
 .wrap {
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center;
-    background-color: #ffa;
+    // width: 100%;
+    // max-width: 1200px;
+    // justify-content: center;
+    // background-color: #ffa;
+
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .textWrap {
         font-weight: 500;
         margin: 108px 0 164px;
         font-size: 20px;
         text-align: center;
+        line-height: 24px;
     }
     .article {
         display: flex;
@@ -37,6 +46,7 @@
             .des {
                 font-weight: 600;
                 font-size: 22px;
+                line-height: 24px;
             }
             .description {
                 font-weight: 500;

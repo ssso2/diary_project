@@ -40,7 +40,7 @@ export default function Thumbnail() {
             name: "이미지 첨부",
             value: file.length,
             percent: filePercent,
-            fill: "#8F8F8F",
+            fill: "#DBDBDB",
         },
     ];
     return (
@@ -59,7 +59,11 @@ export default function Thumbnail() {
                     </p>
                 </div>
             </div>
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer
+                width="100%"
+                height={200}
+                className="ThubnailWrap"
+            >
                 <PieChart>
                     <Pie
                         data={data}

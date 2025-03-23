@@ -71,6 +71,7 @@ export default function PwChange() {
                     className={`${styles.btnSubmit} ${
                         !(pw && pwchk) ? styles.disabled : ""
                     }`}
+                    title="비밀번호 변경"
                 >
                     비밀번호 변경하기
                 </button>

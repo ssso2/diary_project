@@ -8,38 +8,39 @@
     height: auto;
     background: $white; // bg-red-300
     color: $gray4;
+    border-top: 1px solid $gray2;
     // z-index: 50;
-    .nav {
-        font-weight: 500;
-        border-top: 1px solid $gray2;
-        .links {
-            display: flex;
-            width: 447px;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 0 16px 56px;
-            box-sizing: border-box;
-            list-style: none;
-        }
-        .linkList {
-            display: flex;
-            align-items: center;
-            a {
-                text-decoration: none;
-                color: $gray4;
-            }
-            &::before {
-                content: "";
-                width: 1px;
-                height: 12px;
-                background: $gray2;
-                margin-right: 8px;
-            }
-            &:first-child::before {
-                display: none;
-            }
-        }
-    }
+    // .nav {
+    //     font-weight: 500;
+    //     border-top: 1px solid $gray2;
+    //     .links {
+    //         display: flex;
+    //         width: 447px;
+    //         align-items: center;
+    //         gap: 8px;
+    //         padding: 16px 0 16px 56px;
+    //         box-sizing: border-box;
+    //         list-style: none;
+    //     }
+    //     .linkList {
+    //         display: flex;
+    //         align-items: center;
+    //         a {
+    //             text-decoration: none;
+    //             color: $gray4;
+    //         }
+    //         &::before {
+    //             content: "";
+    //             width: 1px;
+    //             height: 12px;
+    //             background: $gray2;
+    //             margin-right: 8px;
+    //         }
+    //         &:first-child::before {
+    //             display: none;
+    //         }
+    //     }
+    // }
 
     .info {
         padding: 28px 0;
@@ -47,12 +48,25 @@
         border-top: 1px solid $gray1;
         border-bottom: 1px solid $gray1;
         font-size: 14px;
+        line-height: 24px;
         .logo {
             width: 68px;
             height: 24px;
+            margin-bottom: 20px;
         }
-        .contact {
-            padding: 20px 0;
+
+        .links {
+            display: block;
+            font-weight: 500;
+            :hover {
+                color: $orange;
+            }
+            img {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin-left: 6px;
+            }
         }
     }
 

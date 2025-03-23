@@ -18,7 +18,7 @@ export default function DiaryListForm({ limit }) {
 
     //페이지네이션
     const [currentPage, setcurrentPage] = useState(1);
-    const PerPage = 10;
+    const PerPage = 5;
     const firstIndex = (currentPage - 1) * PerPage;
     const sorted = [
         ...filteredData.sort((a, b) => {
@@ -42,9 +42,13 @@ export default function DiaryListForm({ limit }) {
         }
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage]);
+
     return (
         <section className="container">
-            {pageDiaries.length > 0 ? ( //pageDiaries합치기
+            {pageDiaries.length > 0 ? (
                 pageDiaries.map(diary => (
                     // {{diary.bookmark} === 0 &&(
                     <article className="diaryWrapper" key={diary.id}>
@@ -53,11 +57,13 @@ export default function DiaryListForm({ limit }) {
                                 <button
                                     aria-label="북마크"
                                     onClick={() => changeBookmark(diary.id)}
+                                    title="북마크"
                                 >
                                     {diary.bookmark === 1 ? (
                                         <img
                                             src="/icon/bookmarkFill.svg"
                                             alt="북마크 추가"
+                                            title="북마크"
                                         />
                                     ) : (
                                         <img
@@ -86,9 +92,14 @@ export default function DiaryListForm({ limit }) {
                                     />
                                 </div>
                             </div>
-                            <section className="review">
+                            <button
+                                className="review"
+                                onClick={() =>
+                                    navigate(`/home/detail/${diary.id}`)
+                                }
+                            >
                                 <p>{extractSummary(diary.content)}</p>
-                            </section>
+                            </button>
                             <div className="optionwrap">
                                 <div className="option">
                                     <img
@@ -132,7 +143,7 @@ export default function DiaryListForm({ limit }) {
                     </article>
                 ))
             ) : (
-                <p>등록된 다이어리가 없습니다.</p>
+                <p className="empty">등록된 다이어리가 없습니다.</p>
             )}
 
             {limit ? (

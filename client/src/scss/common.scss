@@ -8,14 +8,16 @@
 }
 
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     width: 100%;
     background-color: #aaf;
-    max-width: 1280px;
-    margin: 0 auto;
-    align-items: center;
+    background: url("../../public/main/mainBg.svg") no-repeat center center;
+    background-size: cover;
+    // max-width: 1280px;
+    // margin: 0 auto;
+    // align-items: center;
     padding: 0 40px;
 }
 
@@ -64,6 +66,34 @@
         font-style: none;
         cursor: pointer;
     }
+    .tabletNav {
+        display: none;
+        width: 68px;
+        height: 24px;
+        position: fixed;
+        left: 72px;
+        @media (max-width: 1279px) {
+            display: block;
+            .hamburger {
+                display: block;
+                position: fixed;
+                top: 24px;
+                left: 24px;
+                // left: 500px;
+                z-index: 100;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+
+                img {
+                    top: 24px;
+                    left: 24px;
+                    z-index: 100;
+                }
+            }
+        }
+    }
 }
 
 // 공통 레이아웃
@@ -77,18 +107,20 @@
     // max-width: 1280px;
     margin: 0 auto;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 30px 0 30px;
     .layoutwrap {
         width: 100%;
         // max-width: 1200px;
         display: flex;
         justify-content: center;
         background-color: $gray1;
-        margin: 132px 0 0 256px;
-        padding: 40px 40px 48px;
+        margin: 120px 0 0 260px;
+        // margin: 132px 0 0 0;
+        // padding: 20px;
         display: flex;
         flex-direction: column;
-        margin-bottom: 48px;
+        margin-bottom: 40px;
+        overflow: hidden;
     }
 }
 
@@ -130,12 +162,13 @@
 }
 //홈컨테이너
 .homeContainer {
-    width: 100%;
+    // width: 100%;
     height: 100%;
     display: flex;
-    gap: 24px;
-    background-color: #afa;
+    // gap: 24px;
+    // background-color: #afa;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 //리스트 컨테이너
@@ -150,9 +183,9 @@
 .diaryContainer {
     // display: flex;
     // gap: 16px;
-    padding: 16px;
+    padding: 16px 16px 0 16px;
     // flex-wrap: wrap;
-    margin: 32px 0 48px;
+    margin-top: 32px;
 }
 //상세페이지 컨테이너
 .deatailContainer {
@@ -160,6 +193,8 @@
     height: 100%;
     background-color: $white;
     padding: 60px;
+    border-radius: 8px;
+    border: 1px solid $gray2;
 }
 .detailFooter {
     margin-top: 40px;
@@ -267,5 +302,78 @@
     .nobtn {
         padding: 10px;
         border-radius: 4px;
+    }
+}
+
+@media (max-width: 1279px) {
+    // 공통 레이아웃
+    .layoutwrapper {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // width: 100%;
+        // height: 100%;
+        background-color: rgb(168, 214, 186);
+        // max-width: 1280px;
+        // margin: 0 auto;
+        // align-items: center;
+        padding: 0 32px 40px;
+        .layoutwrap {
+            // width: 100%;
+            // max-width: 1200px;
+            // display: flex;
+            // justify-content: center;
+            background-color: $gray1;
+            margin: 132px 0 0 0;
+            // margin: 132px 0 0 0;
+            // padding: 20px;
+            // display: flex;
+            // flex-direction: column;
+            // margin-bottom: 48px;
+            // overflow: hidden;
+        }
+    }
+    //다이어리 컨테이너
+    .diaryContainer {
+        padding: 0px; //수정
+    }
+    //상세페이지 컨테이너
+    .deatailContainer {
+        padding: 60px 20px; // 수정
+    }
+}
+
+@media (max-width: 767px) {
+    // 공통 레이아웃
+    .layoutwrapper {
+        background-color: rgb(168, 214, 186);
+        padding: 0 16px 20px;
+        .layoutwrap {
+            background-color: $gray1;
+            margin: 102px 0 0 0;
+        }
+    }
+    //다이어리리스트 검색인풋
+    .searchWrap {
+        width: 100%; // 수정
+        height: 48px;
+        padding: 12px;
+        background-color: $white;
+        border-radius: 8px;
+        border: 1px solid $gray2;
+        display: flex;
+        margin-top: 16px;
+        .bar {
+            width: 100%;
+            height: 100%;
+        }
+        .searchbtn {
+            width: 20px;
+            height: 20px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 }

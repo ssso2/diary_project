@@ -6,6 +6,7 @@ export default function Header() {
     const [headerBg, setheaderBg] = useState(false);
     const [headerHide, setheaderHide] = useState(false);
     const [lastY, setlastY] = useState(0);
+    const [open, setOPen] = useState(false);
 
     useEffect(() => {
         const headershow = () => {

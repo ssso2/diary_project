@@ -50,6 +50,7 @@ export default function Pwchk() {
                     className={`${styles.btnSubmit} ${
                         !pw ? styles.disabled : ""
                     }`}
+                    title="확인"
                 >
                     확인
                 </button>

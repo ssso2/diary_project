@@ -10,7 +10,7 @@ export default function MovieProvider({ children }) {
     const [type, settype] = useState("korean");
     const [contents, setcontents] = useState([]);
     const [currentPage, setcurrentPage] = useState(1);
-    const PerPage = 10;
+    const PerPage = 12;
 
     useEffect(() => {
         settype(location.pathname === "/home/list" ? "korean" : "foreign");

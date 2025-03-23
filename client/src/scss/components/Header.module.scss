@@ -11,7 +11,10 @@
     display: flex;
     align-items: center;
     &.scrolled {
-        background-color: #f8d7da; // 기존의 bg-red-200에 해당
+        // background-color: #f8d7da;
+        background-color: rgba(244, 217, 220, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
     &.none {
         display: none;
@@ -26,7 +29,7 @@
         color: white;
         .logo {
             width: 68px;
-            height: 20px;
+            height: 23px;
         }
         .login {
             font-size: 18px;
@@ -37,7 +40,7 @@
 
 // 헤더변형
 .headerB {
-    background-color: #dbdbdb;
+    background-color: #ffffff;
     .login {
         color: black;
         font-weight: 500;

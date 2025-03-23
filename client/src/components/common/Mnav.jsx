@@ -1,12 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 
 import styles from "../../scss/components/SideNav.module.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function SideNav({ tablet, open, setOpen }) {
+export default function MNav({ tablet, open }) {
+    // console.log("SideNav 렌더링됨!", open, tablet);
     const location = useLocation();
-    const navRef = useRef();
-
     //경로찾기
     const Active = (current, base) => {
         if (base === "/home") {
@@ -25,7 +24,7 @@ export default function SideNav({ tablet, open, setOpen }) {
     const navlist = [
         {
             id: "home",
-            label: "캘린더",
+            label: "캘린dddd더",
             img: "/icon/dashboard.svg",
             alt: "홈 아이콘",
             path: "/home",
@@ -52,41 +51,10 @@ export default function SideNav({ tablet, open, setOpen }) {
             path: "/home/stats",
         },
     ];
-    useEffect(() => {
-        if (!open) return;
-        const handleClickOutside = e => {
-            if (navRef.current && !navRef.current.contains(e.target)) {
-                setOpen(false);
-            }
-        };
-        document.addEventListener("pointerdown", handleClickOutside);
-        return () =>
-            document.removeEventListener("pointerdown", handleClickOutside);
-    }, [open, navRef]);
-
-    useEffect(() => {
-        setOpen(false);
-    }, [location.pathname]);
 
     return (
-        // <div>
-        <nav
-            className={`${styles.wrapper} ${tablet ? styles.tablet : ""} ${
-                open ? styles.open : ""
-            }`}
-            ref={navRef}
-        >
+        <nav className={`${styles.wrapper} ${tablet ? styles.tablet : ""}`}>
             <div className={styles.wrap}>
-                {open && (
-                    <button
-                        onClick={e => {
-                            e.stopPropagation();
-                            setOpen(false);
-                        }}
-                    >
-                        <img src="/icon/hamburger_close.svg" />
-                    </button>
-                )}
                 <div className={styles.imgwrap}>
                     <div className={styles.logo}>
                         <img src="/main/logoB.svg" alt="로고" />
@@ -102,7 +70,6 @@ export default function SideNav({ tablet, open, setOpen }) {
                             return (
                                 <li className={styles.list} key={idx}>
                                     <Link
-                                        onClick={e => e.stopPropagation()}
                                         to={item.path}
                                         className={`${styles[item.id]} ${
                                             ActiveItem ? styles.active : ""
@@ -119,6 +86,5 @@ export default function SideNav({ tablet, open, setOpen }) {
                 </div>
             </div>
         </nav>
-        // </div>
     );
 }
