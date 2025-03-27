@@ -24,7 +24,7 @@ export default function StarReview({ rate, setRate }) {
                         src={
                             star <= (hover || rate)
                                 ? "/icon/starFill.svg"
-                                : "/icon/starempty.svg"
+                                : "/icon/starEmpty.svg"
                         }
                         alt={`별점${star}`}
                         className={styles.img}

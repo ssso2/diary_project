@@ -16,7 +16,7 @@ export default function Search({ input, setInput, setKeyword }) {
                 placeholder="제목을 입력해주세요."
             />
             <button type="button" onClick={searchGo} className="searchbtn">
-                <img src="/icon/search.svg" alt="돋보기" title="검색" />
+                <img src="/icon/searchB.svg" alt="돋보기" title="검색" />
             </button>
         </div>
     );
