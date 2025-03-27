@@ -57,7 +57,7 @@ export default function Pwchange() {
                     id="pw"
                     type="password"
                     value={pw}
-                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
+                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8-16자)"
                     onChange={e => Change(setpw, e.target.value, "pw")}
                 />
                 <ErrorMessage message={errors.pw} />
@@ -67,7 +67,7 @@ export default function Pwchange() {
                     id="pwchk"
                     type="password"
                     value={pwchk}
-                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
+                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8-16자)"
                     onChange={e => Change(setpwchk, e.target.value, "pwchk")}
                 />
                 <ErrorMessage message={errors.pwchk} />

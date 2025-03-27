@@ -7,6 +7,10 @@
     white-space: nowrap;
 }
 
+a {
+    color: inherit;
+}
+
 .wrapper {
     width: 100%;
     background: url("../../public/main/mainBg.svg") no-repeat center center;

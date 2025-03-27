@@ -38,7 +38,7 @@ export default function DiaryListForm({ limit }) {
         updateDiaries(user.id); //북마크 업데이트 api요청
         filterDiaryData(); //데이터필터링
         if (isBookmark) {
-            alert("북마크에서 삭제되었습니다.");
+            toast("북마크에서 삭제되었습니다.");
         }
     };
 
