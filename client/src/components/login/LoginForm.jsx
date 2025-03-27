@@ -46,7 +46,7 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 value={email}
-                placeholder="예) scene.naver.cosm"
+                placeholder="예) scene.naver.com"
                 onChange={e => Change(setemail, e.target.value, "email")}
             />
             <ErrorMessage message={errors.email} />

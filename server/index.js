@@ -13,6 +13,7 @@ const corsOptions = {
         "http://localhost:3000",
         "http://localhost:5001",
         process.env.SERVER_ADDRESS,
+        process.env.CLIENT_ADDRESS,
     ],
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
