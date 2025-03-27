@@ -10,7 +10,7 @@ export default function Recent() {
     useEffect(() => {
         setBookmarkTab(false); //마지막 북마크페이지 데이터표시 방지
         filterDiaryData();
-        console.log("최근목록업데이트");
+        // console.log("최근목록업데이트");
     }, [diaryData]);
 
     // //빈배열방지

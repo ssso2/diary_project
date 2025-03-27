@@ -38,7 +38,7 @@ export default function Edit() {
     }, []);
 
     useEffect(() => {
-        console.log("업데이트된 content:", content);
+        // console.log("업데이트된 content:", content);
     }, [content]);
 
     //해당 다이어리 찾기
@@ -94,7 +94,7 @@ export default function Edit() {
             before: formData.before,
             after: formData.after,
         };
-        console.log("페이로드", payload);
+        // console.log("페이로드", payload);
         for (const key in payload) {
             data.append(key, payload[key]);
         }
@@ -106,13 +106,13 @@ export default function Edit() {
             data.append("posterThumbnail", posterThumbnail);
         }
         try {
-            console.log(payload, "api접근");
+            // console.log(payload, "api접근");
             const res = await axios.post(`${URL}/diary/edit`, data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            console.log(data, "수정된data확인");
+            // console.log(data, "수정된data확인");
             alert(res.data);
             fetchDiaryData(user.id);
             navigate(`/home/detail/${id}`);

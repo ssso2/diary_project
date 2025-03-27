@@ -46,7 +46,7 @@ export default function DiaryEdit({
             setPreview(`${URL}/imgs/diary/${thumbnail}`);
             setFile({ thumbnail });
         }
-        console.log("이미지확인", thumbnail);
+        // console.log("이미지확인", thumbnail);
     }, [thumbnail]);
 
     return (

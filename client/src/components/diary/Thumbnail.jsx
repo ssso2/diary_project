@@ -12,7 +12,7 @@ export default function Thumbnail({
 
     const changeImg = e => {
         const seleted = e.target.files[0]; //객체
-        console.log("seleted객체", seleted);
+        // console.log("seleted객체", seleted);
         setPreview(URL.createObjectURL(seleted));
         setFile(seleted);
     };
@@ -24,7 +24,7 @@ export default function Thumbnail({
         setModal(false);
     };
 
-    console.log("모달 상태 변경 전:", modal);
+    // console.log("모달 상태 변경 전:", modal);
     return (
         <div>
             <div className="posterInputWrap">

@@ -1,3 +1,5 @@
+@import "../colors.scss";
+
 .header {
     position: fixed;
     width: 100%;
@@ -11,7 +13,6 @@
     display: flex;
     align-items: center;
     &.scrolled {
-        // background-color: #f8d7da;
         background-color: rgba(244, 217, 220, 0.6);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -26,7 +27,7 @@
         justify-content: space-between;
         font-size: 18px;
         font-weight: 600;
-        color: white;
+        color: $black;
         .logo {
             width: 68px;
             height: 23px;
@@ -40,9 +41,52 @@
 
 // 헤더변형
 .headerB {
-    background-color: #ffffff;
+    background-color: $white;
     .login {
-        color: black;
+        color: $black;
         font-weight: 500;
+    }
+}
+
+@media (max-width: 1279px) {
+    .header {
+        padding: 0 36px;
+    }
+
+    // 헤더변형
+    .headerB {
+        background-color: $white;
+        .login {
+            color: $black;
+            font-weight: 500;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .header {
+        height: 60px;
+        background: #fff;
+        .nav {
+            .login {
+                font-size: 14px;
+            }
+        }
+    }
+
+    // 헤더변형
+    .headerB {
+        background-color: $white;
+        padding: 16px;
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+        .login {
+            color: $white;
+            font-weight: 500;
+            background-color: $orange;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
     }
 }

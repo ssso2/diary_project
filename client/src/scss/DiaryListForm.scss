@@ -10,29 +10,47 @@
     max-height: calc(#{$line-count} * #{$line-height}em);
     line-height: #{$line-height}em;
 }
+@mixin ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .container {
     display: flex;
     flex-direction: column;
     gap: 32px;
+
     .diaryWrapper {
         width: 100%;
-        background-color: #faf;
-        padding: 16px 8px;
-        border-bottom: 1px solid $gray3;
+        padding: 16px;
+        position: relative;
         display: flex;
-        justify-content: space-between;
         gap: 16px;
-        // cursor: pointer;
+        box-sizing: border-box;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 1px;
+            background: $gray3;
+        }
+        // &:nth-of-type(5n)::after {
+        //     height: 0px;
+        // }
         .infoWrap {
-            // width: auto;
             font-weight: 500;
+            flex: 1 1 auto;
+            min-width: 0; // 반드시!
+            display: flex;
+            flex-direction: column;
+
             .diaryInfo {
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                // flex: 1 1 0;
-                // padding: 4px 0;
                 .title {
                     font-size: 18px;
                     font-weight: 600;
@@ -65,15 +83,13 @@
                 }
             }
             .review {
-                // width: 740px;
                 all: unset;
                 cursor: pointer;
                 height: 100%;
-                line-height: 48px;
-                @include multi-line-ellipsis-fallback(2);
                 p {
-                    line-height: 48px;
                     font-size: 16px;
+                    line-height: 1.5;
+                    @include ellipsis;
                 }
             }
             .optionwrap {
@@ -105,18 +121,15 @@
             }
         }
         .poster {
-            // width: 148px;
-            // height: 190px;
             border-radius: 6px;
             flex-shrink: 0;
             overflow: hidden;
             cursor: pointer;
             width: 30%;
             max-width: 148px;
-            // max-width: 148px;
             height: auto;
-            aspect-ratio: 148 / 190; // 비율 유지
-            // aspect-ratio: 0 / 0.111;
+            aspect-ratio: 148 / 190;
+
             &:hover {
                 img {
                     transform: scale(1.05);
@@ -143,9 +156,7 @@
 
 //홈 최근 다이어리 리스트
 .recentWrapper {
-    // width: 10%;
     flex: 1;
-    // min-width: 360px;
     height: 840px;
     height: auto;
     padding: 32px 24px;
@@ -155,11 +166,12 @@
     min-width: 440px;
     .headerWrap {
         display: flex;
-        justify-content: space-between;
+        margin-bottom: 32px;
         h1 {
             font-weight: 700;
             font-size: 20px;
-            margin-bottom: 32px;
+            // margin-bottom: 32px;
+            flex: 1;
         }
         a {
             color: $gray4;
@@ -168,8 +180,7 @@
     }
     .container {
         width: 100%;
-        height: 720px;
-        background-color: #aaf;
+
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -177,33 +188,146 @@
             width: 100%;
             border-radius: 8px;
             border: 1px solid $gray3;
+            &::after {
+                height: 0;
+            }
         }
     }
-}
-@media (max-width: 1279px) {
 }
 
 @media (max-width: 960px) {
     .myCalendarWrapper,
     .recentWrapper {
         flex: 1 0 100%;
-        min-width: unset;
     }
 }
 
 @media (max-width: 767px) {
+    .container {
+        gap: 16px;
+        .diaryWrapper {
+            .infoWrap {
+                min-width: 160px;
+                .diaryInfo {
+                    .title {
+                        font-size: 16px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+                .emotionwrap {
+                    font-size: 14px;
+                    .emotion {
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                        &:last-of-type::before {
+                            content: "";
+                            margin: 0 12px;
+                        }
+                    }
+                }
+                .review {
+                    all: unset;
+                    cursor: pointer;
+                    margin-top: 1rem;
+                    p {
+                        line-height: 1.5rem;
+                        white-space: normal;
+                        max-height: 3rem;
+                        font-size: 14px;
+                    }
+                }
+                .optionwrap {
+                    margin-top: 1.5rem;
+                    display: flex;
+                    width: 198px;
+                    width: 160px;
+                    height: auto;
+                    background-color: $gray1;
+                    border-radius: 8px;
+                    padding: 10px 8px;
+                    .option {
+                        .txt {
+                            font-size: 12px;
+                        }
+                        img {
+                            width: 16px;
+                            height: 16px;
+                        }
+                        &:last-of-type::before {
+                            content: "";
+                            height: 12px;
+                            margin: 0 10px;
+                        }
+                    }
+                }
+            }
+            .poster {
+                border-radius: 6px;
+                flex-shrink: 0;
+                overflow: hidden;
+                cursor: pointer;
+                min-width: 120px;
+                height: auto;
+                aspect-ratio: 148 / 190; // 비율 유지
+                &:hover {
+                    img {
+                        transform: scale(1.05);
+                        transition: transform 0.4s ease;
+                    }
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.5s ease-in-out;
+                }
+            }
+        }
+        .paginationConstainer {
+            width: 100%;
+        }
+        .empty {
+            padding: 20px 10px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
     //홈 최근 다이어리 리스트
     .recentWrapper {
-        width: 10%;
-        flex: 3;
-        // min-width: 360px;
-        height: 840px;
-        height: auto;
-        padding: 32px 24px;
-        border-radius: 8px;
-        background-color: $white;
-        flex: 1 0 0;
-        min-width: 410px; //수정
-        // width: 704px;
+        padding: 0;
+        padding-top: 44px;
+        min-width: 330px;
+        .headerWrap {
+            justify-content: space-between;
+            margin-right: 12px;
+            h1 {
+                font-weight: 700;
+                font-size: 18px;
+                flex: 0 1 auto;
+            }
+        }
+        .container {
+            height: 100%;
+            margin-bottom: 10px;
+            .diaryWrapper {
+                .infoWrap {
+                    .review {
+                        @include multi-line-ellipsis-fallback(2);
+
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                    .optionwrap {
+                        margin-top: 14px;
+                    }
+                }
+            }
+        }
     }
 }

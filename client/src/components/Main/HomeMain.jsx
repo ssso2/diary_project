@@ -10,9 +10,7 @@ export default function HomeMain() {
                         인상 깊은 장면과 마음을 울린 대사, 그리고 그날의
                         감정까지.
                     </p>
-                    <p>
-                        기억 속에서 사라지지 않도록, 지금 기록으로 남겨보세요.
-                    </p>
+                    <p>기억 속에서 사라지지 않도록 지금 기록으로 남겨보세요.</p>
                 </div>
 
                 <article className={styles.article}>
@@ -27,7 +25,7 @@ export default function HomeMain() {
                         <p className={styles.des}>장면기록, 감정까지</p>
                         <p className={styles.des}>씬-기록에서 한번에</p>
                         <p className={styles.description}>
-                            단순한 감상문을 넘어서 영화가 머무른 하루의 감정과
+                            단순한 감상평을 넘어서 영화가 머무른 하루의 감정과
                             <br />
                             당신만의 생각을 기록하고 간직하세요.
                         </p>

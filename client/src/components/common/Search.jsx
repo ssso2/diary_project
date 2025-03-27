@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Search({ input, setInput, setKeyword }) {
     const searchGo = () => {
-        console.log("입력값", input);
+        // console.log("입력값", input);
         setKeyword(input);
         alert("검색이 완료되었습니다.");
     };

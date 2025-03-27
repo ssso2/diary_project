@@ -11,7 +11,6 @@ import NotDiary from "../../components/NotDiary";
 
 export default function Detail() {
     const { id } = useParams();
-    console.log(id, "파람오나");
     const { diaryData, fetchDiaryData } = useDiaryStore();
     const { user } = useAuth();
 
@@ -19,7 +18,7 @@ export default function Detail() {
         window.scrollTo(0, 0);
         if (!diaryData || diaryData.length === 0) {
             //undefined일때 데이터없을때
-            console.log("데이터초기호출");
+            // console.log("데이터초기호출");
             fetchDiaryData(user.id);
         }
     }, [id, diaryData, fetchDiaryData]);

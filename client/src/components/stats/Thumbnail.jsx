@@ -5,7 +5,6 @@ const COLORS = ["#ffb700", "#4a90e2"];
 
 export default function Thumbnail() {
     const { diaryData } = useDiaryStore();
-    // console.log("다이어리데이터오나", diaryData);
 
     //데이터추출
     const poster = [];
@@ -59,32 +58,34 @@ export default function Thumbnail() {
                     </p>
                 </div>
             </div>
-            <ResponsiveContainer
-                width="100%"
-                height={200}
-                className="ThubnailWrap"
-            >
-                <PieChart>
-                    <Pie
-                        data={data}
-                        dataKey="value" // 개수
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={40}
-                        outerRadius={90}
-                        fill="#8884d8"
-                        // label={({ percent }) => `${Math.round(percent)}%`}
-                    >
-                        {data.map(({ name, fill }) => (
-                            <Cell key={name} fill={fill} />
-                        ))}
-                    </Pie>
-                    {/* <Tooltip formatter={value => `${value}%`} /> */}
-                    <Tooltip
-                        formatter={(value, name) => [`${value}개`, name]}
-                    />
-                </PieChart>
-            </ResponsiveContainer>
+            <div className="chartBox">
+                <ResponsiveContainer
+                    width="100%"
+                    height={200}
+                    className="ThubnailWrap"
+                >
+                    <PieChart>
+                        <Pie
+                            data={data}
+                            dataKey="value" // 개수
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={40}
+                            outerRadius={90}
+                            fill="#8884d8"
+                            // label={({ percent }) => `${Math.round(percent)}%`}
+                        >
+                            {data.map(({ name, fill }) => (
+                                <Cell key={name} fill={fill} />
+                            ))}
+                        </Pie>
+                        {/* <Tooltip formatter={value => `${value}%`} /> */}
+                        <Tooltip
+                            formatter={(value, name) => [`${value}개`, name]}
+                        />
+                    </PieChart>
+                </ResponsiveContainer>
+            </div>
         </>
     );
 }

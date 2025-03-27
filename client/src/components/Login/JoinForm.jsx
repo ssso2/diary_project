@@ -79,27 +79,29 @@ export default function JoinForm() {
                 <ErrorMessage message={errors.name} />
 
                 <Email />
+                <div className={styles.pwWrap}>
+                    <LoginInput
+                        name="비밀번호"
+                        id="pw"
+                        type="password"
+                        value={pw}
+                        placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
+                        onChange={e => Change(setpw, e.target.value, "pw")}
+                    />
+                    <ErrorMessage message={errors.pw} />
 
-                <LoginInput
-                    name="비밀번호"
-                    id="pw"
-                    type="password"
-                    value={pw}
-                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
-                    onChange={e => Change(setpw, e.target.value, "pw")}
-                />
-                <ErrorMessage message={errors.pw} />
-
-                <LoginInput
-                    name="비밀번호 확인"
-                    id="pwchk"
-                    type="password"
-                    value={pwchk}
-                    placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
-                    onChange={e => Change(setpwchk, e.target.value, "pwchk")}
-                />
-                <ErrorMessage message={errors.pwchk} />
-
+                    <LoginInput
+                        name="비밀번호 확인"
+                        id="pwchk"
+                        type="password"
+                        value={pwchk}
+                        placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)"
+                        onChange={e =>
+                            Change(setpwchk, e.target.value, "pwchk")
+                        }
+                    />
+                    <ErrorMessage message={errors.pwchk} />
+                </div>
                 <AgreeCheck setagree={setagree} />
 
                 <button

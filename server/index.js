@@ -71,8 +71,8 @@ const imgRouter = require("./controller/imgUpload.js");
 app.use("/img", imgRouter);
 
 app.get("/", (req, res) => {
-    console.log("백엔드 서버 진입"); //정상작동 확인
-    res.send("백엔드 서버 진입");
+    console.log("서버 진입"); //정상작동 확인
+    res.send("서버 진입");
 });
 
 app.get("*", (req, res) => {

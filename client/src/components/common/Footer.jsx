@@ -27,7 +27,7 @@ export default function Footer() {
                     />
 
                     <Link
-                        to="https://github.com/ssso2"
+                        to="https://github.com/ssso2/diary_project"
                         className={styles.links}
                     >
                         <span>View on GitHub</span>

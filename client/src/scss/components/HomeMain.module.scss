@@ -1,11 +1,6 @@
 @import "../colors.scss";
 
 .wrap {
-    // width: 100%;
-    // max-width: 1200px;
-    // justify-content: center;
-    // background-color: #ffa;
-
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 40px;
@@ -50,7 +45,8 @@
             }
             .description {
                 font-weight: 500;
-                margin-top: 32px;
+                margin-top: 26px;
+                line-height: 20px;
             }
         }
         .flexWrap {
@@ -100,6 +96,161 @@
                 width: 100%;
                 .highlight {
                     color: $orange;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1279px) {
+    .wrap {
+        padding: 0 36px;
+        .textWrap {
+            font-size: 18px;
+        }
+        .article {
+            .imgWrap {
+                width: 100%;
+                max-width: 488px;
+                height: 545px;
+                margin-bottom: 32px;
+                .img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+            .caption {
+                width: 100%;
+                max-width: 488px;
+                & :first-child {
+                    color: $gray3;
+                }
+                .des {
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 24px;
+                }
+                .description {
+                    font-weight: 500;
+                    margin-top: 22px;
+                    line-height: 20px;
+                }
+            }
+            .flexWrap {
+                width: 100%;
+                max-width: 488px;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+
+                .smallImgWrap {
+                    width: 100%;
+                    height: 394px;
+                    margin: 90px 0 40px 24px;
+                    .smallImg {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .captionSmall {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .flexContainer {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            .article {
+                .imgWrap {
+                    width: 100%;
+                    max-width: 590px;
+                    height: 700px;
+                    margin-bottom: 32px;
+                    .img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+                .captionFlex {
+                    display: flex;
+                    font-size: 24px;
+                    font-weight: 600;
+                    margin-top: 2rem;
+                    width: 100%;
+                    .highlight {
+                        color: $orange;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .wrap {
+        padding: 0;
+
+        .textWrap {
+            margin: 100px 0;
+            padding: 0 56px;
+            font-size: 14px;
+        }
+        .article {
+            margin-bottom: 120px;
+            .imgWrap {
+                height: auto;
+                margin-bottom: 12px;
+            }
+            .caption {
+                .des {
+                    font-size: 18px;
+                }
+                .description {
+                    font-size: 14px;
+                    margin-top: 18px;
+                }
+            }
+            .flexWrap {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+
+                .smallImgWrap {
+                    height: auto;
+                    margin: 20px 0 22px 24px;
+                    .smallImg {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .captionSmall {
+                    font-size: 14px;
+                    line-height: 130%;
+                }
+            }
+        }
+
+        .flexContainer {
+            margin-bottom: 40px;
+            .article {
+                margin-bottom: 100px;
+                .imgWrap {
+                    height: auto;
+                    margin-bottom: 0;
+                    .img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+                .captionFlex {
+                    font-size: 16px;
+                    margin-top: 24px;
                 }
             }
         }

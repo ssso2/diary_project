@@ -9,6 +9,10 @@
     background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
     background-size: contain;
     // transition: background 0.3s ease-in-out;
+    @media (max-width: 768px) {
+        width: 16px;
+        height: 16px;
+    }
 }
 @mixin hoverImg($icon) {
     background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
@@ -138,13 +142,14 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            background-color: #faf;
+            justify-content: flex-start;
             .dataWrapper {
                 width: 172px;
-                background-color: #aff;
+                flex: 1 1 calc(33.33% - 12px);
+                max-width: calc(33.33% - 12px);
                 .posterWrap {
-                    width: 172px;
-                    height: 242px;
+                    width: 100%;
+                    aspect-ratio: 3 / 4;
                     margin-bottom: 12px;
                     border-radius: 4px;
                     overflow: hidden;
@@ -200,6 +205,10 @@
     border: 1px solid $gray2;
     background-color: $white;
     .modalWrap {
+        .list.under:hover {
+            background-color: transparent;
+            cursor: default;
+        }
         .list {
             font-size: 16px;
             // font-weight: 500;
@@ -208,10 +217,12 @@
 
             &:first-of-type {
                 border-bottom: 1px 1px solid $gray2;
+                // pointer-events: none;
             }
             &:hover {
                 background-color: $gray1;
             }
+
             .edit,
             .delete,
             .mypage,
@@ -234,12 +245,13 @@
                 @include afterImg("logoutB");
             }
 
-            .edit:hover,
-            .delete:hover,
-            .logout:hover {
-                // font-weight: 600;
-                // background-color: $gray1;
-            }
+            // .edit:hover,
+            // .mypage:hover,
+            // .delete:hover,
+            // .logout:hover {
+            //     // font-weight: 600;
+            //     // background-color: $gray1;
+            // }
         }
         .under {
             font-weight: 600;
@@ -288,6 +300,100 @@
                 border-bottom: 1px solid $gray2;
                 h2 {
                     font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    //드롭다운
+    .moreContainer {
+        // position: absolute;
+        // top: 26px;
+        // right: 0px;
+        width: 128px;
+        // border-radius: 4px;
+        // border: 1px solid $gray2;
+        // background-color: $white;
+        .modalWrap {
+            .list {
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                padding: 12px;
+                .edit,
+                .delete,
+                .mypage,
+                .logout {
+                    font-size: 14px;
+                    // width: 100%;
+                    // display: flex;
+                    // align-items: center;
+                    // justify-content: space-between;
+                    font-weight: 400;
+                }
+            }
+            .under {
+                font-weight: 500;
+            }
+        }
+    }
+    .mypage {
+        top: 42px;
+        right: 16px;
+    }
+
+    .modalOverlay {
+        .modalContainer {
+            left: 50%;
+            min-width: 328px;
+            min-height: 468px;
+            width: 90vw;
+            .modalHeader {
+                height: 52px;
+                h2 {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        //메인
+        .searchContainer {
+            min-height: 426px;
+            padding: 56px 10px;
+            .infoTxt {
+                h1 {
+                    font-size: 16px;
+                    width: 80%;
+                }
+            }
+            .infoSearch {
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        //검색
+        .content {
+            padding: 20px 0 0;
+            .dataContainer {
+                padding: 0 12px 0 24px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .modalOverlay {
+        //검색
+        .content {
+            .dataContainer {
+                padding: 0 12px;
+                .dataWrapper {
+                    flex: 1 1 calc(50% - 6px);
+                    max-width: calc(50% - 6px);
                 }
             }
         }

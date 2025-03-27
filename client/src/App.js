@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 import "./scss/reset.css";
 
@@ -10,10 +10,13 @@ import Find from "./pages/login/Find.jsx";
 import { AuthProvider } from "./components/login/AuthContext.jsx";
 import ProtecteRoute from "./ProtectRoute.js";
 import NotFound from "./pages/NotFound.jsx";
+import { useEffect } from "react";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 function App() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <AuthProvider>
                 <Routes>
                     <Route path="/" element={<Main />} />

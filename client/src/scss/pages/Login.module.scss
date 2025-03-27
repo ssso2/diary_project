@@ -1,20 +1,5 @@
 @import "../colors";
-// .wrapper {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100vh;
-//     background-color: #faf;
-// }
 
-// .wrap {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     width: 100%;
-//     background-color: #f87171;
-// }
 .wrap {
     width: 100%;
     height: auto;
@@ -32,15 +17,16 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 108px 0;
+        margin: 128px 0 48px;
         padding: 138px 95px;
         .formWrap {
             width: 400px;
             height: 392px;
-            background-color: aqua;
             .logoWrap {
                 display: flex;
                 justify-content: center;
+                font-size: 24px;
+                font-weight: bold;
                 img {
                     width: 120px;
                     height: 42px;
@@ -49,7 +35,6 @@
             .form {
                 width: 100%;
                 height: 256px;
-                background-color: #f87171;
                 margin-top: 48px;
             }
             .linkWrap {
@@ -71,6 +56,22 @@
                         margin: 0 8px;
                         vertical-align: middle;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .wrap {
+        .loginContainer {
+            height: auto;
+            padding: 32px 16px;
+            margin: 108px 16px 48px;
+            .formWrap {
+                width: 100%;
+                .logoWrap {
+                    font-size: 16px;
                 }
             }
         }

@@ -21,8 +21,8 @@ export default function Layout() {
 
     return (
         <>
-            <LoginHeader setOpen={setOpen} open={open} />
             <SideNav tablet={tablet} open={open} setOpen={setOpen} />
+            <LoginHeader setOpen={setOpen} open={open} />
 
             <div className="layoutwrapper">
                 <div className="layoutwrap">

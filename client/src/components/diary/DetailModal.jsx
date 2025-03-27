@@ -24,7 +24,7 @@ export default function DetailModal({ setOpen }) {
                 console.error(error);
             }
         } else {
-            console.log("삭제 취소");
+            // console.log("삭제 취소");
         }
     };
 

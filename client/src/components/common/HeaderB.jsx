@@ -1,40 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../scss/components/Header.module.scss";
 
 export default function HeaderB() {
-    const [headerBg, setheaderBg] = useState(false);
-    const [headerHide, setheaderHide] = useState(false);
-    const [lastY, setlastY] = useState(0);
-
-    useEffect(() => {
-        const headershow = () => {
-            const topY = window.scrollY;
-            console.log("스크롤", topY);
-            if (topY > lastY && lastY > 0) {
-                setheaderHide(true);
-            } else {
-                setheaderHide(false);
-            }
-            setlastY(topY);
-            if (topY > 80 && !headerBg) {
-                setheaderBg(true);
-            } else if (topY <= 80 && headerBg) {
-                setheaderBg(false);
-            }
-        };
-        window.addEventListener("scroll", headershow);
-        return () => {
-            window.removeEventListener("scroll", headershow);
-        };
-    }, [lastY, headerBg]);
-
     return (
-        <header
-            className={`${styles.header} ${styles.headerB}  ${
-                headerBg ? styles.scrolled : ""
-            } ${headerHide ? styles.none : ""}`}
-        >
+        <header className={`${styles.header} ${styles.headerB}`}>
             <nav className={styles.nav}>
                 <Link to="/">
                     <img

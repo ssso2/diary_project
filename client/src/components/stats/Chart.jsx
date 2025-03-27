@@ -11,7 +11,7 @@ import useDiaryStore from "../../store/useDiaryStore";
 
 export default function Chart() {
     const { diaryData } = useDiaryStore();
-    console.log("다이어리데이터오나", diaryData);
+    // console.log("다이어리데이터오나", diaryData);
     const today = new Date();
     const targetYear = today.getFullYear(); //올해년도
     const monthAr = Array(12).fill(0);
@@ -25,7 +25,7 @@ export default function Chart() {
         return null; //반환값 없음
     });
 
-    console.log("나와", diaryData, monthAr);
+    // console.log("나와", diaryData, monthAr);
     //최종데이터
     const lineData = monthAr.map((diary, idx) => ({
         month: `${idx + 1}`,
@@ -41,24 +41,25 @@ export default function Chart() {
                     {targetYear}-01-01 ~ {targetYear}-12-31
                 </p>
             </div>
-
-            <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={lineData}>
-                    <XAxis
-                        dataKey="month"
-                        interval={0}
-                        padding={{ left: 20, right: 20 }}
-                    />
-                    <YAxis tickCount={4} width={30} />
-                    <Tooltip />
-                    <Line
-                        type="monotone"
-                        dataKey="diary"
-                        stroke="#FF7235"
-                        strokeWidth={2}
-                    />
-                </LineChart>
-            </ResponsiveContainer>
+            <div className="chartBox">
+                <ResponsiveContainer width="100%" height={200}>
+                    <LineChart data={lineData}>
+                        <XAxis
+                            dataKey="month"
+                            interval={0}
+                            padding={{ left: 20, right: 20 }}
+                        />
+                        <YAxis tickCount={4} width={30} />
+                        <Tooltip />
+                        <Line
+                            type="monotone"
+                            dataKey="diary"
+                            stroke="#FF7235"
+                            strokeWidth={2}
+                        />
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </>
     );
 }

@@ -83,3 +83,36 @@
         }
     }
 }
+
+@media (max-width: 1279px) {
+    .MainBanner {
+        .scroll {
+            display: none;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .MainBanner {
+        height: 308px;
+        min-height: 308px;
+
+        .content {
+            position: absolute;
+            top: 42%;
+            left: 10%;
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-size: 12px;
+            }
+            .subtitle {
+                font-size: 22px;
+                margin: 13px 0 88px;
+                line-height: 130%;
+            }
+            .buttons {
+                display: none;
+            }
+        }
+    }
+}

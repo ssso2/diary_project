@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 
 import styles from "../../scss/components/Banner.module.scss";
 
-// import "../scss/common.scss";
-
 export default function Banner() {
     return (
         <section className={styles.MainBanner}>

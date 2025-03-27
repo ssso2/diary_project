@@ -22,7 +22,7 @@ export default function Mypage() {
     return (
         <div className={styles.wrapper}>
             <main className={styles.wrap}>
-                <div className={styles.formContainer}>
+                <div className={`${styles.formContainer} ${styles.mypage}`}>
                     {mystep === 1 && <Pwchk />}
                     {mystep === 2 && <Pwchange />}
                 </div>

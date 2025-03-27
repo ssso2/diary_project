@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    background-color: #faf;
     .title {
         font-size: 24px;
         font-weight: bold;
@@ -27,6 +26,21 @@
         &.disabled {
             background-color: #c2c2c2;
             cursor: auto;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        .title {
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+        .joinForm {
+            width: 100%;
+            .pwWrap {
+                margin-top: 32px;
+            }
         }
     }
 }

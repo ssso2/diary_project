@@ -84,7 +84,7 @@ export function dataURLtoBlob(dataUrl) {
 }
 
 // 서버응답 다이어리 문자열전환
-export function extractSummary(content, limit = 50) {
+export function extractSummary(content, limit = 80) {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = content;
 
@@ -107,11 +107,11 @@ export const uploadImgs = async (editorRef, setContent) => {
 
     //이미지없을때 내용업데이트
     if (images.length === 0) {
-        console.log("tempDiv.innerHTML", tempDiv.innerHTML);
+        // console.log("tempDiv.innerHTML", tempDiv.innerHTML);
         return tempDiv.innerHTML;
     }
     if (images.length > 5) {
-        alert("이미지는 최대 5개까지만 등록할 수 있습니다.");
+        alert("이미지는 한번에 최대 5개까지만 등록할 수 있습니다.");
         // throw new Error("이미지 5개 초과");
         return;
     }
@@ -122,17 +122,23 @@ export const uploadImgs = async (editorRef, setContent) => {
         const blob = dataURLtoBlob(base64String);
         const file = new File([blob], `image${i}.jpg`, { type: blob.type }); // 파일명 주입. 확장자 빠짐해결
         formData.append("file", file); //file 서버 키 통일 (upload.array("file"))
-        console.log("여기까지", blob);
+        // console.log("여기까지", blob);
     });
 
-    const res = await axios.post(`${URL}/img/editor`, formData);
-    const uploadedUrls = res.data.urls;
+    try {
+        const res = await axios.post(`${URL}/img/editor`, formData);
+        const uploadedUrls = res.data.urls;
 
-    images.forEach((img, i) => {
-        img.src = uploadedUrls[i];
-    });
+        images.forEach((img, i) => {
+            img.src = uploadedUrls[i];
+        });
 
-    const finalContent = tempDiv.innerHTML;
-
-    return finalContent;
+        const finalContent = tempDiv.innerHTML;
+        return finalContent;
+    } catch (err) {
+        const errorMsg =
+            err.response?.data?.error || "이미지 업로드에 실패했습니다.";
+        alert(errorMsg);
+        return null;
+    }
 };

@@ -20,7 +20,7 @@ const useDiaryStore = create((set, get) => ({
                 ...data,
                 thumbnail: `${URL}/imgs/diary/dathumbnail/${data.thumbnail}`,
             })); // 정적폴더에서 이미지 출력
-            console.log(imgres);
+            // console.log(imgres);
             set({ diaryData: res.data });
         } catch (error) {
             console.error("다이어리데이터 로딩오류", error);
@@ -80,7 +80,7 @@ const useDiaryStore = create((set, get) => ({
             const res = await axios.post(`${URL}/diary/list/updatelist`, {
                 newDiaryData,
             });
-            console.log("업데이트확인", res.data);
+            // console.log("업데이트확인", res.data);
             set({ diaryData: res.data.diaryData });
         } catch (error) {
             console.error("다이어리데이터 로딩오류", error);

@@ -151,7 +151,7 @@ export const AuthProvider = ({ children }) => {
     const findGo = async (email, pw) => {
         try {
             const res = await axios.post(`${URL}/find/member`, { email, pw });
-            console.log("응답받나", res.data);
+            // console.log("응답받나", res.data);
             setStep(3);
         } catch (error) {
             console.error("비밀번호찾기 실패:", error);
@@ -160,11 +160,11 @@ export const AuthProvider = ({ children }) => {
 
     //마이페이지 본인인증
     const PwchkGo = async (id, pw) => {
-        console.log("본인인증정보", id, pw);
+        // console.log("본인인증정보", id, pw);
         // alert("본인인증클릭", id, pw);
         try {
             const res = await axios.post(`${URL}/mypage`, { id, pw });
-            console.log("본인인증응답받나", res.data);
+            // console.log("본인인증응답받나", res.data);
             alert(res.data.message);
             setMystep(2);
         } catch (error) {
@@ -177,7 +177,7 @@ export const AuthProvider = ({ children }) => {
     const PwUpdateGo = async (id, pw) => {
         try {
             const res = await axios.post(`${URL}/mypage/modify`, { id, pw });
-            console.log("비밀번호변경응답받나", res.data);
+            // console.log("비밀번호변경응답받나", res.data);
             alert(res.data.message);
             navigate("/home");
         } catch (error) {

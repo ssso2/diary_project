@@ -82,63 +82,8 @@ export default function Summary() {
     ];
     return (
         <>
-            {/* <ResponsiveContainer width="100%" height={48}>
-                <BarChart
-                    width={500}
-                    height={48}
-                    data={barData}
-                    layout="vertical"
-                >
-                    <XAxis type="number" domain={[0, 100]} hide />
-                    <YAxis type="category" dataKey="name" hide />
-                    <Bar
-                        dataKey="이번달"
-                        stackId="a"
-                        fill="#FF7235"
-                        radius={[4, 4, 4, 4]}
-                    ></Bar>
-                    <Bar dataKey="gap" stackId="a" fill="transparent"></Bar>
-
-                    <Bar
-                        dataKey="지난달"
-                        stackId="a"
-                        fill="#8F8F8F"
-                        radius={[4, 4, 4, 4]}
-                    ></Bar>
-                </BarChart>
-            </ResponsiveContainer> */}
-            {/* 퍼센트 */}
-            {/* <div className="monthCompareWrapper">
-                <CountUp target={thisMonthCount} />
-                <CountUp target={lastMonthCount} />
-            </div> */}
             <div className="statsBox">
                 <div className="chartComment">{message}</div>
-                {/* <div className="monthRow under">
-                    <div className="monthInfo">
-                        <div className="square orange"></div>
-                        <p>이번달</p>
-                    </div>
-                    <div className="monthData">
-                        <p>{thisMonthCount}개</p>
-                        <p className="percent orangeBg">
-                            {Math.round(thisMonthPercent)}%
-                        </p>
-                    </div>
-                </div>
-
-                <div className="monthRow">
-                    <div className="monthInfo">
-                        <div className="square gray"></div>
-                        <p>지난달</p>
-                    </div>
-                    <div className="monthData">
-                        <p>{lastMonthCount}개</p>
-                        <p className="percent grayBg">
-                            {Math.round(lastMonthPercent)}%
-                        </p>
-                    </div>
-                </div> */}
             </div>
             <ResponsiveContainer width="100%" height={48}>
                 <BarChart

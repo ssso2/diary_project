@@ -21,11 +21,9 @@ export default function Find() {
         }
     }, [user]);
 
-    //성공컴포넌트 진입 시 폼 상태 초기화
+    //폼 상태 초기화
     useEffect(() => {
-        if (step === 3) {
-            resetForm();
-        }
+        resetForm();
     }, [step]);
 
     //경로 재접근

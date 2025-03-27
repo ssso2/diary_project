@@ -33,3 +33,20 @@
         cursor: pointer;
     }
 }
+
+@media (max-width: 767px) {
+    .container {
+        font-size: 14px;
+        .allAgreeWrapper {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        .singleAgreeWrapper {
+            margin-top: 6px;
+            .checkboxWrapper {
+                height: 28px;
+            }
+        }
+    }
+}

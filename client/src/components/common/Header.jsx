@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../scss/components/Header.module.scss";
+import HeaderB from "./HeaderB";
 
 export default function Header() {
     const [headerBg, setheaderBg] = useState(false);
     const [headerHide, setheaderHide] = useState(false);
     const [lastY, setlastY] = useState(0);
     const [open, setOPen] = useState(false);
+    const [mobile, setMobile] = useState(window.innerWidth <= 767);
+
+    // 반응형대응
+    useEffect(() => {
+        const handleResize = () => {
+            setMobile(window.innerWidth <= 767);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
         const headershow = () => {
             const topY = window.scrollY;
-            console.log("스크롤", topY);
+            // console.log("스크롤", topY);
             if (topY > lastY && lastY > 0) {
                 setheaderHide(true);
             } else {
@@ -30,7 +41,9 @@ export default function Header() {
         };
     }, [lastY, headerBg]);
 
-    return (
+    return mobile ? (
+        <HeaderB />
+    ) : (
         <header
             className={`${styles.header} ${headerBg ? styles.scrolled : ""} ${
                 headerHide ? styles.none : ""

@@ -37,8 +37,18 @@
 }
 .btnWrap {
     width: 100%;
-    background-color: #faf;
     display: flex;
     gap: 16px;
     justify-content: end;
+}
+
+@media (max-width: 767px) {
+    .btn {
+        width: 100px;
+        height: 42px;
+        font-size: 14px;
+    }
+    .btnWrap {
+        justify-content: center;
+    }
 }

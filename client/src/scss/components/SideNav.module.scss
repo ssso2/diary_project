@@ -6,8 +6,12 @@
     height: 24px;
     margin-right: 12px;
     background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
-    background-size: contain;
+    // background-size: contain;
     transition: background 0.1s ease;
+    @media (max-width: 768px) {
+        width: 20px;
+        height: 20px;
+    }
 }
 @mixin hoverImg($icon) {
     background: url("../../../public/icon/#{$icon}.svg") no-repeat center;
@@ -16,22 +20,23 @@
 
 .wrapper {
     width: 250px;
-    // height: 100vh;
-    height: 1228px;
-    background-color: #ccc;
+    height: 100vh;
+    background-color: $white;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 50;
+    border-right: 1px solid $gray2;
     .wrap {
         width: 100%;
         height: auto;
         padding: 28px 24px;
-        background-color: #aff;
+        // background-color: #aff;
+
         .imgwrap {
             width: 100%;
             height: 80px;
-            background-color: #aaf;
+            // background-color: #aaf;
             align-content: center;
             .logo {
                 width: 68px;
@@ -64,6 +69,82 @@
                             color: $black;
                         }
 
+                        // 아이콘 기본 이미지
+                        &.home::before {
+                            @include beforeImg("home");
+                            background-size: contain;
+                        }
+                        &.movie::before {
+                            @include beforeImg("movie");
+                            background-size: contain;
+                        }
+                        &.diary::before {
+                            @include beforeImg("diary");
+                            background-size: contain;
+                        }
+                        &.stats::before {
+                            @include beforeImg("chart");
+                            background-size: contain;
+                        }
+
+                        // 호버, 활성화 아이콘 변경
+                        &.home:hover::before,
+                        &.home.active::before {
+                            @include hoverImg("homeB");
+                        }
+
+                        &.movie:hover::before,
+                        &.movie.active::before {
+                            @include hoverImg("movieB");
+                        }
+
+                        &.diary:hover::before,
+                        &.diary.active::before {
+                            @include hoverImg("diaryB");
+                        }
+
+                        &.stats:hover::before,
+                        &.stats.active::before {
+                            @include hoverImg("chartB");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.tablet {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.open {
+    transform: translateX(0);
+}
+
+@media (max-width: 1279px) {
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper {
+        width: 230px;
+        .wrap {
+            .close {
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+            .imgwrap {
+                height: 36px;
+                margin-top: 24px;
+                .logo {
+                    width: 64px;
+                }
+            }
+            .content {
+                .lists {
+                    .list {
                         // 아이콘 기본 이미지
                         &.home::before {
                             @include beforeImg("home");
@@ -104,204 +185,3 @@
         }
     }
 }
-.tablet {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-}
-
-.open {
-    transform: translateX(0);
-}
-
-@media (max-width: 1279px) {
-    // .wrapper {
-    //     width: 250px;
-    //     // height: 100vh;
-    //     height: 1228px;
-    //     background-color: #ccc;
-    //     position: fixed;
-    //     top: 0;
-    //     left: 0;
-    //     z-index: 50;
-    //     .wrap {
-    //         width: 100%;
-    //         height: auto;
-    //         padding: 28px 24px;
-    //         background-color: #aff;
-    //         .imgwrap {
-    //             width: 100%;
-    //             height: 80px;
-    //             background-color: #aaf;
-    //             align-content: center;
-    //             .logo {
-    //                 width: 68px;
-    //                 height: 24px;
-    //                 img {
-    //                     width: 100%;
-    //                     display: inline-block;
-    //                 }
-    //             }
-    //         }
-    //         .content {
-    //             .lists {
-    //                 .list {
-    //                     margin-top: 32px;
-    //                     cursor: pointer;
-
-    //                     .home,
-    //                     .movie,
-    //                     .diary,
-    //                     .stats {
-    //                         display: flex;
-    //                         align-items: center;
-
-    //                         .item {
-    //                             color: $gray3;
-    //                         }
-    //                         &:hover .item,
-    //                         &.active .item {
-    //                             font-weight: 600;
-    //                             color: $black;
-    //                         }
-
-    //                         // 아이콘 기본 이미지
-    //                         &.home::before {
-    //                             @include beforeImg("home");
-    //                         }
-    //                         &.movie::before {
-    //                             @include beforeImg("movie");
-    //                         }
-    //                         &.diary::before {
-    //                             @include beforeImg("diary");
-    //                         }
-    //                         &.stats::before {
-    //                             @include beforeImg("chart");
-    //                         }
-
-    //                         // 호버, 활성화 아이콘 변경
-    //                         &.home:hover::before,
-    //                         &.home.active::before {
-    //                             @include hoverImg("homeB");
-    //                         }
-
-    //                         &.movie:hover::before,
-    //                         &.movie.active::before {
-    //                             @include hoverImg("movieB");
-    //                         }
-
-    //                         &.diary:hover::before,
-    //                         &.diary.active::before {
-    //                             @include hoverImg("diaryB");
-    //                         }
-
-    //                         &.stats:hover::before,
-    //                         &.stats.active::before {
-    //                             @include hoverImg("chartB");
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-}
-
-// @media screen and (max-width:767px) {
-//     .wrapper {
-//         width: 250px;
-//         // height: 100vh;
-//         height: 1228px;
-//         background-color: #ccc;
-//         position: fixed;
-//         top: 0;
-//         left: 0;
-//         z-index: 50;
-//         transform: translateX(-100%);
-//         &.open {
-//             transform: translateX(0);
-//         }
-//         .wrap {
-//             width: 100%;
-//             height: auto;
-//             padding: 28px 24px;
-//             background-color: #aff;
-//             .imgwrap {
-//                 width: 100%;
-//                 height: 80px;
-//                 background-color: #aaf;
-//                 align-content: center;
-//                 .logo {
-//                     width: 68px;
-//                     height: 24px;
-//                     img {
-//                         width: 100%;
-//                         display: inline-block;
-//                     }
-//                 }
-//             }
-//             .content {
-//                 .lists {
-//                     .list {
-//                         margin-top: 32px;
-//                         cursor: pointer;
-
-//                         .home,
-//                         .movie,
-//                         .diary,
-//                         .stats {
-//                             display: flex;
-//                             align-items: center;
-
-//                             .item {
-//                                 color: $gray3;
-//                             }
-//                             &:hover .item,
-//                             &.active .item {
-//                                 font-weight: 600;
-//                                 color: $black;
-//                             }
-
-//                             // 아이콘 기본 이미지
-//                             &.home::before {
-//                                 @include beforeImg("home");
-//                             }
-//                             &.movie::before {
-//                                 @include beforeImg("movie");
-//                             }
-//                             &.diary::before {
-//                                 @include beforeImg("diary");
-//                             }
-//                             &.stats::before {
-//                                 @include beforeImg("chart");
-//                             }
-
-//                             // 호버, 활성화 아이콘 변경
-//                             &.home:hover::before,
-//                             &.home.active::before {
-//                                 @include hoverImg("homeB");
-//                             }
-
-//                             &.movie:hover::before,
-//                             &.movie.active::before {
-//                                 @include hoverImg("movieB");
-//                             }
-
-//                             &.diary:hover::before,
-//                             &.diary.active::before {
-//                                 @include hoverImg("diaryB");
-//                             }
-
-//                             &.stats:hover::before,
-//                             &.stats.active::before {
-//                                 @include hoverImg("chartB");
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media screen and (max-width: 1279px) {
-// }

@@ -24,7 +24,7 @@ export default function ModalMain({ selectMovie }) {
             setResults([]);
             return;
         }
-        console.log(txt);
+        // console.log(txt);
         setLoading(true);
 
         const movieList = async () => {
@@ -33,7 +33,7 @@ export default function ModalMain({ selectMovie }) {
                     const res = await axios.get(`${URL}/list/Allmovie`, {
                         params: { search: txt },
                     });
-                    console.log("데이터확인", res.data);
+                    // console.log("데이터확인", res.data);
                     setResults(res.data);
                 } catch (error) {
                     console.error("검색 오류:", error);

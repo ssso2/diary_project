@@ -83,6 +83,7 @@ export default function SideNav({ tablet, open, setOpen }) {
                             e.stopPropagation();
                             setOpen(false);
                         }}
+                        className={styles.close}
                     >
                         <img src="/icon/hamburger_close.svg" />
                     </button>

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import HeaderB from "../../components/common/HeaderB";
 import Footer from "../../components/common/Footer";
@@ -27,7 +26,8 @@ export default function Login() {
                 <div className={styles.loginContainer}>
                     <div className={styles.formWrap}>
                         <div className={styles.logoWrap}>
-                            <img src="/main/logoB.svg" alt="로고" />
+                            로그인
+                            {/* <img src="/main/logoB.svg" alt="로고" /> */}
                         </div>
                         <div className={styles.form}>
                             <LoginForm />

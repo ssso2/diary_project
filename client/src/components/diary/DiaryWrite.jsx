@@ -28,7 +28,7 @@ export default function DiaryWrite({
 }) {
     //관람일
     const [calendar, setCalendar] = useState(false);
-    console.log("날짜", day);
+    // console.log("날짜", day);
     //썸네일
     const [selectedOption, setSelectedOption] = useState("poster");
     const selectLists = [
@@ -41,122 +41,127 @@ export default function DiaryWrite({
     return (
         <div className={styles.container}>
             <table className={styles.table}>
-                <tr>
-                    <td>장르</td>
-                    <td>
-                        <Select
-                            name="genre"
-                            value={formData.genre}
-                            onChange={changeValue}
-                            options={minimalGenres}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>제목</td>
-                    <td>
-                        <Input
-                            placeholder="제목을 입력해주세요."
-                            name="title"
-                            value={formData.title}
-                            onChange={changeValue}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td className={styles.td}>감상평</td>
-                    <td>
-                        <TinyForm
-                            content={content}
-                            setContent={setContent}
-                            imgs={imgs}
-                            setImgs={setImgs}
-                            editorRef={editorRef}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td className={styles.td}>썸네일</td>
-                    <td>
-                        <Radio
-                            name="thumbnail"
-                            options={selectLists}
-                            selected={selectedOption}
-                            setSelectedOption={setSelectedOption}
-                        />
-                        <Thumbnail
-                            selectedOption={selectedOption}
-                            // changeValue={changeValue}
-                            setPreview={setPreview}
-                            setFile={setFile}
-                            setPosterThumbnail={setPosterThumbnail}
-                        />
-                    </td>
-                </tr>
-                {preview && (
+                <tbody>
                     <tr>
-                        <td className={styles.td}>영화정보</td>
+                        <td>장르</td>
                         <td>
-                            <div className={styles.posterWrap}>
-                                <img src={preview} className={styles.poster} />
-                            </div>
+                            <Select
+                                name="genre"
+                                value={formData.genre}
+                                onChange={changeValue}
+                                options={minimalGenres}
+                            />
                         </td>
                     </tr>
-                )}
-
-                <tr>
-                    <td>관람일</td>
-                    <td>
-                        <div className={styles.daywrap}>
-                            <button
-                                type="button"
-                                onClick={() => setCalendar(true)}
-                            >
-                                <img
-                                    src="/icon/today.svg"
-                                    alt="관람일"
-                                    title="달력"
-                                />
-                            </button>
-                            {formatDate(day)}
-                        </div>
-                        {calendar ? (
-                            <Datepicker
-                                setCalendar={setCalendar}
-                                day={day}
-                                setDay={setDay}
+                    <tr>
+                        <td>제목</td>
+                        <td>
+                            <Input
+                                placeholder="제목을 입력해주세요."
+                                name="title"
+                                value={formData.title}
+                                onChange={changeValue}
                             />
-                        ) : null}
-                    </td>
-                </tr>
-                <tr>
-                    <td>평점</td>
-                    <td>
-                        <StarReview rate={rate} setRate={setRate} />
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className={styles.td}>감상평</td>
+                        <td>
+                            <TinyForm
+                                content={content}
+                                setContent={setContent}
+                                imgs={imgs}
+                                setImgs={setImgs}
+                                editorRef={editorRef}
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className={styles.td}>썸네일</td>
+                        <td>
+                            <Radio
+                                name="thumbnail"
+                                options={selectLists}
+                                selected={selectedOption}
+                                setSelectedOption={setSelectedOption}
+                            />
+                            <Thumbnail
+                                selectedOption={selectedOption}
+                                // changeValue={changeValue}
+                                setPreview={setPreview}
+                                setFile={setFile}
+                                setPosterThumbnail={setPosterThumbnail}
+                            />
+                        </td>
+                    </tr>
+                    {preview && (
+                        <tr>
+                            <td className={styles.td}>영화정보</td>
+                            <td>
+                                <div className={styles.posterWrap}>
+                                    <img
+                                        src={preview}
+                                        className={styles.poster}
+                                    />
+                                </div>
+                            </td>
+                        </tr>
+                    )}
 
-                <tr>
-                    <td>감상전</td>
-                    <td>
-                        <EmotionSelector
-                            category="before"
-                            formData={formData}
-                            changeValue={changeValue}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>감상후</td>
-                    <td>
-                        {" "}
-                        <EmotionSelector
-                            category="after"
-                            formData={formData}
-                            changeValue={changeValue}
-                        />
-                    </td>
-                </tr>
+                    <tr>
+                        <td>관람일</td>
+                        <td>
+                            <div className={styles.daywrap}>
+                                <button
+                                    type="button"
+                                    onClick={() => setCalendar(true)}
+                                >
+                                    <img
+                                        src="/icon/today.svg"
+                                        alt="관람일"
+                                        title="달력"
+                                    />
+                                </button>
+                                {formatDate(day)}
+                            </div>
+                            {calendar ? (
+                                <Datepicker
+                                    setCalendar={setCalendar}
+                                    day={day}
+                                    setDay={setDay}
+                                />
+                            ) : null}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>평점</td>
+                        <td>
+                            <StarReview rate={rate} setRate={setRate} />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>감상전</td>
+                        <td>
+                            <EmotionSelector
+                                category="before"
+                                formData={formData}
+                                changeValue={changeValue}
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>감상후</td>
+                        <td>
+                            {" "}
+                            <EmotionSelector
+                                category="after"
+                                formData={formData}
+                                changeValue={changeValue}
+                            />
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );

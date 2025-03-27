@@ -1,8 +1,5 @@
 import "../../scss/components/Modal.scss";
-import styles from "../../scss/components/ListForm.module.scss";
-import { genreName } from "../../utils/Validation";
 import ModalMain from "./ModalMain";
-import ModalSearch from "./ModalSearch";
 import { useEffect } from "react";
 
 export default function Modal({ setModal, selectMovie }) {

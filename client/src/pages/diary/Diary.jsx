@@ -1,7 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Search from "../../components/common/Search";
 import Tab from "../../components/common/Tab";
-// import DiaryListForm from "../../components/diary/DiaryListForm";
 import { LinkBtn } from "../../components/common/Button";
 import { useEffect, useState } from "react";
 import useDiaryStore from "../../store/useDiaryStore";
@@ -32,10 +31,10 @@ export default function Diary() {
 
     useEffect(() => {
         if (diaryData.length === 0) {
-            console.log("다이어리 페이지 데이터 패치 실행", user.id);
+            // console.log("다이어리 페이지 데이터 패치 실행", user.id);
             fetchDiaryData(user.id);
         }
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
     }, []);
 
     // 탭 전환 시 검색어 초기화
@@ -48,7 +47,6 @@ export default function Diary() {
     // 검색어, 북마크 여부 변경될 때마다 필터링 실행
     useEffect(() => {
         filterDiaryData();
-        console.log("");
     }, [bookmarkTab, keyword, diaryData]);
 
     return (

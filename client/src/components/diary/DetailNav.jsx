@@ -11,7 +11,7 @@ export default function DetailNav({ diaryData, diary }) {
     const prev = currentIndex > 0 ? diaryData[currentIndex - 1] : null;
     const next =
         currentIndex < diaryData.length ? diaryData[currentIndex + 1] : null;
-    console.log(diary, diary.id, "지금아이디", prev);
+    // console.log(diary, diary.id, "지금아이디", prev);
     return (
         <nav className={styles.navWrapper}>
             {prev ? (

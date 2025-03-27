@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import HeaderB from "../../components/common/HeaderB";
 import Footer from "../../components/common/Footer";
@@ -14,7 +13,7 @@ import { useAuth } from "../../components/login/AuthContext";
 export default function Join() {
     const navigate = useNavigate();
     const location = useLocation();
-    const { user, joinSuccess, setjoinSuccess } = useAuth();
+    const { user, joinSuccess, setjoinSuccess, resetForm } = useAuth();
 
     useEffect(() => {
         if (user) {
@@ -26,6 +25,7 @@ export default function Join() {
     useEffect(() => {
         if (location.pathname === "/join") {
             setjoinSuccess(false);
+            resetForm();
         }
     }, [location.pathname]);
 

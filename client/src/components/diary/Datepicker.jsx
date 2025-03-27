@@ -16,10 +16,10 @@ export default function Datepicker({ day, setDay, setCalendar }) {
         return;
     };
     const clickDay = date => {
-        console.log("클릭", date);
+        // console.log("클릭", date);
         setDay(formatNewDate(date));
         setCalendar(false);
-        console.log("날짜업데이트결과", day);
+        // console.log("날짜업데이트결과", day);
     };
     return (
         <div>

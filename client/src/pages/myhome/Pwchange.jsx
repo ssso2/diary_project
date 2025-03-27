@@ -11,11 +11,6 @@ export default function Pwchange() {
         pw: "",
         pwchk: "",
     });
-    // 이메일 입력 시 유효성 체크
-    // const pwchange = e => {
-    //     setpw(e.target.value);
-    //     seterrors("");
-    // };
 
     // 입력 변경 시 에러 메시지 초기화
     const Change = (setter, value, key) => {
@@ -45,7 +40,7 @@ export default function Pwchange() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>개인정보</h1>
+            <h1 className={styles.title}>개인정보 변경</h1>
 
             <form className={styles.joinForm} onSubmit={pwTwochk}>
                 <p className="emailTitle">이메일</p>
