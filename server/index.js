@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 5001;
 
 // CORS 설정
 const corsOptions = {
-    origin: ["http://localhost:3000", "http://localhost:5001"],
+    origin: [
+        "http://localhost:3000",
+        "http://localhost:5001",
+        process.env.SERVER_ADDRESS,
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
 };
