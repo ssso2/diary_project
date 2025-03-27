@@ -1,34 +1,11 @@
-// Body parser middleware
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 const express = require("express");
 const app = express();
-// const db = require("mysql2");
-// const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 require("dotenv").config();
-// const nodemailer = require("nodemailer");
 
-//이미지업로드
-// const upload = multer({
-//     storage: multer.diskStorage({
-//         destination: (req, file, cb) => {
-//             cb(null, "imgs/");
-//         },
-//         filename: (req, file, cb) => {
-//             const ext = path.extname(file.originalname);
-//             let fName =
-//                 path.basename(file.originalname, ext) + Date.now() + ext;
-//             //한글인코딩
-//             let newFName = Buffer.from(fName, "latin1").toString("utf8");
-
-//             cb(null, newFName);
-//         },
-//     }),
-//     limits: { fileSize: 5 * 1024 * 1024 },
-// });
+const PORT = process.env.PORT || 5001;
 
 // CORS 설정
 const corsOptions = {
@@ -79,6 +56,6 @@ app.get("*", (req, res) => {
     res.send("404에러");
 });
 
-app.listen(5001, () => {
+app.listen(PORT, () => {
     console.log("서버 실행");
 });
