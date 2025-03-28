@@ -35,7 +35,7 @@ export default function LoginHeader({ setOpen }) {
                         className="mygo"
                         onClick={() => setDrop(true)}
                     >
-                        <img src="/icon/profile.png" alt="프로필 로고" />
+                        <img src="/icon/profile.svg" alt="프로필 로고" />
                     </button>
                 </div>
             </header>

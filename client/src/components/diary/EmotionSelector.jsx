@@ -4,7 +4,7 @@ import styles from "../../scss/components/DiaryDetail.module.scss";
 export default function EmotionSelector({ category, formData, changeValue }) {
     const emotions = {
         before: [
-            { id: "happy", label: "즐거움", icon: "/icon/happy.png" },
+            { id: "happy", label: "즐거움", icon: "/icon/happy.svg" },
             { id: "excited", label: "설렘", icon: "/icon/excited.png" },
             { id: "neutral", label: "평온", icon: "/icon/neutral.png" },
             { id: "angry", label: "분노", icon: "/icon/angry.png" },
