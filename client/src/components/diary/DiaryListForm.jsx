@@ -80,14 +80,14 @@ export default function DiaryListForm({ limit }) {
                                 <div className="emotion">
                                     <p className="txt">감상 전</p>
                                     <img
-                                        src={`/icon/${diary.before_emotion}.svg`}
+                                        src={`/icon/${diary.before_emotion}.png`}
                                         alt={`감상 전 감정: ${diary.before_emotion}`}
                                     />
                                 </div>
                                 <div className="emotion">
                                     <p className="txt">감상 후</p>
                                     <img
-                                        src={`/icon/${diary.after_emotion}.svg`}
+                                        src={`/icon/${diary.after_emotion}.png`}
                                         alt={`감상 후 감정: ${diary.after_emotion}`}
                                     />
                                 </div>
