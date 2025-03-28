@@ -174,7 +174,9 @@ a {
 .detailFooter {
     margin-top: 40px;
     width: 100%;
-    text-align: center;
+    // text-align: center;
+    display: flex;
+    justify-content: center;
 }
 //인풋, 셀렉트박스
 .input,
@@ -213,6 +215,7 @@ a {
         padding: 10px 0 10px 12px;
         background-color: #f8f9fa;
         border-radius: 4px;
+        font-size: 14px;
     }
     .searchBtn {
         flex: 1;
