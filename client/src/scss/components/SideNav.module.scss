@@ -35,7 +35,7 @@
 
         .imgwrap {
             width: 100%;
-            height: 80px;
+            // height: 80px;
             // background-color: #aaf;
             align-content: center;
             .logo {
@@ -123,6 +123,13 @@
 }
 
 @media (max-width: 1279px) {
+    .wrapper {
+        .wrap {
+            .imgwrap {
+                height: 80px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 767px) {

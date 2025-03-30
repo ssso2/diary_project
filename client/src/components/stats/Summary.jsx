@@ -14,8 +14,6 @@ import CountUp from "./Countup";
 
 export default function Summary() {
     const { diaryData } = useDiaryStore();
-    // console.log("다이어리데이터오나", diaryData);
-
     const today = new Date();
 
     const thisMonthStr = formatNewDate(today).slice(0, 7); // "2025-03"
@@ -35,30 +33,26 @@ export default function Summary() {
 
     const thisMonthPercent = (thisMonthCount / total) * 100;
     const lastMonthPercent = (lastMonthCount / total) * 100;
-
-    const late = thisMonthPercent - lastMonthPercent;
+    const roundedPercent = Math.round(thisMonthPercent);
+    // const late = thisMonthPercent - lastMonthPercent;
     let message = "";
-    if (late > 0) {
+
+    if (thisMonthCount > lastMonthCount) {
         message = (
             <p>
-                <span className="last">지난달</span>
-                <span>에 비해</span> <span className="this">이번달</span>{" "}
-                <span>다이어리 등록 비율이 </span>
-                <span className="percent">{Math.round(late)}%</span>
-                <span> 증가했어요</span>
+                <span className="this">이번달</span>{" "}
+                <span>다이어리 작성 비중이 </span>
+                <span className="percent">{roundedPercent}%</span>
+                <span>로 늘었어요</span>
             </p>
         );
-        // message = `지난달에 비해 다이어리 등록 비율이 ${Math.round(
-        //     late
-        // )}% 증가했어요`;
-    } else if (late < 0) {
+    } else if (thisMonthCount < lastMonthCount) {
         message = (
             <p>
-                <span className="last">지난달</span>
-                <span>에 비해</span> <span className="this">이번달</span>{" "}
-                <span>다이어리 등록 비율이 </span>
-                <span className="percent">{Math.abs(Math.round(late))}%</span>
-                <span> 감소했어요</span>
+                <span className="this">이번달</span>{" "}
+                <span>다이어리 작성 비중이 </span>
+                <span className="percent">{roundedPercent}%</span>
+                <span>로 줄었어요</span>
             </p>
         );
     } else {
@@ -66,12 +60,12 @@ export default function Summary() {
             <p>
                 <span className="last">지난달</span>
                 <span>과</span> <span className="this">이번달</span>{" "}
-                <span>다이어리 등록 비율에 </span>
-                <span> 변동이 없어요</span>
+                <span>다이어리 작성 비중에 </span>
+                <span>변화가 없어요</span>
             </p>
         );
     }
-    console.log();
+
     const barData = [
         {
             name: "다이어리 기록 현황",
@@ -80,6 +74,7 @@ export default function Summary() {
             지난달: lastMonthPercent,
         },
     ];
+
     return (
         <>
             <div className="statsBox">
