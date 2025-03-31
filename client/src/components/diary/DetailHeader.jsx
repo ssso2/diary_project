@@ -52,15 +52,8 @@ export default function DetailHeader({ diary }) {
                         {open && <DetailModal open={open} setOpen={setOpen} />}
                     </div>
                 </div>
-                {/* {open && (
-                    <DetailModal
-                        open={open}
-                        setOpen={setOpen}
-                        // targetref={modalRef}
-                    />
-                )} */}
             </div>
-            <figure className={styles.thumbnail}>
+            {/* <figure className={styles.thumbnail}>
                 {diary.thumbnail && diary.thumbnail.startsWith("http") ? (
                     <img src={diary.thumbnail} alt={`${diary.title}포스터`} />
                 ) : (
@@ -69,7 +62,7 @@ export default function DetailHeader({ diary }) {
                         alt="기본썸네일"
                     />
                 )}
-            </figure>
+            </figure> */}
         </header>
     );
 }

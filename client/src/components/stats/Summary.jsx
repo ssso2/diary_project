@@ -86,6 +86,7 @@ export default function Summary() {
                     height={48}
                     data={barData}
                     layout="vertical"
+                    barCategoryGap={2}
                 >
                     <XAxis type="number" domain={[0, 100]} hide />
                     <YAxis type="category" dataKey="name" hide />
@@ -95,7 +96,9 @@ export default function Summary() {
                         fill="#FF7235"
                         radius={[4, 4, 4, 4]}
                     ></Bar>
-                    <Bar dataKey="gap" stackId="a" fill="transparent"></Bar>
+
+                    {/* 누적합산 오류수정 */}
+                    {/* <Bar dataKey="gap" stackId="a" fill="transparent"></Bar> */}
 
                     <Bar
                         dataKey="지난달"

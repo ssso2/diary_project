@@ -28,20 +28,29 @@ export default function Thumbnail() {
     const filePercent = total ? (fileCount / total) * 100 : 0;
     // console.log("퍼센트", posterPercent, filePercent);
 
-    const data = [
-        {
-            name: "포스터",
-            value: poster.length,
-            percent: posterPercent,
-            fill: "#FF7235",
-        },
-        {
-            name: "이미지 첨부",
-            value: file.length,
-            percent: filePercent,
-            fill: "#DBDBDB",
-        },
-    ];
+    // const data = [
+    //     {
+    //         name: "포스터",
+    //         value: poster.length,
+    //         percent: posterPercent,
+    //         fill: "#FF7235",
+    //     },
+    //     {
+    //         name: "이미지 첨부",
+    //         value: file.length,
+    //         percent: filePercent,
+    //         fill: "#DBDBDB",
+    //     },
+    // ];
+
+    // 데이터없을 경우 기본 도넛추가
+    const data =
+        total > 0
+            ? [
+                  { name: "포스터", value: posterCount, fill: "#FF7235" },
+                  { name: "이미지 첨부", value: fileCount, fill: "#DBDBDB" },
+              ]
+            : [{ name: "데이터 없음", value: 1, fill: "#8F8F8F" }];
     return (
         <>
             <div className="typeWrap">
