@@ -40,7 +40,8 @@ export default function Summary() {
     if (thisMonthCount > lastMonthCount) {
         message = (
             <p>
-                <span className="this">이번달</span>{" "}
+                <span className="last">지난달</span>
+                <span>에 비해</span> <span className="this">이번달</span>{" "}
                 <span>다이어리 작성 비중이 </span>
                 <span className="percent">{roundedPercent}%</span>
                 <span>로 늘었어요</span>
@@ -49,7 +50,8 @@ export default function Summary() {
     } else if (thisMonthCount < lastMonthCount) {
         message = (
             <p>
-                <span className="this">이번달</span>{" "}
+                <span className="last">지난달</span>
+                <span>에 비해</span> <span className="this">이번달</span>{" "}
                 <span>다이어리 작성 비중이 </span>
                 <span className="percent">{roundedPercent}%</span>
                 <span>로 줄었어요</span>
@@ -86,7 +88,9 @@ export default function Summary() {
                     height={48}
                     data={barData}
                     layout="vertical"
-                    barCategoryGap={2}
+                    // barCategoryGap={2}
+                    barCategoryGap={8}
+                    barGap={4}
                 >
                     <XAxis type="number" domain={[0, 100]} hide />
                     <YAxis type="category" dataKey="name" hide />

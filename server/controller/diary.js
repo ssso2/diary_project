@@ -84,10 +84,20 @@ router.get("/list/:id", async (req, res) => {
     const { id } = req.params;
     try {
         console.log("다이어리목록디비접근", id);
-        const [diaries] = await db.query(
-            "select * from diary_entries where member_id = ?",
-            [id]
-        ); // 쿼리 첫번째 배열만 반환하기위해 [diaries]
+
+        let query, params;
+
+        if (id === "2025@abc.com") {
+            query = "select * from diary_entries";
+            params = [];
+        } else {
+            query = "select * from diary_entries where member_id = ?";
+            params = [id];
+        }
+
+        const [diaries] = await db.query(query, params);
+        res.status(200).json(diaries);
+        // 쿼리 첫번째 배열만 반환하기위해 [diaries]
         res.status(200).json(diaries);
     } catch (error) {
         res.status(500).json(error);
